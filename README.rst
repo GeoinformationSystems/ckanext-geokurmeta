@@ -14,7 +14,7 @@ Requirements
 
 Works with CKAN 2.9 and Python 2.7.
 
-Install ckanext-scheming_ https://github.com/ckan/ckanext-scheming like this::
+Install https://github.com/ckan/ckanext-scheming like this::
 
 	. /usr/lib/ckan/default/bin/activate
 	cd /usr/lib/ckan/default/src/ 
@@ -24,7 +24,7 @@ Install ckanext-scheming_ https://github.com/ckan/ckanext-scheming like this::
 Recommended plugins
 ------------
 
-Install ckanext-spatial_ https://github.com/ckan/ckanext-spatial like this::
+Install https://github.com/ckan/ckanext-spatial like this::
 
 	sudo apt-get install python-dev libxml2-dev libxslt1-dev libgeos-c1v5
 	sudo apt-get install postgresql-11-postgis-2.5
@@ -43,7 +43,7 @@ Install ckanext-spatial_ https://github.com/ckan/ckanext-spatial like this::
 	pip install -e "git+https://github.com/ckan/ckanext-spatial.git#egg=ckanext-spatial"
 	pip install -r /usr/lib/ckan/default/src/ckanext-spatial/pip-requirements.txt
 
-Install ckanext-geoview_ https://github.com/ckan/ckanext-geoview
+Install https://github.com/ckan/ckanext-geoview like this::
 
 	. /usr/lib/ckan/default/bin/activate
 	cd /usr/lib/ckan/default/src/
@@ -52,7 +52,8 @@ Install ckanext-geoview_ https://github.com/ckan/ckanext-geoview
 	python setup.py develop
 
 Activate all of these by adding ``spatial_metadata spatial_query geo_view geojson_view wmts_view shp_view scheming_datasets`` to the ``ckan.plugins`` setting in your CKAN config file (by default the config file is located at ``/etc/ckan/default/ckan.ini``).
-(minimum requirement: ``scheming_datasets``)
+
+Minimum requirement: ``scheming_datasets``
 
 ------------
 (Developer) Installation
@@ -66,21 +67,21 @@ To install ckanext-geokurmeta:
 
 1. Activate your CKAN virtual environment, for example::
 
-    . /usr/lib/ckan/default/bin/activate
+	. /usr/lib/ckan/default/bin/activate
 
 2. Install the ckanext-geokurmeta Python package into your virtual environment::
 
 	cd /usr/lib/ckan/default/src
 	git clone https://github.com/GeoinformationSystems/ckanext-geokurmeta.git
 	cd ckanext-geokurmeta
-    python setup.py develop
-    pip install -r requirements.txt
+	python setup.py develop
+	pip install -r requirements.txt
 
 3. Add ``geokurmeta`` to the end of ``ckan.plugins`` setting in your CKAN config file (by default the config file is located at ``/etc/ckan/default/ckan.ini``).
 
 4. Restart CKAN. For example if you've deployed CKAN with Supervisor on Ubuntu::
 
-    sudo service supervisor restart
+	sudo service supervisor restart
 
 
 ---------------
@@ -98,7 +99,7 @@ To use GeoKur metadata scheme set the following in your ``/etc/ckan/default/ckan
 	# Define scheming file to be used
 	scheming.dataset_schemas = ckanext.geokurmeta:scheming_dataset.json
 	# Define preset files to be used
-	scheming.presets = 	ckanext.geokurmeta:scheming_presets.json ckanext.scheming:presets.json
+	scheming.presets = ckanext.geokurmeta:scheming_presets.json ckanext.scheming:presets.json
 
 Other usefull settings::
 	
