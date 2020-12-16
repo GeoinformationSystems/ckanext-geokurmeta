@@ -1,0 +1,31 @@
+{
+  "scheming_presets_version": 1,
+  "about": "these are the geokur scheming field presets",
+  "about_url": "http://github.com/ckan/ckanext-scheming#preset",
+  "presets": [
+	{
+      "preset_name": "tag_string_autocomplete_fix",
+      "values": {
+        "validators": "ignore_missing tag_string_convert",
+		"form_snippet": "geokur_keywords.html",
+        "form_attrs": {
+          "data-module": "autocomplete",
+          "data-module-tags": "",
+          "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?"
+        }
+      }
+    },
+	{
+      "preset_name": "resource_format_autocomplete_fix",
+      "values": {
+        "validators": "if_empty_guess_format ignore_missing clean_format unicode",
+        "form_placeholder": "eg. CSV, XML or JSON",
+		"form_snippet": "geokur_keywords.html",
+        "form_attrs": {
+          "data-module": "autocomplete",
+          "data-module-source": "/api/2/util/resource/format_autocomplete?incomplete=?"
+        }
+      }
+    }
+  ]
+}

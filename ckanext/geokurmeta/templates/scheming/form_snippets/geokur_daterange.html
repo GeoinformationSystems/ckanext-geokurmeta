@@ -1,0 +1,51 @@
+{% import 'macros/form.html' as form %}
+
+{% set datefrom = '' %}
+{% set dateto = '' %}
+
+{% set date = data.get(field.field_name) %}
+{% if date is string %}
+	{% set parts = date.replace('{','').replace('}','').split(',') %}
+	{% set datefrom = parts[0] %}
+	{% set dateto = parts[1] %}
+{% endif %}
+
+
+{% macro daterange(name, id='', label='', value=(), placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false) %}
+{% set classes = (classes|list) %}
+{% do classes.append('error') if error %}
+{%- set extra_html = caller() if caller -%}
+{% call form.input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
+<div class="row">
+    <div class="col-md-6">
+		<div class="input-group">
+		<span class="input-group-addon">from</span>
+		<input type="{{ type }}" name="{{ name }}" value="{{ value[0] | empty_and_escape }}" placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} />
+		{% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+		</div>
+	</div>
+    <div class="col-md-6">
+		<div class="input-group">
+		<span class="input-group-addon">to</span>
+		<input type="{{ type }}" name="{{ name }}" value="{{ value[1] | empty_and_escape }}" placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} />
+		{% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+		</div>
+	</div>
+</div>
+{% endcall %}
+{% endmacro %}
+
+{% call daterange(
+    name=field.field_name,
+    id='field-' + field.field_name,
+    label= h.scheming_language_text(field.label),
+    type='date',
+    value=(datefrom, dateto),
+    error=errors[field.field_name],
+    classes=['control-medium'],
+    attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
+    is_required=h.scheming_field_required(field)
+    )
+%}
+{% endcall %}
+
