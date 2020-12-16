@@ -1,28 +1,3 @@
-.. You should enable this project on travis-ci.org and coveralls.io to make
-   these badges work. The necessary Travis and Coverage config files have been
-   generated for you.
-
-.. image:: https://travis-ci.org/GeoinformationSystems/ckanext-geokurmeta.svg?branch=master
-    :target: https://travis-ci.org/GeoinformationSystems/ckanext-geokurmeta
-
-.. image:: https://coveralls.io/repos/GeoinformationSystems/ckanext-geokurmeta/badge.svg
-  :target: https://coveralls.io/r/GeoinformationSystems/ckanext-geokurmeta
-
-.. image:: https://img.shields.io/pypi/v/ckanext-geokurmeta.svg
-    :target: https://pypi.org/project/ckanext-geokurmeta/
-    :alt: Latest Version
-
-.. image:: https://img.shields.io/pypi/pyversions/ckanext-geokurmeta.svg
-    :target: https://pypi.org/project/ckanext-geokurmeta/
-    :alt: Supported Python versions
-
-.. image:: https://img.shields.io/pypi/status/ckanext-geokurmeta.svg
-    :target: https://pypi.org/project/ckanext-geokurmeta/
-    :alt: Development Status
-
-.. image:: https://img.shields.io/pypi/l/ckanext-geokurmeta.svg
-    :target: https://pypi.org/project/ckanext-geokurmeta/
-    :alt: License
 
 =============
 ckanext-geokurmeta
@@ -37,12 +12,50 @@ ckanext-geokurmeta
 Requirements
 ------------
 
-For example, you might want to mention here which versions of CKAN this
-extension works with.
+Works with CKAN 2.9 and Python 2.7.
 
+Install ckanext-scheming_ https://github.com/ckan/ckanext-scheming like this::
+
+	. /usr/lib/ckan/default/bin/activate
+	cd /usr/lib/ckan/default/src/ 
+	pip install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
+	pip install -r ckanext-scheming/requirements.txt 
+
+Recommended plugins
+------------
+
+Install ckanext-spatial_ https://github.com/ckan/ckanext-spatial like this::
+
+	sudo apt-get install python-dev libxml2-dev libxslt1-dev libgeos-c1v5
+	sudo apt-get install postgresql-11-postgis-2.5
+	sudo apt-get install postgresql-11-postgis-2.5-scripts
+	sudo -u postgres psql -d ckan_default
+
+		CREATE EXTENSION postgis;
+		SELECT PostGIS_version();
+		\q
+
+	sudo -u postgres psql -d ckan_default -c 'ALTER TABLE geometry_columns OWNER TO ckan_default;'
+	sudo -u postgres psql -d ckan_default -c 'ALTER TABLE spatial_ref_sys OWNER TO ckan_default;'
+
+	. /usr/lib/ckan/default/bin/activate
+	cd /usr/lib/ckan/default/src/ 
+	pip install -e "git+https://github.com/ckan/ckanext-spatial.git#egg=ckanext-spatial"
+	pip install -r /usr/lib/ckan/default/src/ckanext-spatial/pip-requirements.txt
+
+Install ckanext-geoview_ https://github.com/ckan/ckanext-geoview
+
+	. /usr/lib/ckan/default/bin/activate
+	cd /usr/lib/ckan/default/src/
+	git clone https://github.com/ckan/ckanext-geoview.git
+	cd ckanext-geoview
+	python setup.py develop
+
+Activate all of these by adding ``spatial_metadata spatial_query geo_view geojson_view wmts_view shp_view scheming_datasets`` to the ``ckan.plugins`` setting in your CKAN config file (by default the config file is located at ``/etc/ckan/default/ckan.ini``).
+(minimum requirement: ``scheming_datasets``)
 
 ------------
-Installation
+(Developer) Installation
 ------------
 
 .. Add any additional install steps to the list below.
@@ -53,27 +66,26 @@ To install ckanext-geokurmeta:
 
 1. Activate your CKAN virtual environment, for example::
 
-     . /usr/lib/ckan/default/bin/activate
+    . /usr/lib/ckan/default/bin/activate
 
 2. Install the ckanext-geokurmeta Python package into your virtual environment::
 
-     pip install ckanext-geokurmeta
+	cd /usr/lib/ckan/default/src
+	git clone https://github.com/GeoinformationSystems/ckanext-geokurmeta.git
+	cd ckanext-geokurmeta
+    python setup.py develop
+    pip install -r requirements.txt
 
-3. Add ``geokurmeta`` to the ``ckan.plugins`` setting in your CKAN
-   config file (by default the config file is located at
-   ``/etc/ckan/default/ckan.ini``).
+3. Add ``geokurmeta`` to the end of ``ckan.plugins`` setting in your CKAN config file (by default the config file is located at ``/etc/ckan/default/ckan.ini``).
 
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
+4. Restart CKAN. For example if you've deployed CKAN with Supervisor on Ubuntu::
 
-     sudo service apache2 reload
+    sudo service supervisor restart
 
 
 ---------------
 Config settings
 ---------------
-
-None at present
-
 .. Document any optional config settings here. For example::
 
 .. # The minimum number of hours to wait before re-checking a resource
@@ -81,66 +93,21 @@ None at present
    ckanext.geokurmeta.some_setting = some_default_value
 
 
-----------------------
-Developer installation
-----------------------
+To use GeoKur metadata scheme set the following in your ``/etc/ckan/default/ckan.ini``::
 
-To install ckanext-geokurmeta for development, activate your CKAN virtualenv and
-do::
+	# Define scheming file to be used
+	scheming.dataset_schemas = ckanext.geokurmeta:scheming_dataset.json
+	# Define preset files to be used
+	scheming.presets = 	ckanext.geokurmeta:scheming_presets.json ckanext.scheming:presets.json
 
-    git clone https://github.com/GeoinformationSystems/ckanext-geokurmeta.git
-    cd ckanext-geokurmeta
-    python setup.py develop
-    pip install -r dev-requirements.txt
-
-
------
-Tests
------
-
-To run the tests, do::
-
-    pytest --ckan-ini=test.ini
-
-To run the tests and produce a coverage report, first make sure you have
-``pytest-cov`` installed in your virtualenv (``pip install pytest-cov``) then run::
-
-    pytest --ckan-ini=test.ini  --cov=ckanext.geokurmeta
+Other usefull settings::
+	
+	# Setting for spatial search
+	ckanext.spatial.search_backend = postgis
+	
+	# Add default views from geoview plugin if they should be created be default
+	ckan.views.default_views = [...] geo_view geojson_view wmts_view shp_view
 
 
-----------------------------------------
-Releasing a new version of ckanext-geokurmeta
-----------------------------------------
 
-ckanext-geokurmeta should be available on PyPI as https://pypi.org/project/ckanext-geokurmeta.
-To publish a new version to PyPI follow these steps:
 
-1. Update the version number in the ``setup.py`` file.
-   See `PEP 440 <http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers>`_
-   for how to choose version numbers.
-
-2. Make sure you have the latest version of necessary packages::
-
-    pip install --upgrade setuptools wheel twine
-
-3. Create a source and binary distributions of the new version::
-
-       python setup.py sdist bdist_wheel && twine check dist/*
-
-   Fix any errors you get.
-
-4. Upload the source distribution to PyPI::
-
-       twine upload dist/*
-
-5. Commit any outstanding changes::
-
-       git commit -a
-       git push
-
-6. Tag the new release of the project on GitHub with the version number from
-   the ``setup.py`` file. For example if the version number in ``setup.py`` is
-   0.0.1 then do::
-
-       git tag 0.0.1
-       git push --tags
