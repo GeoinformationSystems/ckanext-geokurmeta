@@ -3,7 +3,6 @@
 {%- set exclude_fields = [
     'id',
     'title',
-    'name',
     'notes',
     'tag_string',
     'license_id',
@@ -23,16 +22,17 @@
 			  }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
 			  field=field, data=pkg_dict, schema=schema -%}</td>
 		</tr>
-		{%- endif -%}
+		{%- elif 'temporal_start' in field.field_name -%}
+			<tr>
+				<th scope="row" class="dataset-label">Temporal Coverage</th>
+				<td class="dataset-details"> 
+					{%- if pkg_dict.temporal_start and pkg_dict.temporal_end -%}
+					{{ h.render_datetime(pkg_dict.temporal_start, date_format='%Y-%m-%d', with_hours=False)  }} to {{ h.render_datetime(pkg_dict.temporal_end, date_format='%Y-%m-%d', with_hours=False) }}
+					{%- endif -%}
+				</td>
+			</tr>
+		{%- endif -%}	
 	{%- endfor -%}
-
-	{% if pkg_dict.temporal_start and pkg_dict.temporal_end %}
-	<tr>
-		<th scope="row" class="dataset-label">Temporal Coverage</th>
-		<td class="dataset-details"> {{ h.render_datetime(pkg_dict.temporal_start, date_format='%Y-%m-%d', with_hours=False)  }} to {{ h.render_datetime(pkg_dict.temporal_end, date_format='%Y-%m-%d', with_hours=False) }}
-		</td>
-	</tr>
-	{% endif %}
 	
 	{% if pkg_dict.metadata_modified %}
 	<tr>

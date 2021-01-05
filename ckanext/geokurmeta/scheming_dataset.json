@@ -10,13 +10,13 @@
       "preset": "title",
       "form_placeholder": "eg. A descriptive title"
     },
-    {
+	{
       "field_name": "name",
-      "label": "URL",
+      "label": "Identifier",
       "preset": "dataset_slug",
       "form_placeholder": "eg. my-dataset"
     },
-    {
+	{
       "field_name": "notes",
       "label": "Description",
 	  "validators": "not_empty",
@@ -24,9 +24,9 @@
       "form_placeholder": "eg. Some useful notes about the data"
     },
 	{
-      "field_name": "owner_org",
-      "label": "Organization / Contact Point",
-      "preset": "dataset_organization"
+      "field_name": "contact_uri",
+      "label": "Contact Point",
+      "preset": "link_single_man"
     },
 	{
       "field_name": "tag_string",
@@ -35,15 +35,9 @@
       "form_placeholder": "eg. economy, mental health, government"
     },
 	{
-      "field_name": "geokur_dataset_distribution",
-      "label": "Dataset Distribution",
-      "validators": "ignore_missing unicode",
-      "form_placeholder": ""
-    },
-	{
       "field_name": "spatial",
-      "label": "Spatial / Geographic Coverage",
-      "validators": "not_empty",
+      "label": "Spatial Coverage",
+      "validators": "not_empty scheming_valid_json_object",
 	  "form_snippet": "json.html",
       "form_placeholder": "",
 	  "display_snippet": "json.html"
@@ -64,118 +58,93 @@
     },
 	{
       "field_name": "theme",
-      "label": "Theme / Category",
-      "validators": "not_empty unicode",
-      "form_placeholder": "https://inspire.ec.europa.eu/theme/",
-	  "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme",
-	  "display_property": "foaf:homepage",
+      "label": "Theme / Category - ToDo: display as list of links",
+	  "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
+	  "preset": "link_list_man"
+    },
+	{
+      "field_name": "documentation",
+      "label": "Documentation",
+	  "help_text": "eg. Links to publication",
+	  "preset": "link_single_man"
+    },
+	{
+      "field_name": "has_version",
+      "label": "Has Version - Todo: multiple datasets possible",
+	  "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
+	  "help_text": "Identifier of related datasets, e.g. surface-water-bodies",
+      "display_property": "foaf:homepage",
 	  "display_snippet": "link.html"
     },
 	{
-      "field_name": "geokur_documentation",
-      "label": "Documentation",
-	  "validators": "ignore_missing unicode",
-      "form_snippet": "markdown.html",
-	  "help_text": "eg. Links to publication",
-      "form_placeholder": ""
-    },
-	{
-      "field_name": "geokur_identifier",
-      "label": "Identifier",
-	  "validators": "not_empty",
-      "form_placeholder": ""
-    },
-	{
-      "field_name": "geokur_is_version_of",
+      "field_name": "is_version_of",
       "label": "Is Version of",
-	  "validators": "ignore_missing unicode",
-      "form_placeholder": ""
+	  "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
+	  "help_text": "Identifier of related dataset, e.g. surface-water-bodies",
+      "display_property": "foaf:homepage",
+	  "display_snippet": "link.html"
     },
 	{
       "field_name": "url",
       "label": "Landing Page",
 	  "help_text": "links to project website or dataset's page",
-      "form_placeholder": "https://example.com",
-	  "display_property": "foaf:homepage",
+	  "preset": "link_single"
+    },
+	{
+      "field_name": "alternate_identifier",
+      "label": "DOI Link",
+      "help_text": "e.g. https://doi.org/10.7283/T5MW2F2D",
+	  "preset": "link_single"
+    },
+	{
+      "field_name": "geokur_parent_dataset",
+      "label": "Parent Dataset",
+      "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
+	  "help_text": "Identifier of parent dataset, e.g. surface-water-bodies",
+      "display_property": "foaf:homepage",
 	  "display_snippet": "link.html"
     },
 	{
-      "field_name": "geokur_other_identifier",
-      "label": "Other Identifier",
-	  "validators": "ignore_missing unicode",
-      "form_placeholder": "links to DOI"
-    },
-	{
-      "field_name": "geokur_related_resource",
-      "label": "Related Resource",
-      "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
-      "form_placeholder": "eg. related-dataset"
-    },
-	{
-      "field_name": "geokur_reference_system",
+      "field_name": "conforms_to",
       "label": "Reference System",
-	  "validators": "ignore_missing unicode",
-      "form_placeholder": "Links to OGC EPSG Register"
+      "help_text": "Links to OGC EPSG Register, e.g. http://www.opengis.net/def/crs/EPSG/0/4326",
+	  "preset": "link_single"
     },
 	{
-      "field_name": "geokur_spatial_resolution",
-      "label": "Spatial Resolution",
-	  "validators": "ignore_missing unicode",
-      "form_placeholder": "in meters"
+      "field_name": "spatial_resolution_in_meters",
+      "label": "Spatial Resolution in Meters",
+	  "validators": "ignore_missing unicode int_validator",
+	  "help_text": "Minimum spatial separation resolvable in a dataset, measured in meters."
     },
 	{
-      "field_name": "geokur_spatial_resolution_as",
-      "label": "Spatial Resolution as",
-	  "validators": "ignore_missing unicode",
-      "form_placeholder": "equivalent scale, angular distance, vertical distance"
+      "field_name": "spatial_resolution_comment",
+      "label": "Spatial Resolution as Equivalent Scale, Angular Distance, Vertical Distance",
+	  "validators": "ignore_missing unicode"
     },
 	{
-      "field_name": "geokur_temp_resolution",
+      "field_name": "temporal_resolution",
       "label": "Temporal Resolution",
 	  "validators": "ignore_missing unicode",
-      "form_placeholder": ""
+      "form_placeholder": "",
+	  "help_text": "e.g. 'P2Y3M20D' descibes a period 2 years, 3 months and 20 days or 'P1D' descibes a period of 1 day"
     },
 	{
-      "field_name": "geokur_generated_by",
+      "field_name": "prov_generated_by",
       "label": "Generated by",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:creator"
+	  "help_text": "e.g. http://www.w3.org/ns/prov#",
+	  "preset": "link_single"
     },
 	{
-      "field_name": "geokur_used_by",
-      "label": "Used by",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:creator"
+      "field_name": "prov_used_by",
+      "label": "Used by - ToDo: display as list of links",
+	  "help_text": "e.g. http://www.w3.org/ns/prov#",
+	  "preset": "link_list"
     },
 	{
-      "field_name": "geokur_quality_annotation",
+      "field_name": "has_quality_annotation",
       "label": "Has Quality Annotation",
 	  "validators": "ignore_missing unicode",
       "form_placeholder": ""
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "help_text": "License definitions and additional information can be found at http://opendefinition.org/"
-    },
-    {
-      "field_name": "version",
-      "label": "Version",
-      "validators": "ignore_missing unicode package_version_validator",
-      "form_placeholder": "1.0"
-    },
-    {
-      "field_name": "author",
-      "label": "Author",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:creator"
-    },
-    {
-      "field_name": "maintainer",
-      "label": "Maintainer",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:contributor"
     }
   ],
   "resource_fields": [

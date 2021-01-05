@@ -26,6 +26,38 @@
           "data-module-source": "/api/2/util/resource/format_autocomplete?incomplete=?"
         }
       }
+    },
+	{
+      "preset_name": "link_single",
+      "values": {
+        "validators": "unicode remove_whitespace single_link_validator",
+		"display_property": "foaf:homepage",
+		"display_snippet": "link.html"
+      }
+    },
+	{
+      "preset_name": "link_single_man",
+      "values": {
+        "validators": "not_empty unicode remove_whitespace single_link_validator",
+		"display_property": "foaf:homepage",
+		"display_snippet": "link.html"
+      }
+    },
+	{
+      "preset_name": "link_list",
+      "values": {
+        "validators": "unicode remove_whitespace link_list_string_convert",
+		"display_property": "foaf:homepage",
+		"display_snippet": "link.html"
+      }
+    },
+	{
+      "preset_name": "link_list_man",
+      "values": {
+        "validators": "not_empty unicode remove_whitespace link_list_string_convert",
+		"display_property": "foaf:homepage",
+		"display_snippet": "list_link.html"
+      }
     }
   ]
 }
