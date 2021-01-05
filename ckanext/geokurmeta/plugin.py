@@ -3,6 +3,7 @@ import ckan.plugins.toolkit as tk
 
 from ckanext.geokurmeta.validation import (
     if_not_missing_package_id_or_name_exists,
+    if_not_missing_package_id_or_name_exists_list,
     link_list_string_convert,
     single_link_validator,
 )
@@ -21,6 +22,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     def get_validators(self):
         return {
             'if_not_missing_package_id_or_name_exists': if_not_missing_package_id_or_name_exists,
+            'if_not_missing_package_id_or_name_exists_list': if_not_missing_package_id_or_name_exists_list,
             'link_list_string_convert': link_list_string_convert,
             'single_link_validator': single_link_validator,
             }

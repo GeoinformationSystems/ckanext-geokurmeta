@@ -28,6 +28,22 @@
       }
     },
 	{
+      "preset_name": "dataset_single",
+      "values": {
+        "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
+		"display_property": "foaf:homepage",
+		"display_snippet": "link.html"
+      }
+    },
+	{
+      "preset_name": "dataset_list",
+      "values": {
+        "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists_list",
+		"display_property": "foaf:homepage",
+		"display_snippet": "list_link.html"
+      }
+    },
+	{
       "preset_name": "link_single",
       "values": {
         "validators": "unicode remove_whitespace single_link_validator",
@@ -48,7 +64,7 @@
       "values": {
         "validators": "unicode remove_whitespace link_list_string_convert",
 		"display_property": "foaf:homepage",
-		"display_snippet": "link.html"
+		"display_snippet": "list_link.html"
       }
     },
 	{

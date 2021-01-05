@@ -58,7 +58,7 @@
     },
 	{
       "field_name": "theme",
-      "label": "Theme / Category - ToDo: display as list of links",
+      "label": "Theme / Category",
 	  "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
 	  "preset": "link_list_man"
     },
@@ -70,19 +70,15 @@
     },
 	{
       "field_name": "has_version",
-      "label": "Has Version - Todo: multiple datasets possible",
-	  "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
+      "label": "Has Version",
 	  "help_text": "Identifier of related datasets, e.g. surface-water-bodies",
-      "display_property": "foaf:homepage",
-	  "display_snippet": "link.html"
+	  "preset": "dataset_list"
     },
 	{
       "field_name": "is_version_of",
       "label": "Is Version of",
-	  "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
 	  "help_text": "Identifier of related dataset, e.g. surface-water-bodies",
-      "display_property": "foaf:homepage",
-	  "display_snippet": "link.html"
+      "preset": "dataset_single"
     },
 	{
       "field_name": "url",
@@ -99,10 +95,8 @@
 	{
       "field_name": "geokur_parent_dataset",
       "label": "Parent Dataset",
-      "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
 	  "help_text": "Identifier of parent dataset, e.g. surface-water-bodies",
-      "display_property": "foaf:homepage",
-	  "display_snippet": "link.html"
+      "preset": "dataset_single"
     },
 	{
       "field_name": "conforms_to",
@@ -136,7 +130,7 @@
     },
 	{
       "field_name": "prov_used_by",
-      "label": "Used by - ToDo: display as list of links",
+      "label": "Used by",
 	  "help_text": "e.g. http://www.w3.org/ns/prov#",
 	  "preset": "link_list"
     },

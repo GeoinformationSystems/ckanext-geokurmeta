@@ -1,16 +1,39 @@
 import string
 
 from ckan.plugins.toolkit import Invalid
-from ckan.logic.validators import package_id_or_name_exists, url_validator
+
+from ckan.common import _
 
 from six import string_types, iteritems
 from six.moves.urllib.parse import urlparse
 
 def if_not_missing_package_id_or_name_exists(value, context):
     if value:
-        if not package_id_or_name_exists(value, context):
-            raise Invalid('%s: %s' % (_('Not found'), _('Dataset')))
+    
+        model = context['model']
+        session = context['session']
+
+        result = session.query(model.Package).get(value)
+        if result:
+            return value
+
+        result = session.query(model.Package).filter_by(name=value).first()
+        if not result:
+            raise Invalid('%s: %s' % (_('Dataset not found'), value))
+
     return value
+
+def if_not_missing_package_id_or_name_exists_list(key, data, errors, context):
+    '''Takes a list of package identifiers that is a comma-separated string and validates each.'''
+    if isinstance(data[key], string_types):
+        datasets = [ds.strip() \
+                for ds in data[key].split(',') \
+                if ds.strip()]
+    else:
+        datasets = data[key]
+
+    for ds in datasets:
+        if_not_missing_package_id_or_name_exists(ds, context)
     
 def single_link_validator(value, context):
     ''' Checks that the provided value (if it is present) is a valid URL '''
@@ -26,9 +49,7 @@ def single_link_validator(value, context):
     return
     
 def link_list_string_convert(key, data, errors, context):
-    '''Takes a list of tags that is a comma-separated string (in data[key])
-    and parses tag names. These are added to the data dict, enumerated. They
-    are also validated.'''
+    '''Takes a list of links that is a comma-separated string and validates each.'''
 
     if isinstance(data[key], string_types):
         links = [link.strip() \
@@ -37,11 +58,6 @@ def link_list_string_convert(key, data, errors, context):
     else:
         links = data[key]
 
-    '''current_index = max( [int(k[1]) for k in data.keys() if len(k) == 3 and k[0] == 'tags'] + [-1] )
-
-    for num, link in zip(count(current_index+1), links):
-        data[('tags', num, 'name')] = link
-    '''
     for link in links:
         single_link_validator(link, context)
         
