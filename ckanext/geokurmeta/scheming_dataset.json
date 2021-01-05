@@ -49,16 +49,23 @@
 	  "display_snippet": "json.html"
     },
 	{
-      "field_name": "geokur_temp_coverage",
-      "label": "Temporal Coverage",
+      "field_name": "temporal_start",
+      "label": "Temporal Coverage Start",
       "validators": "ignore_missing",
-      "form_snippet": "geokur_daterange.html",
+      "form_snippet": "date.html",
       "form_placeholder": ""
     },
 	{
-      "field_name": "geokur_category",
+      "field_name": "temporal_end",
+      "label": "Temporal Coverage End",
+      "validators": "ignore_missing",
+      "form_snippet": "date.html",
+      "form_placeholder": ""
+    },
+	{
+      "field_name": "theme",
       "label": "Theme / Category",
-      "validators": "not_empty unicode remove_whitespace",
+      "validators": "not_empty unicode",
       "form_placeholder": "https://inspire.ec.europa.eu/theme/",
 	  "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme",
 	  "display_property": "foaf:homepage",

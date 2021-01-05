@@ -8,6 +8,8 @@
     'tag_string',
     'license_id',
     'owner_org',
+	'temporal_start',
+	'temporal_end',
     ] -%}
 
 {% block package_additional_info %}
@@ -24,6 +26,14 @@
 		{%- endif -%}
 	{%- endfor -%}
 
+	{% if pkg_dict.temporal_start and pkg_dict.temporal_end %}
+	<tr>
+		<th scope="row" class="dataset-label">Temporal Coverage</th>
+		<td class="dataset-details"> {{ h.render_datetime(pkg_dict.temporal_start, date_format='%Y-%m-%d', with_hours=False)  }} to {{ h.render_datetime(pkg_dict.temporal_end, date_format='%Y-%m-%d', with_hours=False) }}
+		</td>
+	</tr>
+	{% endif %}
+	
 	{% if pkg_dict.metadata_modified %}
 	<tr>
 		<th scope="row" class="dataset-label">{{ _("Last Updated") }}</th>
