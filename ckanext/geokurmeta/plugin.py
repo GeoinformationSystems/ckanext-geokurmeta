@@ -6,6 +6,7 @@ from ckanext.geokurmeta.validation import (
     if_not_missing_package_id_or_name_exists_list,
     link_list_string_convert,
     single_link_validator,
+    decimal_validator,
 )
 
 from ckanext.geokurmeta.helpers import (
@@ -25,6 +26,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'if_not_missing_package_id_or_name_exists_list': if_not_missing_package_id_or_name_exists_list,
             'link_list_string_convert': link_list_string_convert,
             'single_link_validator': single_link_validator,
+            'decimal_validator': decimal_validator,
             }
  
     def get_helpers(self):
@@ -47,7 +49,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # that CKAN will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')
         tk.add_public_directory(config, 'public')
-        tk.add_resource('fanstatic', 'geokurmeta')
+        tk.add_resource('assets', 'geokurmeta')
         
         
 

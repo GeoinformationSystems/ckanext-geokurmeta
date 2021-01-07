@@ -107,7 +107,7 @@
 	{
       "field_name": "spatial_resolution_in_meters",
       "label": "Spatial Resolution in Meters",
-	  "validators": "ignore_missing unicode int_validator",
+	  "validators": "ignore_missing unicode decimal_validator",
 	  "help_text": "Minimum spatial separation resolvable in a dataset, measured in meters."
     },
 	{

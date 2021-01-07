@@ -6,6 +6,7 @@ from ckan.common import _
 
 from six import string_types, iteritems
 from six.moves.urllib.parse import urlparse
+from decimal import Decimal, DecimalException
 
 def if_not_missing_package_id_or_name_exists(value, context):
     if value:
@@ -60,4 +61,15 @@ def link_list_string_convert(key, data, errors, context):
 
     for link in links:
         single_link_validator(link, context)
-        
+     
+def decimal_validator(value, context):
+    ''' Checks that the provided value (if it is present) is a valid decimal '''
+
+    if value:
+        try:
+            Decimal(value)
+        except DecimalException:
+            raise Invalid('Invalid decimal')    
+    return value
+
+    
