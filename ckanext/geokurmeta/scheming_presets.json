@@ -28,6 +28,16 @@
       }
     },
 	{
+      "preset_name": "geokur_spatial",
+      "values": {
+		"validators": "not_empty scheming_valid_json_object",
+		"form_snippet": "geokur_coverage.html",
+		"form_attrs": {
+			  "data-module": "geokurmeta_coordinates_to_json"
+			}
+      }
+    },
+	{
       "preset_name": "dataset_single",
       "values": {
         "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",

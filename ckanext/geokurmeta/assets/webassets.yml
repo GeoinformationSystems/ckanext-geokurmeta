@@ -1,0 +1,7 @@
+geokurmeta:
+  output: geokurmeta/geokurmeta_coordinates_to_json.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - geokurmeta_coordinates_to_json.js

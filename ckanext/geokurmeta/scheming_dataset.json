@@ -37,9 +37,7 @@
 	{
       "field_name": "spatial",
       "label": "Spatial Coverage",
-      "validators": "not_empty scheming_valid_json_object",
-	  "form_snippet": "json.html",
-      "form_placeholder": "",
+      "preset": "geokur_spatial",
 	  "display_snippet": "json.html"
     },
 	{
