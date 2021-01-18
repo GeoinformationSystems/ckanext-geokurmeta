@@ -29,7 +29,7 @@
       "form_placeholder": "eg. Some useful notes about the data"
     },
     {
-      "field_name": "contact_uri",
+      "field_name": "contact-email",
       "label": "Contact Point",
       "form_placeholder": "uri, name, email"
     },
