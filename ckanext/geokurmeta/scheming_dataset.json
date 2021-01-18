@@ -101,7 +101,7 @@
       "field_name": "related_resource",
       "label": "Related Resource",
       "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
-      "preset": "dataset_single"
+      "preset": "link_single"
     },
     {
       "field_name": "conforms_to",
