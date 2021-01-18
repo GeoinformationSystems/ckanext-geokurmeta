@@ -18,12 +18,13 @@
     },
     {
       "field_name": "contact_name",
-      "label": "Contact Point: Name",
+      "validators": "not_empty",
+      "label": "Contact Point - Name",
       "form_placeholder": "Person or Organization"
     },
     {
       "field_name": "contact_uri",
-      "label": "Contact Point: ORCiD",
+      "label": "Contact Point - ORCiD",
       "form_placeholder": "According ORCiD, leave blank otherwise"
     },
     {
@@ -91,7 +92,8 @@
     },
     {
       "field_name": "alternate_identifier",
-      "label": "DOI Link",
+      "label": "Dataset DOI",
+      "preset": "insert DOI of the dataset if available",
       "help_text": "e.g. https://doi.org/10.7283/T5MW2F2D",
       "preset": "link_single"
     },
@@ -106,11 +108,6 @@
       "label": "Coordinate Reference System",
       "help_text": "Provide link to OGC definition of the CRS, http://docs.opengeospatial.org/DRAFTS/18-058.html#_crs_identifier_list, e.g. http://www.opengis.net/def/crs/EPSG/0/4326",
       "preset": "link_single"
-    },
-    {
-      "field_name": "owner_org",
-      "label": "Organization",
-      "preset": "dataset_organization"
     },
     {
       "field_name": "spatial_resolution_in_meters",
@@ -141,6 +138,11 @@
       "label": "Has Quality Measure",
       "validators": "ignore_missing unicode",
       "form_placeholder": ""
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization"
     }
   ],
   "resource_fields": [
