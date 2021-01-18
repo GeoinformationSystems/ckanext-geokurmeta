@@ -36,7 +36,6 @@
     {
       "field_name": "url",
       "label": "Contact Point: URL",
-      "preset": "link_single_man",
       "form_placeholder": "according URL, e.g. http://www.eea.europa.eu"
     },
     {
