@@ -29,9 +29,15 @@
       "form_placeholder": "eg. Some useful notes about the data"
     },
     {
-      "field_name": "contact_uri",
+      "field_name": "vcard:name",
+      "label": "Contact Point: Name",
+      "form_placeholder": "Person or organization, e.g.: EEA"
+    },
+    {
+      "field_name": "vcard:url",
       "label": "Contact Point",
-      "preset": "link_single_man"
+      "preset": "link_single_man",
+      "form_placeholder": "according website, e.g.: https://www.eea.europa.eu/"
     },
     {
       "field_name": "tag_string",
