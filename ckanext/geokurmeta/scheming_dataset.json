@@ -93,7 +93,7 @@
     {
       "field_name": "alternate_identifier",
       "label": "Dataset DOI",
-      "preset": "insert DOI of the dataset if available",
+      "from_placeholder": "insert DOI of the dataset if available",
       "help_text": "e.g. https://doi.org/10.7283/T5MW2F2D",
       "preset": "link_single"
     },
@@ -101,7 +101,7 @@
       "field_name": "related_resource",
       "label": "Related Resource",
       "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
-      "preset": "link_single"
+      "preset": "dataset_single"
     },
     {
       "field_name": "conforms_to",
