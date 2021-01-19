@@ -60,6 +60,13 @@
       "preset": "link_list_man"
     },
     {
+      "field_name": "metadata_created",
+      "label": "Creation Date",
+      "validators": "ignore_missing",
+      "form_snippet": "date.html",
+      "form_placeholder": ""
+    },
+    {
       "field_name": "documentation",
       "label": "Documentation",
       "help_text": "eg. link to publication",
