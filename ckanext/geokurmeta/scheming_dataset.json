@@ -37,6 +37,7 @@
       "field_name": "spatial",
       "label": "Spatial Coverage",
       "preset": "geokur_spatial",
+      "form_placeholder": "bounding box in WGS84; bottom left, upper right",
       "help_text": "insert bounding box in WGS84; bottom left, upper right",
       "display_snippet": "json.html"
     },
