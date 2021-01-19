@@ -15,6 +15,17 @@
       "label": "Description",
       "form_snippet": "markdown.html",
       "form_placeholder": "Some useful notes about the data"
+    },
+    {
+      "field_name": "contact_name",
+      "validators": "not_empty",
+      "label": "Contact Point - Name",
+      "form_placeholder": "Person or Organization"
+    },
+    {
+      "field_name": "contact_uri",
+      "label": "Contact Point - ORCiD",
+      "form_placeholder": "According ORCiD, leave blank otherwise"
     }
   ],
   "resource_fields": [
