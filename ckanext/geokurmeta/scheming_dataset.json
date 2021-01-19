@@ -5,63 +5,6 @@
   "about_url": "http://github.com/ckan/ckanext-scheming",
   "dataset_fields": [
     {
-      "field_name": "title",
-      "label": "Title",
-      "preset": "title",
-      "form_placeholder": "eg. A descriptive title"
-    },
-    {
-      "field_name": "description",
-      "label": "Description",
-      "form_snippet": "markdown.html",
-      "form_placeholder": "Some useful notes about the data"
-    },
-    {
-      "field_name": "tag_string",
-      "label": "Keywords",
-      "preset": "tag_string_autocomplete_fix",
-      "form_placeholder": "eg. economy, mental health, government"
-    },
-    {
-      "field_name": "spatial",
-      "label": "Spatial Coverage",
-      "preset": "geokur_spatial",
-      "display_snippet": "json.html"
-    },
-    {
-      "field_name": "temporal_start",
-      "label": "Temporal Coverage Start",
-      "validators": "ignore_missing",
-      "form_snippet": "date.html",
-      "form_placeholder": ""
-    },
-    {
-      "field_name": "temporal_end",
-      "label": "Temporal Coverage End",
-      "validators": "ignore_missing",
-      "form_snippet": "date.html",
-      "form_placeholder": ""
-    },
-    {
-      "field_name": "theme",
-      "label": "Theme / Category",
-      "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
-      "preset": "link_list_man"
-    },
-    {
-      "field_name": "metadata_created",
-      "label": "Creation Date",
-      "validators": "ignore_missing",
-      "form_snippet": "date.html",
-      "form_placeholder": ""
-    },
-    {
-      "field_name": "documentation",
-      "label": "Documentation",
-      "help_text": "eg. link to publication",
-      "preset": "link_single"
-    },
-    {
       "field_name": "name",
       "label": "Identifier",
       "preset": "dataset_slug",
