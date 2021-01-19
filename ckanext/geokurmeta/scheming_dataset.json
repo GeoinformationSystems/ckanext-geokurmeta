@@ -28,6 +28,30 @@
       "form_placeholder": "According ORCiD, leave blank otherwise"
     },
     {
+      "field_name": "tag_string",
+      "label": "Keywords",
+      "preset": "tag_string_autocomplete_fix",
+      "form_placeholder": "eg. economy, mental health, government"
+    },
+    {
+      "field_name": "spatial",
+      "label": "Spatial Coverage",
+      "preset": "geokur_spatial",
+      "display_snippet": "json.html"
+    },
+    {
+      "field_name": "theme",
+      "label": "Theme / Category",
+      "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
+      "preset": "link_list_man"
+    },
+    {
+      "field_name": "documentation",
+      "label": "Documentation",
+      "help_text": "eg. link to publication",
+      "preset": "link_single"
+    },
+    {
       "field_name": "name",
       "label": "Identifier",
       "preset": "dataset_slug",
