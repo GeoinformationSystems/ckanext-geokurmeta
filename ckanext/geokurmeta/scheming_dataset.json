@@ -5,27 +5,10 @@
   "about_url": "http://github.com/ckan/ckanext-scheming",
   "dataset_fields": [
     {
-      "field_name": "title",
-      "label": "Title",
-      "preset": "title",
-      "form_placeholder": "eg. A descriptive title"
-    },
-    {
-      "field_name": "description",
-      "label": "Description",
-      "form_snippet": "markdown.html",
-      "form_placeholder": "Some useful notes about the data"
-    },
-    {
-      "field_name": "contact_name",
-      "validators": "not_empty",
-      "label": "Contact Point - Name",
-      "form_placeholder": "Person or Organization"
-    },
-    {
-      "field_name": "contact_uri",
-      "label": "Contact Point - ORCiD",
-      "form_placeholder": "According ORCiD, leave blank otherwise"
+      "field_name": "name",
+      "label": "Identifier",
+      "preset": "dataset_slug",
+      "form_placeholder": "eg. my-dataset"
     }
   ],
   "resource_fields": [
