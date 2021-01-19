@@ -11,7 +11,7 @@
       "form_placeholder": "eg. A descriptive title"
     },
     {
-      "field_name": "description",
+      "field_name": "notes",
       "label": "Description",
       "form_snippet": "markdown.html",
       "form_placeholder": "Some useful notes about the data"
