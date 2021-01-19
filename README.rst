@@ -50,6 +50,7 @@ Install https://github.com/ckan/ckanext-geoview like this::
 	git clone https://github.com/ckan/ckanext-geoview.git
 	cd ckanext-geoview
 	python setup.py develop
+	pip install -r pip-requirements.txt
 
 Activate all of these by adding ``spatial_metadata spatial_query geo_view geojson_view wmts_view shp_view scheming_datasets`` to the ``ckan.plugins`` setting in your CKAN config file (by default the config file is located at ``/etc/ckan/default/ckan.ini``).
 
