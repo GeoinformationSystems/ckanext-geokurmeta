@@ -3,11 +3,11 @@
   "about": "these are the geokur scheming field presets",
   "about_url": "http://github.com/ckan/ckanext-scheming#preset",
   "presets": [
-	{
+    {
       "preset_name": "tag_string_autocomplete_fix",
       "values": {
         "validators": "ignore_missing tag_string_convert",
-		"form_snippet": "geokur_keywords.html",
+        "form_snippet": "geokur_keywords.html",
         "form_attrs": {
           "data-module": "autocomplete",
           "data-module-tags": "",
@@ -15,74 +15,74 @@
         }
       }
     },
-	{
+    {
       "preset_name": "resource_format_autocomplete_fix",
       "values": {
         "validators": "if_empty_guess_format ignore_missing clean_format unicode",
         "form_placeholder": "eg. CSV, XML or JSON",
-		"form_snippet": "geokur_keywords.html",
+        "form_snippet": "geokur_keywords.html",
         "form_attrs": {
           "data-module": "autocomplete",
           "data-module-source": "/api/2/util/resource/format_autocomplete?incomplete=?"
         }
       }
     },
-	{
+    {
       "preset_name": "geokur_spatial",
       "values": {
-		"validators": "not_empty scheming_valid_json_object",
-		"form_snippet": "geokur_coverage.html",
-		"form_attrs": {
-			  "data-module": "geokurmeta_coordinates_to_json"
-			}
+        "validators": "not_empty scheming_valid_json_object",
+        "form_snippet": "geokur_coverage.html",
+        "form_attrs": {
+          "data-module": "geokurmeta_coordinates_to_json"
+        }
       }
     },
-	{
+    {
       "preset_name": "dataset_single",
       "values": {
         "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
-		"display_property": "foaf:homepage",
-		"display_snippet": "link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "link.html"
       }
     },
-	{
+    {
       "preset_name": "dataset_list",
       "values": {
         "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists_list",
-		"display_property": "foaf:homepage",
-		"display_snippet": "list_link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "list_link.html"
       }
     },
-	{
+    {
       "preset_name": "link_single",
       "values": {
         "validators": "ignore_missing unicode remove_whitespace single_link_validator",
-		"display_property": "foaf:homepage",
-		"display_snippet": "link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "link.html"
       }
     },
-	{
+    {
       "preset_name": "link_single_man",
       "values": {
         "validators": "not_empty unicode remove_whitespace single_link_validator",
-		"display_property": "foaf:homepage",
-		"display_snippet": "link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "link.html"
       }
     },
-	{
+    {
       "preset_name": "link_list",
       "values": {
         "validators": "ignore_missing unicode remove_whitespace link_list_string_convert",
-		"display_property": "foaf:homepage",
-		"display_snippet": "list_link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "list_link.html"
       }
     },
-	{
+    {
       "preset_name": "link_list_man",
       "values": {
         "validators": "not_empty unicode remove_whitespace link_list_string_convert",
-		"display_property": "foaf:homepage",
-		"display_snippet": "list_link.html"
+        "display_property": "foaf:homepage",
+        "display_snippet": "list_link.html"
       }
     }
   ]
