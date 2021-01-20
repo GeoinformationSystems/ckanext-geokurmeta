@@ -58,7 +58,7 @@
         {
             "field_name": "theme",
             "label": "Theme / Category",
-            "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
+            "help_text": "Select at least one INSPIRE theme. Further information at: http://inspire.ec.europa.eu/theme",
             "preset": "multiple_checkbox",
             "required": "true",
             "choices": [
