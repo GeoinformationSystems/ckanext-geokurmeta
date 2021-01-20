@@ -96,7 +96,7 @@
       "field_name": "related_resource",
       "label": "Related Resource",
       "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
-      "preset": "link_single"
+      "preset": "dataset_single"
     },
     {
       "field_name": "conforms_to",
@@ -105,15 +105,22 @@
       "preset": "link_single"
     },
     {
-      "field_name": "spatial_resolution_in_meters",
-      "label": "Spatial Resolution in Meters",
+      "field_name": "spatial_resolution",
+      "label": "Spatial Resolution",
       "validators": "ignore_missing unicode decimal_validator",
-      "help_text": "Minimum spatial separation resolvable in a dataset, measured in meters."
+      "help_text": "Spatial Resolution (in meters, if not given as scale)"
     },
     {
-      "field_name": "spatial_resolution_comment",
-      "label": "Spatial Resolution as Equivalent Scale, Angular Distance, Vertical Distance",
-      "validators": "ignore_missing unicode"
+      "field_name": "spatial_resolution_unit",
+      "label": "Spatial Resolution Type",
+      "preset": "select",
+      "choices": [
+        {
+          "value": "bactrian",
+          "label": "bact camel"
+        }
+      ],
+      "help_text": "Spatial Resolution (in meters, if not given as scale)"
     },
     {
       "field_name": "temporal_resolution",
