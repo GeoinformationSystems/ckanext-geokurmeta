@@ -38,6 +38,14 @@
       }
     },
     {
+      "preset_name": "select_not_req",
+      "values": {
+        "form_snippet": "select.html",
+        "display_snippet": "select.html",
+        "validators": "scheming_choices"
+      }
+    },
+    {
       "preset_name": "dataset_single",
       "values": {
         "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
