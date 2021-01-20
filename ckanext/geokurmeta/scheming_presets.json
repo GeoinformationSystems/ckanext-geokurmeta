@@ -62,6 +62,15 @@
       }
     },
     {
+      "preset_name": "multiple_checkbox",
+      "values": {
+        "form_snippet": "multiple_checkbox.html",
+        "display_snippet": "multiple_choice.html",
+        "validators": "scheming_multiple_choice",
+        "output_validators": "scheming_multiple_choice_output"
+      }
+    },
+    {
       "preset_name": "dataset_single",
       "values": {
         "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",

@@ -59,35 +59,35 @@
       "field_name": "theme",
       "label": "Theme / Category",
       "help_text": "Links to INSPIRE ontology: https://inspire.ec.europa.eu/theme . To define multiple links, separate them with a comma, e.g 'http://inspire.ec.europa.eu/theme/lc, http://inspire.ec.europa.eu/theme/rs'",
-      "preset": "multiple_select",
+      "preset": "multiple_checkbox",
       "choices": [
         {
           "value": "http://inspire.ec.europa.eu/theme/ad",
           "label": "Addresses"
         },
         {
-          "value": "Administrative units",
-          "label": "http://inspire.ec.europa.eu/theme/au"
+          "value": "http://inspire.ec.europa.eu/theme/au",
+          "label": "Administrative units"
         },
         {
-          "value": "Agricultural and aquaculture facilities",
-          "label": "http://inspire.ec.europa.eu/theme/af"
+          "value": "http://inspire.ec.europa.eu/theme/af",
+          "label": "Agricultural and aquaculture facilities"
         },
         {
-          "value": "Area management/restriction/regulation zones and reporting units",
-          "label": "http://inspire.ec.europa.eu/theme/am"
+          "value": "http://inspire.ec.europa.eu/theme/am",
+          "label": "Area management/restriction/regulation zones and reporting units"
         },
         {
-          "value": "Atmospheric conditions",
-          "label": "http://inspire.ec.europa.eu/theme/ac"
+          "value": "http://inspire.ec.europa.eu/theme/ac",
+          "label": "Atmospheric conditions"
         },
         {
-          "value": "Bio-geographical regions",
-          "label": "http://inspire.ec.europa.eu/theme/br"
+          "value": "http://inspire.ec.europa.eu/theme/br",
+          "label": "Bio-geographical regions"
         },
         {
-          "value": "Buildings",
-          "label": "http://inspire.ec.europa.eu/theme/bu"
+          "value": "http://inspire.ec.europa.eu/theme/bu",
+          "label": "Buildings"
         },
         {
           "value": "",
