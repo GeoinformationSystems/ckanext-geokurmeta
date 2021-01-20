@@ -90,112 +90,112 @@
                     "label": "Buildings"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/cp",
+                    "label": "Cadastral parcels"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/rs",
+                    "label": "Coordinate reference systems"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/el",
+                    "label": "Elevation"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/er",
+                    "label": "Energy resources"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/ef",
+                    "label": "Environmental monitoring facilities"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/gg",
+                    "label": "Geographical grid systems"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/gn",
+                    "label": "Geographical names"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/ge",
+                    "label": "Geology"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/hb",
+                    "label": "Habitats and biotopes"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/hh",
+                    "label": "Human health and safety"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/hy",
+                    "label": "Hydrography"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/lc",
+                    "label": "Land cover"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/lu",
+                    "label": "Land use"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/mf",
+                    "label": "Meteorological geographical features"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/mr",
+                    "label": "Mineral resources"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/nz",
+                    "label": "Natural risk zones"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/of",
+                    "label": "Oceanographic geographical features"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/oi",
+                    "label": "Orthoimagery"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/pd",
+                    "label": "Population distribution — demography"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/pf",
+                    "label": "Production and industrial facilities"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/ps",
+                    "label": "Protected sites"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/sr",
+                    "label": "Sea regions"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/so",
+                    "label": "Soil"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/sd",
+                    "label": "Species distribution"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/su",
+                    "label": "Statistical units"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/tn",
+                    "label": "Transport networks"
                 },
                 {
-                    "value": "",
-                    "label": ""
+                    "value": "http://inspire.ec.europa.eu/theme/us",
+                    "label": "Utility and governmental services"
                 }
             ]
         },
