@@ -38,10 +38,20 @@
       }
     },
     {
-      "preset_name": "select_not_req",
+      "preset_name": "select",
       "values": {
         "form_snippet": "select.html",
-        "display_snippet": "select.html"
+        "display_snippet": "select.html",
+        "validators": "scheming_required scheming_choices"
+      }
+    },
+    {
+      "preset_name": "multiple_select",
+      "values": {
+        "form_snippet": "multiple_select.html",
+        "display_snippet": "multiple_choice.html",
+        "validators": "scheming_multiple_choice",
+        "output_validators": "scheming_required scheming_multiple_choice_output"
       }
     },
     {

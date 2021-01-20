@@ -113,7 +113,7 @@
     {
       "field_name": "spatial_resolution_type",
       "label": "Spatial Resolution Measured",
-      "preset": "select_not_req",
+      "preset": "select",
       "choices": [
         {
           "value": "meters",
@@ -132,7 +132,6 @@
           "label": "As vertical distance"
         }
       ],
-      "form_placeholder": "defaults to meters if nothing is selected",
       "help_text": "In meters: This property refers to the minimum spatial separation resolvable in a Dataset, measured in metres.\nAs angular scale: Spatial resolution expressed as equivalent scale [ISO-19115], [ISO-19115-1], by using a representative fraction (e.g., 1:1,000, 1:1,000,000).\nAs angular distance: Spatial resolution expressed as angular distance [ISO-19115-1], by using a decimal degree.\nAs vertical distance: Spatial resolution expressed as vertical distance [ISO-19115-1]."
     },
     {
