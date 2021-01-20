@@ -108,19 +108,31 @@
       "field_name": "spatial_resolution",
       "label": "Spatial Resolution",
       "validators": "ignore_missing unicode decimal_validator",
-      "help_text": "Spatial Resolution (in meters, if not given as scale)"
+      "help_text": "Spatial Resolution (the unit is determined by the resolution type)"
     },
     {
-      "field_name": "spatial_resolution_unit",
+      "field_name": "spatial_resolution_type",
       "label": "Spatial Resolution Type",
       "preset": "select",
       "choices": [
         {
-          "value": "bactrian",
-          "label": "bact camel"
+          "value": "meters",
+          "label": "In meters"
+        },
+        {
+          "value": "scale",
+          "label": "As scale"
+        },
+        {
+          "value": "angular",
+          "label": "As angular distance"
+        },
+        {
+          "value": "vertical",
+          "label": "As vertical distance"
         }
       ],
-      "help_text": "Spatial Resolution (in meters, if not given as scale)"
+      "help_text": "In meters: This property refers to the minimum spatial separation resolvable in a Dataset, measured in metres.\nAs angular scale: Spatial resolution expressed as equivalent scale [ISO-19115], [ISO-19115-1], by using a representative fraction (e.g., 1:1,000, 1:1,000,000).\nAs angular distance: Spatial resolution expressed as angular distance [ISO-19115-1], by using a decimal degree.\nAs vertical distance: Spatial resolution expressed as vertical distance [ISO-19115-1]."
     },
     {
       "field_name": "temporal_resolution",
