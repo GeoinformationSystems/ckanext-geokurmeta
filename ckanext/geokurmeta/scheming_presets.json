@@ -66,7 +66,7 @@
       "values": {
         "form_snippet": "multiple_checkbox.html",
         "display_snippet": "multiple_choice.html",
-        "validators": "scheming_multiple_choice not_empty",
+        "validators": "scheming_multiple_choice",
         "output_validators": "scheming_multiple_choice_output_req"
       }
     },
