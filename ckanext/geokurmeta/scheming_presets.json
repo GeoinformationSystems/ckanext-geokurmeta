@@ -46,6 +46,13 @@
       }
     },
     {
+      "preset_name": "select_not_req",
+      "values": {
+        "form_snippet": "select.html",
+        "display_snippet": "select.html"
+      }
+    },
+    {
       "preset_name": "multiple_select",
       "values": {
         "form_snippet": "multiple_select.html",
