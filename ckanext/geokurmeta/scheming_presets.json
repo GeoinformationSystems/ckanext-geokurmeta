@@ -41,8 +41,7 @@
       "preset_name": "select_not_req",
       "values": {
         "form_snippet": "select.html",
-        "display_snippet": "select.html",
-        "validators": "scheming_choices"
+        "display_snippet": "select.html"
       }
     },
     {
