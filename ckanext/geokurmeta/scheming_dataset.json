@@ -25,7 +25,8 @@
         {
             "field_name": "contact_uri",
             "label": "Contact Point - ORCiD",
-            "form_placeholder": "According ORCiD, leave blank otherwise"
+            "help_text": "According ORCiD, leave blank otherwise",
+			"preset": "link_single"
         },
         {
             "field_name": "tag_string",
@@ -45,14 +46,16 @@
             "field_name": "temporal_start",
             "label": "Temporal Coverage Start",
             "validators": "ignore_missing",
-            "form_snippet": "date.html",
+			"classes": ["col-md-6 view-list"],
+            "form_snippet": "geokur_date.html",
             "form_placeholder": ""
         },
         {
             "field_name": "temporal_end",
             "label": "Temporal Coverage End",
             "validators": "ignore_missing",
-            "form_snippet": "date.html",
+			"classes": ["col-md-6 no-padding"],
+            "form_snippet": "geokur_date.html",
             "form_placeholder": ""
         },
         {
