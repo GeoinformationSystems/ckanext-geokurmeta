@@ -2,6 +2,8 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
 from ckanext.geokurmeta.validation import (
+    geokurmeta_scheming_choices,
+    geokurmeta_check_required_field,
     if_not_missing_package_id_or_name_exists,
     if_not_missing_package_id_or_name_exists_list,
     link_list_string_convert,
@@ -22,6 +24,8 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_validators(self):
         return {
+            'geokurmeta_scheming_choices': geokurmeta_scheming_choices,
+            'geokurmeta_check_required_field': geokurmeta_check_required_field,
             'if_not_missing_package_id_or_name_exists': if_not_missing_package_id_or_name_exists,
             'if_not_missing_package_id_or_name_exists_list': if_not_missing_package_id_or_name_exists_list,
             'link_list_string_convert': link_list_string_convert,

@@ -246,13 +246,17 @@
         {
             "field_name": "spatial_resolution",
             "label": "Spatial Resolution",
-            "validators": "ignore_missing unicode decimal_validator",
+			"required_if_value_in": "spatial_resolution_type",
+			"classes": ["col-md-4 view-list"],
+            "validators": "ignore_missing unicode decimal_validator geokurmeta_check_required_field",
             "help_text": "Spatial Resolution (the unit is determined by the resolution type)"
         },
         {
             "field_name": "spatial_resolution_type",
             "label": "Spatial Resolution Measured",
-            "preset": "select",
+			"required_if_value_in": "spatial_resolution",
+			"classes": ["col-md-8 no-padding"],
+            "preset": "select_man_when_res",
             "choices": [
                 {
                     "value": "meters",

@@ -40,16 +40,17 @@
         {
             "preset_name": "select",
             "values": {
-                "form_snippet": "select.html",
+                "form_snippet": "geokur_select.html",
                 "display_snippet": "select.html",
-                "validators": "scheming_required scheming_choices"
+				"validators": "scheming_required geokurmeta_scheming_choices"
             }
         },
         {
-            "preset_name": "select_not_req",
+            "preset_name": "select_man_when_res",
             "values": {
-                "form_snippet": "select.html",
-                "display_snippet": "select.html"
+                "form_snippet": "geokur_select.html",
+                "display_snippet": "select.html",
+				"validators": "scheming_required geokurmeta_scheming_choices geokurmeta_check_required_field"
             }
         },
         {
