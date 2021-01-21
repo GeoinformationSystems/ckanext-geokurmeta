@@ -9,6 +9,7 @@ from ckanext.geokurmeta.validation import (
     link_list_string_convert,
     single_link_validator,
     decimal_validator,
+    spatial_resolution_validator,
 )
 
 from ckanext.geokurmeta.helpers import (
@@ -31,6 +32,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'link_list_string_convert': link_list_string_convert,
             'single_link_validator': single_link_validator,
             'decimal_validator': decimal_validator,
+            'spatial_resolution_validator': spatial_resolution_validator,
             }
  
     def get_helpers(self):

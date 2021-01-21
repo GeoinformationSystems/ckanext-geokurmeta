@@ -108,12 +108,23 @@ def link_list_string_convert(key, data, errors, context):
         single_link_validator(link, context)
 
 
-def decimal_validator(value, context):
+def decimal_validator(value):
     ''' Checks that the provided value (if it is present) is a valid decimal '''
 
     if value:
         try:
             Decimal(value)
         except DecimalException:
-            raise Invalid('Invalid decimal')
+            raise Invalid('Invalid decimal: %s' % value)
+    return value
+
+def spatial_resolution_validator(value):
+    ''' Checks that the provided value (if it is present) is a valid spatial resolution (decimal or as representative fraction like 1:1.000) '''
+    if value:
+        res = [ds.strip() for ds in value.split(':') if ds.strip()]
+    else:
+        res = value
+    
+    for re in res:
+        decimal_validator(re)
     return value
