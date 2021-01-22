@@ -297,10 +297,43 @@
             "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' descibes a period of 1 day"
         },
         {
-            "field_name": "has_quality_annotation",
-            "label": "Has Quality Annotation",
-            "validators": "ignore_missing unicode",
-            "form_placeholder": ""
+            "field_name": "quality_annotation",
+            "label": "Quality Annotation",
+            "required_if_value_in": "quality_annotation_motivation",
+            "form_snippet": "markdown.html",
+            "classes": [
+                "col-md-8 view-list"
+            ],
+            "validators": "ignore_missing unicode spatial_resolution_validator geokurmeta_check_required_field",
+            "help_text": "Spatial Resolution (the unit is determined by the resolution type)"
+        },
+        {
+            "field_name": "quality_annotation_motivation",
+            "label": "Quality Annotation Motivation",
+            "required_if_value_in": "quality_annotation",
+            "classes": [
+                "col-md-4 no-padding"
+            ],
+            "preset": "select_man_when_res",
+            "choices": [
+                {
+                    "value": "meters",
+                    "label": "In meters"
+                },
+                {
+                    "value": "scale",
+                    "label": "As scale"
+                },
+                {
+                    "value": "angular",
+                    "label": "As angular distance"
+                },
+                {
+                    "value": "vertical",
+                    "label": "As vertical distance"
+                }
+            ],
+            "help_text": "In meters: This property refers to the minimum spatial separation resolvable in a Dataset, measured in metres.\nAs angular scale: Spatial resolution expressed as equivalent scale [ISO-19115], [ISO-19115-1], by using a representative fraction (e.g., 1:1,000, 1:1,000,000).\nAs angular distance: Spatial resolution expressed as angular distance [ISO-19115-1], by using a decimal degree.\nAs vertical distance: Spatial resolution expressed as vertical distance [ISO-19115-1]."
         },
         {
             "field_name": "has_quality_measure",
