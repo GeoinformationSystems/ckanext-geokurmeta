@@ -45,7 +45,7 @@ provide an editable map.
 		{%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 		
 		<!-- select preset, on change update input {{ id }}-->	
-		<!-- might be usefull, when presets are clear | ignore for now-->
+		<!-- might be usefull, when presets are clear | ignore for now
 		
 			<script type="text/javascript">
 				/* Set the value of textarea #{{ id }} to the value of select menu #select-{{ id }} 
@@ -61,7 +61,7 @@ provide an editable map.
 				<option value="{{ c.value | replace("u'","\"") | replace("'","\"") | empty_and_escape }}">{{ c.label }}</option>
 			  {% endfor %}
 			</select>
-			
+		-->	
 		
 		<!-- end select preset-->
 
