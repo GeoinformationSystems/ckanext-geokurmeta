@@ -301,7 +301,7 @@
             "label": "Quality Annotation",
             "required_if_value_in": "quality_annotation_motivation",
             "form_snippet": "markdown.html",
-            "validators": "ignore_missing unicode spatial_resolution_validator geokurmeta_check_required_field",
+            "validators": "ignore_missing unicode geokurmeta_check_required_field",
             "help_text": "Spatial Resolution (the unit is determined by the resolution type)"
         },
         {
