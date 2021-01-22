@@ -26,7 +26,7 @@
             "field_name": "contact_uri",
             "label": "Contact Point - ORCiD",
             "help_text": "According ORCiD, leave blank otherwise",
-			"preset": "link_single"
+            "preset": "link_single"
         },
         {
             "field_name": "tag_string",
@@ -46,7 +46,9 @@
             "field_name": "temporal_start",
             "label": "Temporal Coverage Start",
             "validators": "ignore_missing",
-			"classes": ["col-md-6 view-list"],
+            "classes": [
+                "col-md-6 view-list"
+            ],
             "form_snippet": "geokur_date.html",
             "form_placeholder": ""
         },
@@ -54,7 +56,9 @@
             "field_name": "temporal_end",
             "label": "Temporal Coverage End",
             "validators": "ignore_missing",
-			"classes": ["col-md-6 no-padding"],
+            "classes": [
+                "col-md-6 no-padding"
+            ],
             "form_snippet": "geokur_date.html",
             "form_placeholder": ""
         },
@@ -243,22 +247,27 @@
         {
             "field_name": "conforms_to",
             "label": "Coordinate Reference System",
+            "form_placeholder": "http://www.opengis.net/def/crs/EPSG/0/4326",
             "help_text": "Provide link to OGC definition of the CRS, http://docs.opengeospatial.org/DRAFTS/18-058.html#_crs_identifier_list, e.g. http://www.opengis.net/def/crs/EPSG/0/4326",
             "preset": "link_single"
         },
         {
             "field_name": "spatial_resolution",
             "label": "Spatial Resolution",
-			"required_if_value_in": "spatial_resolution_type",
-			"classes": ["col-md-4 view-list"],
+            "required_if_value_in": "spatial_resolution_type",
+            "classes": [
+                "col-md-4 view-list"
+            ],
             "validators": "ignore_missing unicode spatial_resolution_validator geokurmeta_check_required_field",
             "help_text": "Spatial Resolution (the unit is determined by the resolution type)"
         },
         {
             "field_name": "spatial_resolution_type",
             "label": "Spatial Resolution Measured",
-			"required_if_value_in": "spatial_resolution",
-			"classes": ["col-md-8 no-padding"],
+            "required_if_value_in": "spatial_resolution",
+            "classes": [
+                "col-md-8 no-padding"
+            ],
             "preset": "select_man_when_res",
             "choices": [
                 {
@@ -307,7 +316,7 @@
     ],
     "resource_fields": [
         {
-            "field_name": "access_url",
+            "field_name": "url",
             "label": "URL",
             "validators": "not_empty",
             "preset": "resource_url_upload"
