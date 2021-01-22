@@ -45,7 +45,7 @@ def geokurmeta_check_required_field(field, schema):
         if (not value or value is missing) :
             if (not other_value or other_value is missing):
                 return value
-            raise Invalid(_('Required since "%s" is defined.') % field.get('required_if_value_in'))
+            raise Invalid(_('Required since "%s" is defined.') % sh.scheming_field_by_name(schema['dataset_fields'], field.get('required_if_value_in'))['label'])
         return value
         
     return validator
