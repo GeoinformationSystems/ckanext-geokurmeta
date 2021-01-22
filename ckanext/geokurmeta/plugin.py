@@ -55,7 +55,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # that CKAN will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')
         tk.add_public_directory(config, 'public')
-        tk.add_resource('assets', 'geokurmeta')
+        tk.add_resource('public', 'ckanext-geokurmeta')
         
         
 
