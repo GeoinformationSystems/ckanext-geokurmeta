@@ -1,7 +1,5 @@
 {% import 'macros/form.html' as form %}
 
-{% asset 'geokurmeta/geokurmeta' %}
-
 {% set value = data[field.field_name] %}
 {% call form.textarea(
     field.field_name,
@@ -15,6 +13,7 @@
     )
 %}
 
+{% asset 'ckanext-geokurmeta/coordinates_to_json' %}
 <div id="coordForm" style="display: none;">
 	<div class="input-group">
 		<span class="input-group-addon">Point A</span><input type="text" placeholder="eg. 13.7250,51.03000" />
