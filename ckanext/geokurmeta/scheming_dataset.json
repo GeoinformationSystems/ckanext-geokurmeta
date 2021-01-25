@@ -411,7 +411,6 @@
             "field_name": "was_derived_from",
             "label": "Derived from",
             "help_text": "The dataset from which the current dataset was derived. Either, provide a link to datasets outside of the catalog or identifiers of datasets inside. In case of multiple Entries, split with comma \",\".",
-            "preset": "link_single, dataset_single",
             "form_placeholder": ""
         },
         {
