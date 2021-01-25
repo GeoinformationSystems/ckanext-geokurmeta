@@ -10,6 +10,12 @@
             "preset": "title",
             "form_placeholder": "eg. A descriptive title"
         },
+		{
+            "field_name": "name",
+            "label": "Identifier",
+            "preset": "dataset_slug",
+            "form_placeholder": "eg. my-dataset"
+        },
         {
             "field_name": "notes",
             "label": "Description",
@@ -34,13 +40,28 @@
             "preset": "tag_string_autocomplete_fix",
             "form_placeholder": "eg. economy, mental health, government"
         },
-        {
+		{
             "field_name": "spatial",
             "label": "Spatial Coverage",
-            "preset": "geokur_spatial",
-            "form_placeholder": "bounding box in WGS84; bottom left, upper right",
-            "help_text": "insert bounding box in WGS84; bottom left, upper right",
-            "display_snippet": "json.html"
+			"help_text": "Draw and edit the dataset extent as rectangles and/or polygons on the map, or paste a GeoJSON Polygon or Multipolygon geometry below",
+			"display_property": "dcat:Dataset/dct:spatial",
+            "form_placeholder": "Paste a valid GeoJSON geometry",
+            "form_snippet":"geokur_spatial.html",
+            "display_snippet":"json.html",
+			"validators": "not_empty scheming_valid_json_object",
+            "choices": [
+				{
+				"label":"Germany",
+                "value":{
+                    "type":"MultiPolygon",
+					"coordinates":[[[[5.44921875,47.15236927446393],
+					[5.44921875,54.87028529268185],
+					[15.468749999999998,54.87028529268185],
+					[15.468749999999998,47.15236927446393],
+					[5.44921875,47.15236927446393]]]]
+					}
+				}
+            ]
         },
         {
             "field_name": "temporal_start",
@@ -214,12 +235,6 @@
             "preset": "link_single"
         },
         {
-            "field_name": "name",
-            "label": "Identifier",
-            "preset": "dataset_slug",
-            "form_placeholder": "eg. my-dataset"
-        },
-        {
             "field_name": "is_version_of",
             "label": "Is Version of",
             "help_text": "Insert according dataset's Identifier. A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format.",
@@ -388,9 +403,14 @@
         {
             "field_name": "url",
             "label": "URL",
-            "validators": "not_empty",
             "preset": "resource_url_upload"
         },
+		{
+			"field_name": "name",
+			"label": "Name",
+			"validators": "if_empty_same_as(url) unicode",
+			"form_placeholder": "leave blank to use resource file name"
+		},
         {
             "field_name": "license",
             "label": "License",
