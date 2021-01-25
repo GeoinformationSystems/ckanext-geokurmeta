@@ -10,7 +10,7 @@
             "preset": "title",
             "form_placeholder": "eg. A descriptive title"
         },
-		{
+        {
             "field_name": "name",
             "label": "Identifier",
             "preset": "dataset_slug",
@@ -40,27 +40,48 @@
             "preset": "tag_string_autocomplete_fix",
             "form_placeholder": "eg. economy, mental health, government"
         },
-		{
+        {
             "field_name": "spatial",
             "label": "Spatial Coverage",
-			"help_text": "Draw and edit the dataset extent as rectangles and/or polygons on the map, or paste a GeoJSON Polygon or Multipolygon geometry below",
-			"display_property": "dcat:Dataset/dct:spatial",
+            "help_text": "Draw and edit the dataset extent as rectangles and/or polygons on the map, or paste a GeoJSON Polygon or Multipolygon geometry below",
+            "display_property": "dcat:Dataset/dct:spatial",
             "form_placeholder": "Paste a valid GeoJSON geometry",
-            "form_snippet":"geokur_spatial.html",
-            "display_snippet":"json.html",
-			"validators": "not_empty scheming_valid_json_object",
+            "form_snippet": "geokur_spatial.html",
+            "display_snippet": "json.html",
+            "validators": "not_empty scheming_valid_json_object",
             "choices": [
-				{
-				"label":"Germany",
-                "value":{
-                    "type":"MultiPolygon",
-					"coordinates":[[[[5.44921875,47.15236927446393],
-					[5.44921875,54.87028529268185],
-					[15.468749999999998,54.87028529268185],
-					[15.468749999999998,47.15236927446393],
-					[5.44921875,47.15236927446393]]]]
-					}
-				}
+                {
+                    "label": "Germany",
+                    "value": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [
+                                        5.44921875,
+                                        47.15236927446393
+                                    ],
+                                    [
+                                        5.44921875,
+                                        54.87028529268185
+                                    ],
+                                    [
+                                        15.468749999999998,
+                                        54.87028529268185
+                                    ],
+                                    [
+                                        15.468749999999998,
+                                        47.15236927446393
+                                    ],
+                                    [
+                                        5.44921875,
+                                        47.15236927446393
+                                    ]
+                                ]
+                            ]
+                        ]
+                    }
+                }
             ]
         },
         {
@@ -387,13 +408,6 @@
             "form_placeholder": ""
         },
         {
-            "field_name": "was_derived_from",
-            "label": "Derived from",
-            "help_text": "The dataset from which the current dataset was derived. Either, provide a link to datasets outside of the catalog or identifiers of datasets inside. In case of multiple Entries, split with comma \",\".",
-            "validators": "link_single, dataset_single",
-            "form_placeholder": ""
-        },
-        {
             "field_name": "owner_org",
             "label": "Organization",
             "preset": "dataset_organization"
@@ -405,12 +419,12 @@
             "label": "URL",
             "preset": "resource_url_upload"
         },
-		{
-			"field_name": "name",
-			"label": "Name",
-			"validators": "if_empty_same_as(url) unicode",
-			"form_placeholder": "leave blank to use resource file name"
-		},
+        {
+            "field_name": "name",
+            "label": "Name",
+            "validators": "if_empty_same_as(url) unicode",
+            "form_placeholder": "leave blank to use resource file name"
+        },
         {
             "field_name": "license",
             "label": "License",
