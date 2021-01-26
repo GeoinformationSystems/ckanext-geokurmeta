@@ -433,6 +433,12 @@
             "form_placeholder": "leave blank to use resource file name"
         },
         {
+            "field_name": "description",
+            "label": "Description",
+            "form_snippet": "markdown.html",
+            "form_placeholder": "Some useful notes about the resource"
+        },
+        {
             "field_name": "license",
             "label": "License",
             "form_placeholder": "A legal document giving official permission to do something with the resource.",
