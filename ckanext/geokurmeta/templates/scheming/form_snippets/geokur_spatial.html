@@ -36,7 +36,7 @@ provide an editable map.
 		<div class="dataset-map" 
 			data-module="spatial-form"
 			data-input_id="{{ id }}"
-			data-extent="{{ value }}" 
+			data-extent="{{ value }}"
 			data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}" 
 			data-module-map_config="{{ h.dump_json(map_config) }}">
 		  <div id="dataset-map-container"></div>
@@ -44,34 +44,23 @@ provide an editable map.
 		
 		{%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 		
-		<!-- select preset, on change update input {{ id }}-->	
-		<!-- might be usefull, when presets are clear | ignore for now
+		<textarea class="form-control" 
+			id="{{ id }}"
+			type="{{ type }}" 
+			name="{{ name }}" 
+			placeholder="{{ placeholder }}" 
+			rows=5 
+			style="width:100%;">{{ value | empty_and_escape }}</textarea>	
+		<button id="{{ id }}-btn" class="btn btn-default btn-sm btn-block"></button>
 		
-			<script type="text/javascript">
-				/* Set the value of textarea #{{ id }} to the value of select menu #select-{{ id }} 
-				 * IDs are hard-coded, as this script lives at the same level as the IDs are defined 
-				 */
-				function updateInput(){
-					$("#{{ id }}").val($("#select-{{ id }}").val());
-				}
-			</script>
-			<select id="select-{{ id }}" class="form-control" onchange="updateInput()">
-				<option value="">-- Select pre-defined extent --</option>
-			  {% for c in field.choices %}
-				<option value="{{ c.value | replace("u'","\"") | replace("'","\"") | empty_and_escape }}">{{ c.label }}</option>
-			  {% endfor %}
-			</select>
-		-->	
-		
-		<!-- end select preset-->
-
-		<!-- Textarea #{{ id }} accepts a Polygon GeoJSON geometry.
-			 The map updates this input on drawing/editing/deleting shapes,
-			 the select menu updates this input on selecting options.
-		-->
-		<textarea class="form-control" id="{{ id }}" type="{{ type }}" name="{{ name }}" 
-			placeholder="{{ placeholder }}" rows=5 style="width:100%;"
-		>{{ value | empty_and_escape }}</textarea>
+		<div id="{{ id }}-template">
+			<div class="input-group">
+				<span class="input-group-addon">bottom left</span><input type="text" placeholder="lng,lat eg. 13.7250,51.03000" />
+			</div>
+			<div class="input-group" style="margin-top:10px;">
+				<span class="input-group-addon">upper right</span><input type="text" placeholder="lng,lat eg. 13.7200,51.02900" />
+			</div>
+		</div>
 		
 		{% asset 'ckanext-geokurmeta/spatial_form' %}
 	

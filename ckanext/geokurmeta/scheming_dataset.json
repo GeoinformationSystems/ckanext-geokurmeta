@@ -43,7 +43,7 @@
         {
             "field_name": "spatial",
             "label": "Spatial Coverage",
-            "help_text": "Draw and edit the dataset extent as rectangles and/or polygons on the map, or paste a GeoJSON Polygon or Multipolygon geometry below",
+            "help_text": "Draw and edit the dataset extent as rectangles on the map, or paste a GeoJSON Polygon or Multipolygon geometry below, or create a bounding box from coordinates",
             "display_property": "dcat:Dataset/dct:spatial",
             "form_placeholder": "Paste a valid GeoJSON geometry",
             "form_snippet": "geokur_spatial.html",

@@ -15,7 +15,7 @@ ckan.module('geokurmeta_coordinates_to_json', function ($) {
 		myButton.popover({html: true,
 						sanitize: false,
 						trigger: 'manual',
-						title : 'Spatial Coverage<a href="#" class="close" data-dismiss="alert">&times;</a>',
+						title : 'Bounding Box in WGS84<a href="#" class="close" data-dismiss="alert">&times;</a>',
 						content: $(formSnippet).html(),
 						placement: 'top'});
 		
@@ -29,7 +29,7 @@ ckan.module('geokurmeta_coordinates_to_json', function ($) {
 		function generateGeoJson(pointA, pointB) {	
 			var pointC = pointB.split(',')[0] + ',' + pointA.split(',')[1];
 			var pointD = pointA.split(',')[0] + ',' + pointB.split(',')[1];
-			return '{ "type": "Polygon", "coordinates": [[\n  [' + pointA + '],\n  [' + pointC + '],\n  [' + pointB + '],\n  [' + pointD + ']\n ]]\n}'; 
+			return '{ "type": "Polygon", "coordinates": [[\n  [' + pointA + '],\n  [' + pointC + '],\n  [' + pointB + '],\n  [' + pointD + '],\n  [' + pointA + ']\n ]]\n}'; 
 		}
 		
 		function validCoordinatesGiven(pointA, pointB) { 

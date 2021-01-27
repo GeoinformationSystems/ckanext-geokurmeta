@@ -25,7 +25,7 @@
         data-module-map_config="{{ h.dump_json(map_config) }}">
       <div id="dataset-map-container"></div>
     </div>
-    {% resource 'ckanext-spatial/spatial_form' %}
+    {% asset 'ckanext-geokurmeta/spatial_form' %}
     {{ form.info(text="Draw the dataset extent on the map,
        or paste a GeoJSON Polygon or Multipolygon geometry below", inline=false) }}
     <textarea id="{{ id }}" type="{{ type }}" name="{{ name }}" 
@@ -73,7 +73,11 @@ this.ckan.module('spatial-form', function (jQuery, _) {
 
       this.input = $('#' + this.el.data('input_id'))[0];
       this.extent = this.el.data('extent');
-      this.map_id = 'dataset-map-container'; //-' + this.input;
+	  this.template = $('#' + this.el.data('input_id') + "-template")[0];
+	  this.btn = $('#' + this.el.data('input_id') + "-btn")[0];
+      this.map_id = 'dataset-map-container';
+		
+	  $(this.template).hide();
 
       jQuery.proxyAll(this, /_on/);
       this.el.ready(this._onReady);
@@ -82,10 +86,93 @@ this.ckan.module('spatial-form', function (jQuery, _) {
 
 
     _onReady: function(){
+		
+		var input = this.input;
+		var btn = this.btn;
+		var btnTextInactive = 'create bounding box from coordinates in WGS84';
+		var btnTextActive = 'generate GeoJSON geometry';
 
+		// ---------------------------
+		// Bounding Box Functionality
+		// ---------------------------
+		$(btn).text(btnTextInactive);
+		$(btn).popover({html: true,
+						sanitize: false, 
+						trigger: 'manual',
+						title : 'Bounding Box in WGS84<a href="#" class="close" data-dismiss="alert">&times;</a>',
+						content: $(this.template).html(),
+						placement: 'top'});
+
+		$.fn.popover.Constructor.prototype.reposition = function () {	
+			var tip = this.tip();
+			var placement = typeof this.options.placement === 'function' ? this.options.placement.call(this, $tip[0], this.$element[0]) : this.options.placement;
+			var pos          = this.getPosition();
+			var actualWidth  = $(tip)[0].offsetWidth;
+			var actualHeight = $(tip)[0].offsetHeight;	  
+			var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight);
+			this.applyPlacement(calculatedOffset, placement);
+		};
+						
+		var generateGeoJson = function(pointA, pointB) {
+			var pointC = pointB.split(',')[0] + ',' + pointA.split(',')[1];
+			var pointD = pointA.split(',')[0] + ',' + pointB.split(',')[1];
+			return '{ "type": "Polygon", "coordinates": [[\n  [' + pointA + '],\n  [' + pointC + '],\n  [' + pointB + '],\n  [' + pointD + '],\n  [' + pointA + ']\n ]]\n}'; 
+		};
+		
+		var validCoordinatesGiven = function(aInput, bInput) {
+			var pointA = aInput.value.replace(/ /g, '');
+			var pointB = bInput.value.replace(/ /g, '');	
+			var valid = true;
+
+			//clear existing error bevor re-validation
+			$(aInput).parent().parent().find('.error-block').remove();
+			
+			if (isNaN(pointA.split(',')[0]) || isNaN(pointA.split(',')[1])) {
+				$(aInput).after('<span class="error-block">Invalid value</span>');
+				valid = false;
+			}
+			if (isNaN(pointB.split(',')[0]) || isNaN(pointB.split(',')[1])) {
+				$(bInput).after('<span class="error-block">Invalid value</span>');
+				valid = false;
+			}
+			$(btn).popover('reposition');
+			return valid;
+		};
+		
+		$(btn).on('click', function (e) {
+			e.preventDefault(); 
+			if(!$(this).prop('popShown')){
+				$(this).prop('popShown', true).popover('show');
+				$(this).text(btnTextActive);
+				$(this).removeClass('btn-default').addClass('btn-success');
+			} 
+			else {
+				var aInput = $(input).parent().find('.popover-content input')[0];
+				var bInput = $(input).parent().find('.popover-content input')[1];
+				console.log(aInput.value);
+				var a = aInput.value.replace(/ /g, '');
+				var b = bInput.value.replace(/ /g, '');
+				
+				if(validCoordinatesGiven(aInput,bInput)) {
+					$(input).val( generateGeoJson(a,b) );				
+					$(this).prop('popShown', false).popover('hide');
+					$(this).text(btnTextInactive);
+					$(this).removeClass('btn-success').addClass('btn-default');
+				}
+			}
+		});
+		
+		$(input).parent().on("click", ".close" , function(){
+			$(btn).prop('popShown', false).popover('hide');
+			$(btn).text(btnTextInactive);
+			$(btn).removeClass('btn-success').addClass('btn-default');
+		});	
+		
+		// ---------------------------
+		// Map Functionality
+		// ---------------------------
         var map, backgroundLayer, oldExtent, drawnItems, ckanIcon;
         var ckanIcon = L.Icon.extend({options: this.options.styles.point});
-
 
         /* Initialise basic map */
         map = ckan.commonLeafletMap(
@@ -99,9 +186,7 @@ this.ckan.module('spatial-form', function (jQuery, _) {
         var drawnItems = new L.FeatureGroup();
         map.addLayer(drawnItems);
 
-
         /* Add GeoJSON layers for any GeoJSON resources of the dataset */
-        //var existingLayers = {};
         var url = window.location.href.split('dataset/edit/');
         $.ajax({
          url: url[0] + 'api/3/action/package_show',
@@ -139,11 +224,9 @@ this.ckan.module('spatial-form', function (jQuery, _) {
                     }
                 });
                 gj.addTo(map);
-                //existingLayers[r[i].name] = gj;
-             }); // end getJSON
-            } // end if
-           } // end for
-           //L.control.layers(existingLayers).addTo(map); // or similar
+             });
+            } 
+           }
          }
          });
 
@@ -167,6 +250,7 @@ this.ckan.module('spatial-form', function (jQuery, _) {
                 polyline: false,
                 circle: false,
                 marker: false,
+				polygon: false,
                 rectangle: {repeatMode: false}
 
             },
@@ -178,14 +262,12 @@ this.ckan.module('spatial-form', function (jQuery, _) {
         /* Aggregate all features in a FeatureGroup into one MultiPolygon, 
          * update inputid with that Multipolygon's geometry 
          */
-        var featureGroupToInput = function(fg, input){
+        var featureGroupToInput = function(fg){
             var gj = drawnItems.toGeoJSON().features;
             var polyarray = [];
             $.each(gj, function(index, value){ polyarray.push(value.geometry.coordinates); });
             mp = {"type": "MultiPolygon", "coordinates": polyarray};
-            // TODO use input for element id
-            $('#field-spatial').val(JSON.stringify(mp));
-            //$("#" + input).val(JSON.stringify(mp)); // doesn't work
+            $(input).val(JSON.stringify(mp));
         };
 
 
@@ -194,17 +276,15 @@ this.ckan.module('spatial-form', function (jQuery, _) {
             var type = e.layerType,
                 layer = e.layer;
             drawnItems.addLayer(layer);
-            // To only add the latest drawn element to input #field-spatial:
-            //$("#field-spatial")[0].value = JSON.stringify(e.layer.toGeoJSON().geometry);
-            featureGroupToInput(drawnItems, this.input);
+            featureGroupToInput(drawnItems);
         });
 
         map.on('draw:editstop', function(e){
-            featureGroupToInput(drawnItems, this.input);
+            featureGroupToInput(drawnItems);
         });
 
         map.on('draw:deletestop', function(e){
-            featureGroupToInput(drawnItems, this.input);
+            featureGroupToInput(drawnItems);
         });
 
     }
