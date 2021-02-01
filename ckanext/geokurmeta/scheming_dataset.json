@@ -418,11 +418,6 @@
             "field_name": "owner_org",
             "label": "Organization",
             "preset": "dataset_organization"
-        },
-        {"field_name": "license_id",
-            "label": "Dataset License",
-            "form_placeholder": "A legal document giving official permission to do something with the resource.",
-            "help_text": "Recommended best practice is to identify the license using a URI. Examples of such licenses can be found at http://creativecommons.org/licenses/."
         }
 
     ],
