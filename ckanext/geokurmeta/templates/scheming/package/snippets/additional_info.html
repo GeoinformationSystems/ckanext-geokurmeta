@@ -1,6 +1,5 @@
 {% extends "package/snippets/additional_info.html" %}
 
-{% block exclude_fields %}
 {%- set exclude_fields = [
 'id',
 'title',
@@ -10,9 +9,8 @@
 'owner_org',
 'temporal_start',
 'temporal_end',
-'spatial',
+'spatial'
 ] -%}
-{% endblock %}
 
 {% block package_additional_info %}
 {%- for field in schema.dataset_fields -%}
