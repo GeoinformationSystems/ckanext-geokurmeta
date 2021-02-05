@@ -23,6 +23,12 @@
             "form_placeholder": "Some useful notes about the data"
         },
         {
+            "field_name": "documentation",
+            "label": "Documentation",
+            "help_text": "eg. link to publication",
+            "preset": "link_single"
+        },
+        {
             "field_name": "contact_name",
             "validators": "not_empty",
             "label": "Contact Point - Name",
@@ -30,8 +36,21 @@
         },
         {
             "field_name": "contact_uri",
-            "label": "Contact Point - ORCiD",
-            "help_text": "According ORCiD, leave blank otherwise",
+            "label": "Contact Point - ORCID",
+            "help_text": "According ORCID, leave blank otherwise",
+            "preset": "link_single"
+        },
+        {
+            "field_name": "alternate_identifier",
+            "label": "Dataset DOI",
+            "from_placeholder": "insert DOI of the dataset if available",
+            "help_text": "e.g. https://doi.org/10.7283/T5MW2F2D",
+            "preset": "link_single"
+        },
+        {
+            "field_name": "url",
+            "label": "Information Website",
+            "help_text": "links to project website or dataset's page",
             "preset": "link_single"
         },
         {
@@ -39,70 +58,6 @@
             "label": "Keywords",
             "preset": "tag_string_autocomplete_fix",
             "form_placeholder": "eg. economy, mental health, government"
-        },
-        {
-            "field_name": "spatial",
-            "label": "Spatial Coverage",
-            "help_text": "Draw and edit the dataset extent as rectangles on the map, or paste a GeoJSON Polygon or Multipolygon geometry below, or create a bounding box from coordinates",
-            "display_property": "dcat:Dataset/dct:spatial",
-            "form_placeholder": "Paste a valid GeoJSON geometry",
-            "form_snippet": "geokur_spatial.html",
-            "display_snippet": "json.html",
-            "validators": "not_empty scheming_valid_json_object",
-            "choices": [
-                {
-                    "label": "Germany",
-                    "value": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [
-                                        5.44921875,
-                                        47.15236927446393
-                                    ],
-                                    [
-                                        5.44921875,
-                                        54.87028529268185
-                                    ],
-                                    [
-                                        15.468749999999998,
-                                        54.87028529268185
-                                    ],
-                                    [
-                                        15.468749999999998,
-                                        47.15236927446393
-                                    ],
-                                    [
-                                        5.44921875,
-                                        47.15236927446393
-                                    ]
-                                ]
-                            ]
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "field_name": "temporal_start",
-            "label": "Temporal Coverage Start",
-            "validators": "ignore_missing",
-            "classes": [
-                "col-md-6 view-list"
-            ],
-            "form_snippet": "geokur_date.html",
-            "form_placeholder": ""
-        },
-        {
-            "field_name": "temporal_end",
-            "label": "Temporal Coverage End",
-            "validators": "ignore_missing",
-            "classes": [
-                "col-md-6 no-padding"
-            ],
-            "form_snippet": "geokur_date.html",
-            "form_placeholder": ""
         },
         {
             "field_name": "theme",
@@ -250,35 +205,48 @@
             ]
         },
         {
-            "field_name": "documentation",
-            "label": "Documentation",
-            "help_text": "eg. link to publication",
-            "preset": "link_single"
-        },
-        {
-            "field_name": "is_version_of",
-            "label": "Is Version of",
-            "help_text": "Insert according dataset's Identifier. A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format.",
-            "preset": "dataset_single"
-        },
-        {
-            "field_name": "url",
-            "label": "Landing Page",
-            "help_text": "links to project website or dataset's page",
-            "preset": "link_single"
-        },
-        {
-            "field_name": "alternate_identifier",
-            "label": "Dataset DOI",
-            "from_placeholder": "insert DOI of the dataset if available",
-            "help_text": "e.g. https://doi.org/10.7283/T5MW2F2D",
-            "preset": "link_single"
-        },
-        {
-            "field_name": "related_resource",
-            "label": "Related Resource",
-            "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
-            "preset": "dataset_single"
+            "field_name": "spatial",
+            "label": "Spatial Coverage",
+            "help_text": "Draw and edit the dataset extent as rectangles on the map, or paste a GeoJSON Polygon or Multipolygon geometry below, or create a bounding box from coordinates",
+            "display_property": "dcat:Dataset/dct:spatial",
+            "form_placeholder": "Paste a valid GeoJSON geometry",
+            "form_snippet": "geokur_spatial.html",
+            "display_snippet": "json.html",
+            "validators": "not_empty scheming_valid_json_object",
+            "choices": [
+                {
+                    "label": "Germany",
+                    "value": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [
+                                        5.44921875,
+                                        47.15236927446393
+                                    ],
+                                    [
+                                        5.44921875,
+                                        54.87028529268185
+                                    ],
+                                    [
+                                        15.468749999999998,
+                                        54.87028529268185
+                                    ],
+                                    [
+                                        15.468749999999998,
+                                        47.15236927446393
+                                    ],
+                                    [
+                                        5.44921875,
+                                        47.15236927446393
+                                    ]
+                                ]
+                            ]
+                        ]
+                    }
+                }
+            ]
         },
         {
             "field_name": "conforms_to",
@@ -326,11 +294,43 @@
             "help_text": "In meters: This property refers to the minimum spatial separation resolvable in a Dataset, measured in metres.\nAs angular scale: Spatial resolution expressed as equivalent scale [ISO-19115], [ISO-19115-1], by using a representative fraction (e.g., 1:1,000, 1:1,000,000).\nAs angular distance: Spatial resolution expressed as angular distance [ISO-19115-1], by using a decimal degree.\nAs vertical distance: Spatial resolution expressed as vertical distance [ISO-19115-1]."
         },
         {
+            "field_name": "temporal_start",
+            "label": "Temporal Coverage Start",
+            "validators": "ignore_missing",
+            "classes": [
+                "col-md-6 view-list"
+            ],
+            "form_snippet": "geokur_date.html",
+            "form_placeholder": ""
+        },
+        {
+            "field_name": "temporal_end",
+            "label": "Temporal Coverage End",
+            "validators": "ignore_missing",
+            "classes": [
+                "col-md-6 no-padding"
+            ],
+            "form_snippet": "geokur_date.html",
+            "form_placeholder": ""
+        },
+        {
             "field_name": "temporal_resolution",
             "label": "Temporal Resolution",
             "validators": "ignore_missing unicode",
             "form_placeholder": "",
             "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' descibes a period of 1 day"
+        },
+        {
+            "field_name": "is_version_of",
+            "label": "Is Version of",
+            "help_text": "Insert according dataset's Identifier. A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format.",
+            "preset": "dataset_single"
+        },
+        {
+            "field_name": "related_resource",
+            "label": "Parent Dataset",
+            "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
+            "preset": "dataset_single"
         },
         {
             "field_name": "was_derived_from",
