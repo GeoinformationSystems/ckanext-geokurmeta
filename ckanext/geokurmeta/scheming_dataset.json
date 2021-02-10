@@ -327,9 +327,9 @@
             "preset": "dataset_single"
         },
         {
-            "field_name": "related_resource",
+            "field_name": "is_part_of",
             "label": "Parent Dataset",
-            "help_text": "A resource with an unspecified relationship to the cataloged item. https://www.w3.org/TR/vocab-dcat-2/#Property:resource_relation",
+            "help_text": "A related resource in which the described resource is physically or logically included (https://dublincore.org/specifications/dublin-core/dcmi-terms/#isPartOf).",
             "preset": "dataset_single"
         },
         {
