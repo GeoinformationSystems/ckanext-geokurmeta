@@ -30,7 +30,6 @@
         },
         {
             "field_name": "contact_name",
-            "validators": "not_empty",
             "label": "Contact Point - Name",
             "form_placeholder": "Person or Organization"
         },
