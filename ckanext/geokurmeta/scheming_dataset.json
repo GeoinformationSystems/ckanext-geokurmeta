@@ -61,7 +61,8 @@
         },
         {
             "field_name": "theme",
-            "label": "Theme / Category",
+            "label": "Theme / Category",            
+            "validators": "not_empty",
             "help_text": "Provide links to descriptions of the themes; separate by comma. E.g.: http://inspire.ec.europa.eu/theme/ad, http://inspire.ec.europa.eu/theme/au.",
             "preset": "link_list"     
         },
@@ -72,7 +73,7 @@
             "display_property": "dcat:Dataset/dct:spatial",
             "form_placeholder": "Paste a valid GeoJSON geometry",
             "form_snippet": "geokur_spatial.html",
-            "display_snippet": "json.html",
+            "display_snippet": "not_empty json.html",
             "validators": "scheming_valid_json_object",
             "choices": [
                 {
