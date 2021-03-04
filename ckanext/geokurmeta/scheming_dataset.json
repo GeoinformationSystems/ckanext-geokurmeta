@@ -182,16 +182,19 @@
             "field_name": "absolute_external_positional_accuracy",
             "label": "Absolute External Positional Accuracy",
             "help_text": "Closeness of reported coordinate values to values accepted as or being true",
+            "required_if_value_in": "aepa_ground_truth",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-4 view-list"
+                "col-md-5 view-list"
             ]
         },
         {
             "field_name": "aepa_ground_truth",
             "label": "Measured Against",
             "required_if_value_in": "absolute_external_positional_accuracy",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-8 no-padding"
+                "col-md-7 no-padding"
             ],
             "preset": "link_single",
             "help_text": "Dataset against which the quality value is measured."
