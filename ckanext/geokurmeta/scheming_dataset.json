@@ -176,7 +176,7 @@
             "label": "Temporal Resolution",
             "validators": "ignore_missing unicode",
             "form_placeholder": "",
-            "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' descibes a period of 1 day"
+            "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' describes a period of 1 day"
         },
         {
             "field_name": "absolute_external_positional_accuracy",
@@ -192,6 +192,132 @@
             "field_name": "aepa_ground_truth",
             "label": "Measured Against",
             "required_if_value_in": "absolute_external_positional_accuracy",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "gridded_data_positional_accuracy",
+            "label": "Gridded Data Positional Accuracy",
+            "help_text": "Closeness of gridded data position values to values accepted as or being true",
+            "required_if_value_in": "gdpa_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "gdpa_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "gridded_data_positional_accuracy",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "thematic_classification_correctness",
+            "label": "Thematic Classification Correctness",
+            "help_text": "Comparison of the classes assigned to features or their attributes to a universe of discourse",
+            "required_if_value_in": "tcc_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "tcc_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "thematic_classification_correctness",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "quantitative_attribute_accuracy",
+            "label": "Quantitative Attribute Accuracy",
+            "help_text": "Accuracy of quantitative attributes",
+            "required_if_value_in": "qaa_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "qaa_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "quantitative_attribute_accuracy",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "commission",
+            "label": "Commission",
+            "help_text": "Excess data present in the data set, as  described by the scope",
+            "required_if_value_in": "c_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "c_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "commission",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "omission",
+            "label": "Omission",
+            "help_text": "Data absent from the data set, as described by the scope",
+            "required_if_value_in": "o_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "o_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "omission",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-7 no-padding"
+            ],
+            "preset": "link_single",
+            "help_text": "Dataset against which the quality value is measured."
+        },
+        {
+            "field_name": "representativity",
+            "label": "Representativity",
+            "help_text": "Trustworthiness of a data quality result",
+            "required_if_value_in": "r_ground_truth",
+            "validators": "geokurmeta_check_required_field",
+            "classes": [
+                "col-md-5 view-list"
+            ]
+        },
+        {
+            "field_name": "r_ground_truth",
+            "label": "Measured Against",
+            "required_if_value_in": "representativity",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
