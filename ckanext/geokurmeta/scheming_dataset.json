@@ -205,7 +205,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -248,7 +248,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -291,7 +291,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -334,7 +334,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -377,7 +377,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -420,7 +420,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
@@ -463,7 +463,7 @@
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
-                "col-md-5 no-padding"
+                "col-md-5 view-list"
             ],
             "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
