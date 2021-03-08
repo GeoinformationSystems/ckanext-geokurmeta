@@ -196,7 +196,7 @@
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -207,7 +207,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -235,11 +234,11 @@
             "field_name": "gdpa_source",
             "label": "Quality Information Source",
             "required_if_value_in": "gridded_data_positional_accuracy",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -250,7 +249,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -278,11 +276,11 @@
             "field_name": "tcc_source",
             "label": "Quality Information Source",
             "required_if_value_in": "thematic_classification_correctness",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -293,7 +291,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -321,11 +318,11 @@
             "field_name": "qaa_source",
             "label": "Quality Information Source",
             "required_if_value_in": "quantitative_attribute_accuracy",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -336,7 +333,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -364,11 +360,11 @@
             "field_name": "c_source",
             "label": "Quality Information Source",
             "required_if_value_in": "commission",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -379,7 +375,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -407,11 +402,11 @@
             "field_name": "o_source",
             "label": "Quality Information Source",
             "required_if_value_in": "omission",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -422,7 +417,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
@@ -450,11 +444,11 @@
             "field_name": "r_source",
             "label": "Quality Information Source",
             "required_if_value_in": "representativity",
-            "validators": "link_list geokurmeta_check_required_field",
+            "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
             ],
-            "preset": "link_single",
+            "preset": "link_list",
             "help_text": "Provide the source of the quality information by a list of links separated by comma."
         },
         {
@@ -465,7 +459,6 @@
             "classes": [
                 "col-md-5 view-list"
             ],
-            "preset": "link_single",
             "help_text": "Ground truth value of the quality information."
         },
         {
