@@ -212,7 +212,7 @@
         },
         {
             "field_name": "aepa_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "absolute_external_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -255,7 +255,7 @@
         },
         {
             "field_name": "gdpa_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "gridded_data_positional_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -298,7 +298,7 @@
         },
         {
             "field_name": "tcc_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "thematic_classification_correctness",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -341,7 +341,7 @@
         },
         {
             "field_name": "qaa_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "quantitative_attribute_accuracy",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -384,7 +384,7 @@
         },
         {
             "field_name": "c_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "commission",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -427,7 +427,7 @@
         },
         {
             "field_name": "o_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "omission",
             "validators": "geokurmeta_check_required_field",
             "classes": [
@@ -470,7 +470,7 @@
         },
         {
             "field_name": "r_ground_truth",
-            "label": "Measured Against",
+            "label": "Ground Truth Dataset",
             "required_if_value_in": "representativity",
             "validators": "geokurmeta_check_required_field",
             "classes": [
