@@ -470,7 +470,7 @@
                 "col-md-7 no-padding"
             ],
             "preset": "link_single",
-            "help_text": "Dataset against which the quality value is measured."
+            "help_text": "Dataset against which the quality value is measured. Provide as link to the dataset."
         },
         {
             "field_name": "is_version_of",
