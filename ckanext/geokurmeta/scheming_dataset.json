@@ -179,10 +179,10 @@
             "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' describes a period of 1 day"
         },
         {
-            "field_name": "absolute_external_positional_accuracy",
+            "field_name": "aepa",
             "label": "Absolute External Positional Accuracy",
             "help_text": "Closeness of reported coordinate values to values accepted as or being true",
-            "required_if_value_in": "aepa_ground_truth",
+            "required_if_value_in": "aepa_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -191,7 +191,7 @@
         {
             "field_name": "aepa_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "absolute_external_positional_accuracy",
+            "required_if_value_in": "aepa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -202,7 +202,7 @@
         {
             "field_name": "aepa_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "absolute_external_positional_accuracy",
+            "required_if_value_in": "aepa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -210,9 +210,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "aepa_ground_truth",
+            "field_name": "aepa_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "absolute_external_positional_accuracy",
+            "required_if_value_in": "aepa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -221,10 +221,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "gridded_data_positional_accuracy",
+            "field_name": "gdpa",
             "label": "Gridded Data Positional Accuracy",
             "help_text": "Closeness of gridded data position values to values accepted as or being true",
-            "required_if_value_in": "gdpa_ground_truth",
+            "required_if_value_in": "gdpa_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -233,7 +233,7 @@
         {
             "field_name": "gdpa_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "gridded_data_positional_accuracy",
+            "required_if_value_in": "gdpa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -244,7 +244,7 @@
         {
             "field_name": "gdpa_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "gridded_data_positional_accuracy",
+            "required_if_value_in": "gdpa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -252,9 +252,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "gdpa_ground_truth",
+            "field_name": "gdpa_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "gridded_data_positional_accuracy",
+            "required_if_value_in": "gdpa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -263,10 +263,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "thematic_classification_correctness",
+            "field_name": "tcc",
             "label": "Thematic Classification Correctness",
             "help_text": "Comparison of the classes assigned to features or their attributes to a universe of discourse",
-            "required_if_value_in": "tcc_ground_truth",
+            "required_if_value_in": "tcc_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -275,7 +275,7 @@
         {
             "field_name": "tcc_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "thematic_classification_correctness",
+            "required_if_value_in": "tcc",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -286,7 +286,7 @@
         {
             "field_name": "tcc_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "thematic_classification_correctness",
+            "required_if_value_in": "tcc",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -294,9 +294,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "tcc_ground_truth",
+            "field_name": "tcc_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "thematic_classification_correctness",
+            "required_if_value_in": "tcc",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -305,10 +305,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "quantitative_attribute_accuracy",
+            "field_name": "qaa",
             "label": "Quantitative Attribute Accuracy",
             "help_text": "Accuracy of quantitative attributes",
-            "required_if_value_in": "qaa_ground_truth",
+            "required_if_value_in": "qaa_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -317,7 +317,7 @@
         {
             "field_name": "qaa_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "quantitative_attribute_accuracy",
+            "required_if_value_in": "qaa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -328,7 +328,7 @@
         {
             "field_name": "qaa_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "quantitative_attribute_accuracy",
+            "required_if_value_in": "qaa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -336,9 +336,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "qaa_ground_truth",
+            "field_name": "qaa_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "quantitative_attribute_accuracy",
+            "required_if_value_in": "qaa",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -347,10 +347,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "commission",
+            "field_name": "c",
             "label": "Commission",
             "help_text": "Excess data present in the data set, as  described by the scope",
-            "required_if_value_in": "c_ground_truth",
+            "required_if_value_in": "c_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -359,7 +359,7 @@
         {
             "field_name": "c_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "commission",
+            "required_if_value_in": "c",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -370,7 +370,7 @@
         {
             "field_name": "c_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "commission",
+            "required_if_value_in": "c",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -378,9 +378,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "c_ground_truth",
+            "field_name": "c_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "commission",
+            "required_if_value_in": "c",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -389,10 +389,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "omission",
+            "field_name": "o",
             "label": "Omission",
             "help_text": "Data absent from the data set, as described by the scope",
-            "required_if_value_in": "o_ground_truth",
+            "required_if_value_in": "o_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -401,7 +401,7 @@
         {
             "field_name": "o_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "omission",
+            "required_if_value_in": "o",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -412,7 +412,7 @@
         {
             "field_name": "o_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "omission",
+            "required_if_value_in": "o",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -420,9 +420,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "o_ground_truth",
+            "field_name": "o_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "omission",
+            "required_if_value_in": "o",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -431,10 +431,10 @@
             "help_text": "Dataset against which the quality value is measured."
         },
         {
-            "field_name": "representativity",
+            "field_name": "r",
             "label": "Representativity",
             "help_text": "Trustworthiness of a data quality result",
-            "required_if_value_in": "r_ground_truth",
+            "required_if_value_in": "r_ground_truth_dataset",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -443,7 +443,7 @@
         {
             "field_name": "r_source",
             "label": "Quality Information Source",
-            "required_if_value_in": "representativity",
+            "required_if_value_in": "r",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
@@ -454,7 +454,7 @@
         {
             "field_name": "r_ground_truth_value",
             "label": "Ground Truth Value",
-            "required_if_value_in": "representativity",
+            "required_if_value_in": "r",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-5 view-list"
@@ -462,9 +462,9 @@
             "help_text": "Ground truth value of the quality information."
         },
         {
-            "field_name": "r_ground_truth",
+            "field_name": "r_ground_truth_dataset",
             "label": "Ground Truth Dataset",
-            "required_if_value_in": "representativity",
+            "required_if_value_in": "r",
             "validators": "geokurmeta_check_required_field",
             "classes": [
                 "col-md-7 no-padding"
