@@ -544,6 +544,10 @@
                 {
                     "value": "https://geokur-dmp.geo.tu-dresden.de/pages/geospatial-categories-register#statistics",
                     "label": "Statistics"
+                },
+                {
+                    "value": "None",
+                    "label": "None"
                 }
             ]
         },
