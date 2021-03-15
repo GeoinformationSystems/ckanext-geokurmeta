@@ -505,7 +505,7 @@
             "field_name": "process_type",
             "label": "Geospatial Process Category",
             "help_text": "Select one or more fitting categories; for category descriptions see: https://geokur-dmp.geo.tu-dresden.de/pages/geospatial-categories-register",
-            "preset": "multiple_checkbox",
+            "preset": "multiple_checkbox scheming_multiple_choice",
             "required_if_value_in": "was_derived_from",
             "validators": "geokurmeta_check_required_field",
             "choices": [
