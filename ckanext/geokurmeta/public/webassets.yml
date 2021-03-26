@@ -18,6 +18,14 @@ spatial_form:
     - vendor/common_map.js
     - spatial_form.js
 
+select_from_json:
+  output: ckanext-geokurmeta/%(version)s_select_from_json.js  
+  extra:
+    preload:
+      - base/main
+  contents:
+    - select_from_json.js
+
 spatial_form_css:
   output: ckanext-geokurmeta/%(version)s_spatial_form.css
   filters: cssrewrite
