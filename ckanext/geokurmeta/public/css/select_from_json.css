@@ -1,0 +1,28 @@
+.metrics-block {
+	border: 1px solid #ccc;
+	border-radius:4px;
+	padding: 20px;
+	padding-top:10px;
+	margin-top:10px;
+}
+
+.metrics-block label {
+	border-bottom: 1px solid #ebebeb;
+}
+.tiny-metrics-url {
+	font-size: 0.7em;
+	color:#aaa;
+}
+
+.input-group-row {
+	display:table-row;
+}
+
+.input-group-addon {
+    padding: 5px 12px;
+	text-align: right;
+}
+
+.input-group input {
+	width:100%;
+}
