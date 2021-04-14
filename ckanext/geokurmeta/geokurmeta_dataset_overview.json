@@ -1,5 +1,5 @@
 {
-    "scheming_version": 1,
+    "scheming_version": 2,
     "dataset_type": "dataset",
     "about": "CKAN dataset schema with all possible form parts",
     "about_url": "http://github.com/ckan/ckanext-scheming",
@@ -7,124 +7,85 @@
         {
             "field_name": "title",
             "label": "CKAN Default: Title",
-			"validators": "if_empty_same_as(name) unicode",
-			"form_snippet": "large_text.html",
-			"form_attrs": {
-				"data-module": "slug-preview-target"
-			}
+			"preset": "title"
         },
         {
             "field_name": "name",
             "label": "CKAN Default: Identifier",
-            "validators": "not_empty unicode name_validator package_name_validator",
-			"form_snippet": "slug.html"
+            "preset": "name"
         },
 		{
             "field_name": "tag_string",
             "label": "CKAN Default: Keywords",
-            "validators": "ignore_missing tag_string_convert",
-			"form_snippet": "geokur_keywords.html",
-			"form_attrs": {
-				"data-module": "autocomplete",
-				"data-module-tags": "",
-				"data-module-source": "/api/2/util/tag/autocomplete?incomplete=?"
-			}
+            "preset": "tags"
         },
         {
             "field_name": "notes",
             "label": "CKAN Default: Description",
-            "form_snippet": "markdown.html"
+            "preset": "notes"
         },
         {
             "field_name": "exfield_01",
             "label": "Textarea with markdown",
-            "form_snippet": "markdown.html",
-			"display_snippet": "markdown.html"
+            "preset": "textarea_markdown"
         },
         {
             "field_name": "exfield_02",
 			"label": "Textinput mandatory",
-            "validators": "not_empty"
+            "preset": "textinput_mandatory"
         },
         {
-            "field_name": "exfield_03",
+            "field_name": "exfield_03-1",
             "label": "Single link",
-            "validators": "ignore_missing unicode remove_whitespace single_link_validator",
-			"display_property": "foaf:homepage",
-			"display_snippet": "link.html"
+            "preset": "single_link"
         },
         {
-            "field_name": "exfield_04",
+            "field_name": "exfield_03-2",
             "label": "Multiple links comma separated",
-            "validators": "ignore_missing unicode remove_whitespace link_list_string_convert",
-			"display_property": "foaf:homepage",
-			"display_snippet": "list_link.html"
+            "preset": "multi_link"
         },
         {
             "field_name": "exfield_05",
             "label": "Spatial extent as GeoJSON",
-			"validators": "scheming_valid_json_object",
-            "form_snippet": "geokur_spatial.html",
-            "display_snippet": "json.html"
+			"preset": "spatial_extent"
         },
         {
             "field_name": "exfield_06",
             "label": "Require neigboring field",
-            "required_if_value_in": "exfield_07",
-            "classes": [ "col-md-4 view-list" ],
-            "validators": "ignore_missing unicode spatial_resolution_validator geokurmeta_check_required_field"
+			"required_if_value_in": "exfield_07",
+			"preset": "spatial_resolution"
+            
         },
         {
             "field_name": "exfield_07",
             "label": "Drop down with fixed values",
             "required_if_value_in": "exfield_06",
-            "classes": [ "col-md-8 no-padding" ],
-			"form_snippet": "geokur_select.html",
-            "display_snippet": "select.html",
-			"validators": "ignore_missing unicode geokurmeta_scheming_choices geokurmeta_check_required_field",
-            "choices": [
-                {
-                    "value": "meters",
-                    "label": "In meters"
-                },
-                {
-                    "value": "scale",
-                    "label": "As scale"
-                },
-                {
-                    "value": "angular",
-                    "label": "As angular distance"
-                }
-            ]
+            "preset": "spatial_resolution_type"
         },
         {
             "field_name": "exfield_08",
             "label": "Date: Temporal Coverage Start",
-            "validators": "ignore_missing unicode",
-            "classes": [ "col-md-6 view-list" ],
-            "form_snippet": "geokur_date.html"
+			"preset": "date_range_start"
+
         },
         {
             "field_name": "exfield_09",
             "label": "Date: Temporal Coverage End",
-            "validators": "ignore_missing unicode",
-            "classes": [ "col-md-6 no-padding" ],
-            "form_snippet": "geokur_date.html"
+			"preset": "date_range_end"
         },
         {
-            "field_name": "exfield_10",
+            "field_name": "exfield_10-1",
             "label": "Single dataset reference",
-            "validators": "ignore_missing unicode if_not_missing_package_id_or_name_exists",
-			"display_property": "foaf:homepage",
-			"display_snippet": "link.html"
+            "preset": "single_dataset_ref"
+        },
+		{
+            "field_name": "exfield_10-2",
+            "label": "Multiple dataset reference comma separated",
+            "preset": "multi_dataset_ref"
         },
         {
             "field_name": "exfield_11",
             "label": "Multiple Checkbox",
-			"validators": "scheming_multiple_choice",
-			"output_validators": "scheming_multiple_choice_output",
-			"form_snippet": "multiple_checkbox.html",
-			"display_snippet": "multiple_choice.html",
             "choices": [
                 {
                     "value": "https://geokur-dmp.geo.tu-dresden.de/pages/geospatial-categories-register#selection",
@@ -134,21 +95,18 @@
                     "value": "https://geokur-dmp.geo.tu-dresden.de/pages/geospatial-categories-register#transformation",
                     "label": "Transformation"
                 }
-            ]
+            ],
+			"preset": "multiple_choice"
         },
         {
             "field_name": "exfield_12",
-            "label": "Select values from json",
-            "form_snippet": "select_from_json.html",
-			"form_attrs": {
-                "data-module": "select-from-json"
-            }
+            "label": "Select metrics from Fuseki",
+            "preset": "select_metrics"
         },
         {
             "field_name": "owner_org",
             "label": "Default: Organization",
-            "validators": "unicode owner_org_validator",
-			"form_snippet": "organization.html"
+            "preset": "owner_org"
         }
     ],
     "resource_fields": [
@@ -175,7 +133,7 @@
             "field_name": "format",
             "label": "CKAN Default: Format",
             "validators": "if_empty_guess_format ignore_missing clean_format unicode",
-			"form_snippet": "geokur_keywords.html",
+			"form_snippet": "fixed_autocomplete.html",
 			"form_placeholder": "eg. CSV, XML or JSON",
 			"form_attrs": {
 				"data-module": "autocomplete",
