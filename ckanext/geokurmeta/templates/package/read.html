@@ -1,8 +1,12 @@
 {% ckan_extends %}
 
 {% block primary_content_inner %}
-<button class="btn btn-primary" onclick="getProvenance()">Dataset Provenance</button>
-
+<button class="btn btn-primary" value="{{pkg_dict.get('id')}}"" onclick=" getProvenance()">Dataset Provenance</button>
+<!-- <script>
+    function getProvenance() {
+        window.location = "http://localhost:8080/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/{{pkg_dict.get('id')}}";
+    };
+</script> -->
 {{pkg_dict.get('id')}}
 
 {{ super() }}
