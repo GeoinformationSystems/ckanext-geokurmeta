@@ -5,12 +5,12 @@
     Provenance</button>
 <script>
     function getProvenance() {
-        let location = "http://localhost:8080/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/" + document.getElementById("provenance-btn").value;
-        console.log(location)
+        let location = "https://geokur-dmp2.geo.tu-dresden.de/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/" + document.getElementById("provenance-btn").value;
+        //console.log(location)
         window.location = location;
     };
 </script>
-{{pkg_dict.get('id')}}
+<!-- {{pkg_dict.get('id')}} -->
 
 {{ super() }}
 {% endblock %}
