@@ -2,12 +2,8 @@
 
 {% block primary_content_inner %}
 <button class="btn btn-primary" onclick="getProvenance()">Dataset Provenance</button>
-{{schema.dataset_fields['id']}
+
 {{schema.dataset_fields}}
-<script>
-    function getProvenance() {
-        window.location = "http://localhost:8080/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/{{schema.dataset_fields['id']}}";
-    }
-</script>
+
 {{ super() }}
 {% endblock %}
