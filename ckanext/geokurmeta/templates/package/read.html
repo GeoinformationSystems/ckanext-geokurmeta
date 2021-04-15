@@ -1,11 +1,11 @@
 {% ckan_extends %}
 
 {% block primary_content_inner %}
-<input class="btn btn-primary" id="getProvenance" value="Dataset Provenance">
+<button class="btn btn-primary" onclick="getProvenance()">Dataset Provenance</button>
 <script>
-    $("#getProvenance").bind("click", function () {
+    function getProvenance() {
         window.location = "http://localhost:8080/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/26eb743c-7ec9-4a02-be47-7ca06aacb9c7";
-    });
+    }
 </script>
 {{ super() }}
 {% endblock %}
