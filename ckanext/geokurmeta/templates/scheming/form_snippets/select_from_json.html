@@ -31,23 +31,15 @@
 	<button id="{{ id }}-btn" class="btn btn-default btn-sm">Add</button>
 	<div id="{{ id }}-div"></div>
 	
-	<textarea class="form-control" 
-			id="{{ id }}"
-			name="{{ name }}"  
-			rows=5 
-			style="width:100%;">{{ value | empty_and_escape }}</textarea>	
+	<input 
+		type="hidden"	
+		class="form-control" 
+		id="{{ id }}"
+		name="{{ name }}"  
+		rows=5 
+		style="width:100%; margin-top:10px"
+		value="{{ value | empty_and_escape }}" />
 	
-
-	
-	<!-- <div id="{{ id }}-template" class="metrics-block"> -->
-		<!-- <label>blubb</label> -->
-		<!-- <div class="input-group"> -->
-			<!-- <div class="input-group-row"><span class="input-group-addon">value</span><input type="text" /></div> -->
-			<!-- <div class="input-group-row"><span class="input-group-addon">information source</span><input type="text" /></div> -->
-			<!-- <div class="input-group-row"><span class="input-group-addon">ground truth value</span><input type="text" /></div> -->
-			<!-- <div class="input-group-row"><span class="input-group-addon">ground truth dataset</span><input type="text" /></div> -->
-		<!-- </div> -->
-	<!-- </div> -->
 	{%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 	{% asset 'ckanext-geokurmeta/select_from_json' %}
 	

@@ -170,13 +170,14 @@
             "preset_name": "select_metrics",
             "values": {
 				"validators": "ignore_missing unicode",
+				"display_snippet": "metric_blocks.html",
 				"form_snippet": "select_from_json.html",
 				"form_attrs": {
 					"data-module": "select-from-json",
 					"data-module-mode": "sparql",
 					"data-module-sublabels": "value|information source|ground truth value|ground truth dataset",
 					"data-module-source": "https://geokur-dmp2.geo.tu-dresden.de/fuseki/data_quality_elements/query",
-					"data-module-query": "PREFIX dqv: <http://www.w3.org/ns/dqv#> PREFIX skos: <http://www.w3.org/2004/02/skos/core#> SELECT ?subject ?definition WHERE { ?subject a dqv:Metric . ?subject skos:definition ?definition . }"
+					"data-module-query": "PREFIX dqv: <http://www.w3.org/ns/dqv#> PREFIX skos: <http://www.w3.org/2004/02/skos/core#>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>PREFIX gkq: <https://geokur-dmp.geo.tu-dresden.de/pages/quality-elements#>SELECT ?subject ?label ?datatype WHERE {   ?subject a dqv:Metric .  ?subject skos:prefLabel ?label .  ?subject dqv:expectedDataType ?datatype . }"
 				}
             }
         },

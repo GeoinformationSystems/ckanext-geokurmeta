@@ -36,6 +36,7 @@ this.ckan.module('select-from-json', function (jQuery, _) {
 				'Accept': 'application/sparql-results+json'
 			}
 		});
+		console.log(url);
 		return response.json(); // parses JSON response into native JavaScript objects
 	},
 	
@@ -51,18 +52,18 @@ this.ckan.module('select-from-json', function (jQuery, _) {
 	
 	handleDataSparql: function(data = null) {
 		for (var i = 0; i < data.results.bindings.length; i++){
-			var label = data.results.bindings[i].subject.value.split("#")[1].replace(/([A-Z])/g, ' $1');
+			// var label = data.results.bindings[i].subject.value.split("#")[1].replace(/([A-Z])/g, ' $1');
 			if(data.results.bindings[i].subject.value == this.options.selected) {
 				$(this.el[0]).append($('<option>', { 
 					value: data.results.bindings[i].subject.value,
-					text : label,
+					text : data.results.bindings[i].label.value,
 					selected : 'selected'
 				}));
 			}
 			else {
 				$(this.el[0]).append($('<option>', { 
 					value: data.results.bindings[i].subject.value,
-					text : label 
+					text : data.results.bindings[i].label.value 
 				}));
 			}
 		};
@@ -93,52 +94,56 @@ this.ckan.module('select-from-json', function (jQuery, _) {
 
 		var createBlock = function(url, values){
 			
-			var $block = $("<div>", {"class": "metrics-block"});
-			$block.append('<label>' + url.split("#")[1].replace(/([A-Z])/g, ' $1') + '</label>');
+			// Create blocks default elements
+			var $block = $("<div>", {"class": "metrics-block", "id": "block-" + url.split("#")[1] });
+			$block.append("<label>" + metrics[url].label + '</label>');
+			$block.append('<a remove="' + url + '" class="btn btn-default btn-sm pull-right">Remove</a>' );
 			$block.append('<p class="tiny-metrics-url">' + url + '</p>');
 			
-			var $inputs = $("<div>", {"class": "input-group"});
+			var $inputs = $('<div>', {"class": "input-group"});
 			for(var value in values) {
 				$inputs.append('<div class="input-group-row"><span class="input-group-addon">' + value + '</span><input name="' + url + '" type="text" value="' + values[value] + '" /></div>');
 			}
-			console.log($inputs);
-			//TODO: hier weiter
-			$inputs.children().on('input', function (e) {
-				metrics[$(e.target).attr("name")][$(e.currentTarget).find('span').text()] = $(e.target).val();
-				// console.log(metrics);
+
+			// Set event handler to all inputs in current block
+			$inputs.children().on("input", function (e) {
+				metrics[$(e.target).attr("name")].values[$(e.currentTarget).find('span').text()] = $(e.target).val();
+				$(input).val( JSON.stringify(metrics) );
+				console.log(metrics);
+			});
+			// Set event handler to remove button in current block
+			$block.find( "a" ).on("click", function (e) {
+				var urlValue = $(e.target).attr("remove")
+				console.log(urlValue)
+				$("#block-" + urlValue.split("#")[1]).remove();
+				delete metrics[urlValue];
 				$(input).val( JSON.stringify(metrics) );
 			});
 			$block.append( $inputs );
 			$(divMain).append( $block );
-	
 		};
 		
-		var getEmptySubMetric = function(){
+		var getEmptySubMetric = function(label){
 			var subLabels = options.sublabels.split("|");
+			var subValues = {};
 			var result = {};
 			
 			for(var i = 0; i < subLabels.length; i++) {
-				result[subLabels[i]] = "";
+				subValues[subLabels[i]] = "";
 			}
+			result['label'] = label;
+			result['values'] = subValues;
 			
 			return result;
 		};
-		
-		
-		
+
 		
 		if(this.el.data('metrics_data')) {
 			metrics = this.el.data('metrics_data');
 			for (var metric in metrics) {
-				createBlock(metric, metrics[metric]);
+				createBlock(metric, metrics[metric].values);
 			}
 		}
-			
-		// $(".metrics-block :input").on('focusout', function (e) {
-			// console.log(e);
-		// });
-		
-		// console.log($(".metrics-block :input"));
 		
 		$(btn).on('click', function (e) {
 			e.preventDefault(); 
@@ -147,10 +152,11 @@ this.ckan.module('select-from-json', function (jQuery, _) {
 			{
 				// createBlock($(sel).children("option").filter(":selected").text(), $(sel).val());
 				
-				metrics[$(sel).val()] = getEmptySubMetric() ;
+				metrics[$(sel).val()] = getEmptySubMetric(sel.options[sel.selectedIndex].text) ;
 
+				console.log(sel.options[sel.selectedIndex].text);
 				// console.log(metrics)
-				createBlock($(sel).val(), metrics[$(sel).val()]);
+				createBlock($(sel).val(), metrics[$(sel).val()].values);
 				//metrics.name = $(sel).children("option").filter(":selected").text()
 				//metrics.value = $(sel).val()
 				//metrics[$(sel).val()] = {"value1":"blubb","value2":"blubbi","value3":"blubb","value4":"blubbi"};

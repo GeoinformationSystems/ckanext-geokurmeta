@@ -112,7 +112,7 @@
         },
         {
             "field_name": "quality_metrics",
-            "label": "Select metrics from Fuseki",
+            "label": "Data Quality Metric",
             "preset": "select_metrics"
         },
         {

@@ -14,6 +14,7 @@ from ckanext.geokurmeta.validation import (
 
 from ckanext.geokurmeta.helpers import (
     get_link_list,
+    get_json_as_dict,
 )
 
 
@@ -38,6 +39,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     def get_helpers(self):
         return {
             'get_link_list': get_link_list,
+            'get_json_as_dict': get_json_as_dict,
             }    
     
     def is_fallback(self):
