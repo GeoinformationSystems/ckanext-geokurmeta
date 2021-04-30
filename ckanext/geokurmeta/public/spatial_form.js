@@ -149,7 +149,7 @@ this.ckan.module('spatial-form', function (jQuery, _) {
 			else {
 				var aInput = $(input).parent().find('.popover-content input')[0];
 				var bInput = $(input).parent().find('.popover-content input')[1];
-				console.log(aInput.value);
+				//console.log(aInput.value);
 				var a = aInput.value.replace(/ /g, '');
 				var b = bInput.value.replace(/ /g, '');
 				

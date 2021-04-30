@@ -1,11 +1,4 @@
-coordinates_to_json:
-  output: ckanext-geokurmeta/%(version)s_geokurmeta_coordinates_to_json.js           
-  extra:
-    preload:
-      - base/main
-  contents:
-    - geokurmeta_coordinates_to_json.js
-    
+  
 spatial_form:
   output: ckanext-geokurmeta/%(version)s_spatial_form.js  
   extra:
@@ -17,7 +10,7 @@ spatial_form:
     - vendor/leaflet.draw/leaflet.draw.js
     - vendor/common_map.js
     - spatial_form.js
-
+    
 spatial_form_css:
   output: ckanext-geokurmeta/%(version)s_spatial_form.css
   filters: cssrewrite
@@ -25,3 +18,18 @@ spatial_form_css:
     - vendor/leaflet/leaflet.css
     - vendor/leaflet.draw/leaflet.draw.css
     - vendor/spatial_query.css
+    
+select_from_json:
+  output: ckanext-geokurmeta/%(version)s_select_from_json.js  
+  extra:
+    preload:
+      - base/main
+      - ckanext-geokurmeta/select_from_json_css
+  contents:
+    - select_from_json.js
+
+select_from_json_css:
+  output: ckanext-geokurmeta/%(version)s_select_from_json.css  
+  filters: cssrewrite
+  contents:
+    - css/select_from_json.css
