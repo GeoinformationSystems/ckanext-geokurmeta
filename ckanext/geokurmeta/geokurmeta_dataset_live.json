@@ -30,9 +30,16 @@
         },
         {
             "field_name": "contact_name",
-            "label": "Contact Point - Name",
-            "preset": "textinput_mandatory",
+            "label": "Contact Point",
+            "required_if_value_in": "contact_class",
+            "preset": "contact_name",
             "form_placeholder": "Person or Organization"
+        },
+        {
+            "field_name": "contact_class",
+            "label": "Contact Class",
+            "required_if_value_in": "contact_name",
+            "preset": "contact_class"
         },
         {
             "field_name": "contact_uri",

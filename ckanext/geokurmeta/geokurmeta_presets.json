@@ -84,6 +84,36 @@
 			}
 		},
 		{
+			"preset_name": "contact_name",
+			"values": {
+				"classes": [
+					"col-md-4 view-list"
+				],
+				"validators": "not_emtpy unicode geokurmeta_check_required_field"
+			}
+		},
+		{
+			"preset_name": "contact_class",
+			"values": {
+				"classes": [
+					"col-md-8 no-padding"
+				],
+				"form_snippet": "fixed_select.html",
+				"display_snippet": "select.html",
+				"validators": "ignore_missing unicode geokurmeta_scheming_choices geokurmeta_check_required_field",
+				"choices": [
+					{
+						"value": "individual",
+						"label": "Individual"
+					},
+					{
+						"value": "organization",
+						"label": "Organization"
+					}
+				]
+			}
+		},
+		{
 			"preset_name": "spatial_resolution",
 			"values": {
 				"classes": [
