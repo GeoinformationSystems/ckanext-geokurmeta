@@ -89,7 +89,7 @@
 				"classes": [
 					"col-md-8 view-list"
 				],
-				"validators": "not_emtpy unicode geokurmeta_check_required_field"
+				"validators": "not_empty unicode geokurmeta_check_required_field"
 			}
 		},
 		{
