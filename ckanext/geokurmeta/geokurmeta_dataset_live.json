@@ -120,7 +120,8 @@
         {
             "field_name": "quality_metrics",
             "label": "Data Quality Metric",
-            "preset": "select_metrics"
+            "preset": "select_metrics",
+            "help_text": "Value of quality metric: Measured Value of the selected quality metric\n|confidence term|confidence value|thematic representativity|spatial representativity|temporal representativity|name of quality source|type of quality source|link to quality source"
         },
         {
             "field_name": "is_version_of",
