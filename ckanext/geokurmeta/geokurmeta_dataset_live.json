@@ -115,19 +115,19 @@
             "field_name": "temporal_resolution",
             "label": "Temporal Resolution",
             "preset": "textinput",
-            "help_text": "e.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' describes a period of 1 day"
+            "help_text": "E.g. 'P2Y3M20D' describes a period 2 years, 3 months and 20 days or 'P1D' describes a period of 1 day"
         },
         {
             "field_name": "quality_metrics",
             "label": "Data Quality Metric",
             "preset": "select_metrics",
-            "help_text": "Value of quality metric: Measured Value of the selected quality metric\n|confidence term|confidence value|thematic representativity|spatial representativity|temporal representativity|name of quality source|type of quality source|link to quality source"
+            "help_text": "Value of quality metric: Measured Value of the selected quality metric | Confidence term: Label of the confidence value of the selected quality metric, e.g. r value | Confidence value: According confidence threshold | Thematic representativity: Describes thematic aspects for which quality information is given | Spatial representativity: Describes region for which quality information is given | Temporal representativity: Describes time step or range for which quality information is given | Name of quality source: Name of the source of information of the selected quality metric | Type of quality source: Describes the origin of the quality information: data, report, scientific publication, Web site, other | Link to quality source: Web link to access the quality information source"
         },
         {
             "field_name": "is_version_of",
             "label": "Is Version of",
             "preset": "single_dataset_ref",
-            "help_text": "Insert according dataset's Identifier. A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format."
+            "help_text": "Insert according dataset's identifier. A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format."
         },
         {
             "field_name": "is_part_of",
