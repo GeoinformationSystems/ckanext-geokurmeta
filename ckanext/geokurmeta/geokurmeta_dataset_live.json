@@ -130,7 +130,7 @@
         },
         {
             "field_name": "is_part_of",
-            "label": "Parent Dataset",
+            "label": "Is Part of",
             "preset": "single_dataset_ref",
             "help_text": "A related resource in which the described resource is physically or logically included (https://dublincore.org/specifications/dublin-core/dcmi-terms/#isPartOf)."
         },
