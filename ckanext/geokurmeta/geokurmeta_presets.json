@@ -114,6 +114,12 @@
 			}
 		},
 		{
+			"preset_name": "textinput_required_if",
+			"values": {
+				"validators": "unicode geokurmeta_check_required_field"
+			}
+		},
+		{
 			"preset_name": "spatial_resolution",
 			"values": {
 				"classes": [
