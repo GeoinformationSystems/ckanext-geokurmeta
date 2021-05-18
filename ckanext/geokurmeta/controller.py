@@ -8,5 +8,5 @@ import ckan.lib.base as base
 
 class GeokurmetaController(base.BaseController):
 
-    def test(self):
+    def addProcess(self):
         return base.render('geokurmeta/addProcess.html')
