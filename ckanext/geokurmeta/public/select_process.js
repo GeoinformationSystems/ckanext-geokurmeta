@@ -60,7 +60,7 @@ this.ckan.module('select-process', function (jQuery, _) {
         },
 
         _onReady: function () {
-            var input = this.input;
+            var input = $("#" + this.options.field)[0];
             var btn = $("#" + this.options.field + "-btn")[0];
 
             $(this.el[0]).on("change", function () {
