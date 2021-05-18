@@ -231,7 +231,6 @@
 			"preset_name": "select_process",
 			"values": {
 				"validators": "ignore_missing unicode",
-				"display_snippet": "select_process.html",
 				"form_snippet": "select_process.html",
 				"form_attrs": {
 					"data-module": "select-process",
