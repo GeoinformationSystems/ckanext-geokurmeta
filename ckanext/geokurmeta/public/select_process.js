@@ -55,7 +55,8 @@ this.ckan.module('select-process', function (jQuery, _) {
                     }));
                 }
             };
-            $(input).val(data.results.bindings[i].subject.value);
+            console.log(data.results.bindings[i].subject.value);
+
         },
 
         _onReady: function () {
@@ -81,7 +82,8 @@ this.ckan.module('select-process', function (jQuery, _) {
 
             $(btn).on('click', function (e) {
                 e.preventDefault();
-
+                console.log($(sel.val()))
+                console.log($(input))
                 window.open(window.location.origin + "/add-process")
             });
 
