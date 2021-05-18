@@ -79,9 +79,8 @@ this.ckan.module('select-process', function (jQuery, _) {
 
             $(btn).on('click', function (e) {
                 e.preventDefault();
-                console.log(window.location.origin)
-                // go to add process page
-                // window.open(...)
+
+                window.open(window.location.origin + "/add-process")
             });
 
         }
