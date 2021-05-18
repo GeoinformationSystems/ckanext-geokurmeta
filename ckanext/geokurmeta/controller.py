@@ -9,4 +9,4 @@ import ckan.lib.base as base
 class GeokurmetaController(base.BaseController):
 
     def test(self):
-        return base.render('ckanext/geokurmeta/contentPage.html')
+        return base.render('contentPage.html')
