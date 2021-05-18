@@ -62,8 +62,8 @@ this.ckan.module('select-process', function (jQuery, _) {
         _onReady: function () {
             var input = this.input;
             var btn = $("#" + this.options.field + "-btn")[0];
-            $(input).val(JSON.stringify({ "type": "MultiPolygon" }));
-            console.log(input)
+            $(input).val("ttttt");
+            console.log($(input))
 
             if (this.options.mode = "sparql") {
                 var fullUrl = this.options.source + "?query=" + encodeURIComponent(this.options.query);
