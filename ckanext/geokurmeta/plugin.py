@@ -1,7 +1,6 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
-import routes.mapper
 import ckan.lib.base as base
 
 from ckanext.geokurmeta.validation import (
