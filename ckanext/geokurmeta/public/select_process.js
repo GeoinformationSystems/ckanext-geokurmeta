@@ -55,7 +55,7 @@ this.ckan.module('select-process', function (jQuery, _) {
                     }));
                 }
             };
-            console.log(data.results.bindings[i].subject.value);
+            console.log(data.results);
 
         },
 
