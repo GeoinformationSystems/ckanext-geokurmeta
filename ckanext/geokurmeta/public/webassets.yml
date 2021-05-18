@@ -35,7 +35,7 @@ select_process:
       - base/main
       - ckanext-geokurmeta/select_from_json_css
   contents:
-    - select_from_json.js
+    - select_process.js
 
 select_from_json_css:
   output: ckanext-geokurmeta/%(version)s_select_from_json.css  
