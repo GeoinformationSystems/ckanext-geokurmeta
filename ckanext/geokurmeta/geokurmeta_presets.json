@@ -231,7 +231,7 @@
 			"preset_name": "select_process",
 			"values": {
 				"validators": "ignore_missing unicode",
-				"display_snippet": "metric_blocks.html",
+				"display_snippet": "select_process.html",
 				"form_snippet": "select_from_json.html",
 				"form_attrs": {
 					"data-module": "select-from-json",
