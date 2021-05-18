@@ -28,6 +28,15 @@ select_from_json:
   contents:
     - select_from_json.js
 
+select_process:
+  output: ckanext-geokurmeta/%(version)s_select_process.js  
+  extra:
+    preload:
+      - base/main
+      - ckanext-geokurmeta/select_from_json_css
+  contents:
+    - select_from_json.js
+
 select_from_json_css:
   output: ckanext-geokurmeta/%(version)s_select_from_json.css  
   filters: cssrewrite
