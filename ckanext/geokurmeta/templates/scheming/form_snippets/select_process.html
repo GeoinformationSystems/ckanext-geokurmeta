@@ -19,7 +19,7 @@ is_required=h.scheming_field_required(field)
 {% call form.input_block(id, label, error, classes, is_required=is_required) %}
 
 <select id="{{ id }}-select" name="{{ name }}-select" {{ form.attributes(attrs) }} data-module-field="{{ id }}"
-    data-metrics_data="{{ value }}" style="width:calc(100% - 50px); display: inline;">
+    data-metrics_data="{{ value }}" style="width:calc(100% - 200px); display: inline;">
     <option value="">&lt;choose process&gt;</option> />
 </select>
 
