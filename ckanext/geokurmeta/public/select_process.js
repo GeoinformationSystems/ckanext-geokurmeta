@@ -14,7 +14,7 @@
 
 
 this.ckan.module('select-process', function (jQuery, _) {
-
+    console.log("sel process")
     return {
         options: {
             mode: null,
