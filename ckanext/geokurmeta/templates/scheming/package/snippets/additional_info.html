@@ -18,8 +18,6 @@
 {%- if field.field_name not in exclude_fields and field.display_snippet is not none -%}
 {%- if field.display_snippet == 'metric_blocks.html' -%}
 {%- snippet 'scheming/snippets/display_field.html', field=field, data=pkg_dict, schema=schema -%}
-{%- if field.display_snippet == 'display_process.html' -%}
-{%- snippet 'scheming/snippets/display_field.html', field=field, data=pkg_dict, schema=schema -%}
 {%- else -%}
 <tr>
 	<th scope="row" class="dataset-label">{{ h.scheming_language_text(field.label) }}</th>
