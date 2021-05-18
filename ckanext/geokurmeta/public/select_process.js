@@ -13,7 +13,7 @@
  */
 
 
-this.ckan.module('select-from-json', function (jQuery, _) {
+this.ckan.module('select-process', function (jQuery, _) {
 
     return {
         options: {
