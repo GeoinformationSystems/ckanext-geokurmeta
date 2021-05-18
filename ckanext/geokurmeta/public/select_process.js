@@ -60,7 +60,7 @@ this.ckan.module('select-process', function (jQuery, _) {
         },
 
         _onReady: function () {
-
+            var input = this.input;
             var btn = $("#" + this.options.field + "-btn")[0];
 
             if (this.options.mode = "sparql") {
