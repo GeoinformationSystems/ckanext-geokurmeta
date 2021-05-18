@@ -1,7 +1,6 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
-import ckan.lib.base as base
 
 from ckanext.geokurmeta.validation import (
     geokurmeta_scheming_choices,
@@ -69,11 +68,4 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         return map
 
     def after_map(self, map):
-
         return map
-
-
-class GeokurmetaController(base.BaseController):
-
-    def test(self):
-        return base.render('content/contentPage.html')
