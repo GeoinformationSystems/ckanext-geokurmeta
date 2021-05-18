@@ -55,6 +55,7 @@ this.ckan.module('select-process', function (jQuery, _) {
                     }));
                 }
             };
+            $(input).val(data.results.bindings[i].subject.value);
         },
 
         _onReady: function () {
@@ -74,6 +75,7 @@ this.ckan.module('select-process', function (jQuery, _) {
                     .catch(error => {
                         console.error('There has been a problem while fetching data from triple store:', error);
                     });
+
             }
 
 
