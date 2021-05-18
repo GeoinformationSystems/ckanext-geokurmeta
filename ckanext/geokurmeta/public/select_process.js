@@ -56,7 +56,7 @@ this.ckan.module('select-process', function (jQuery, _) {
                 }
             };
             console.log(data.results);
-
+            $(input).val(JSON.stringify(data.results));
         },
 
         _onReady: function () {
