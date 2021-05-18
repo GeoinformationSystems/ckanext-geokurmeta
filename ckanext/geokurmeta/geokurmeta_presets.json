@@ -237,7 +237,7 @@
 					"data-module": "select-from-json",
 					"data-module-mode": "sparql",
 					"data-module-source": "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql",
-					"data-module-query": "PREFIX prov: <http://www.w3.org/ns/prov#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?id ?label WHERE { ?subject a prov:Activity . ?label rdfs:label ?label. }"
+					"data-module-query": "PREFIX prov: <http://www.w3.org/ns/prov#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?subject ?label WHERE { ?subject a prov:Activity . ?subject rdfs:label ?label. }"
 				}
 			}
 		},
