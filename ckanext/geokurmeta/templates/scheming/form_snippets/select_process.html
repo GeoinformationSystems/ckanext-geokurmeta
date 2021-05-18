@@ -9,7 +9,7 @@ name=field.field_name,
 id='field-' + field.field_name,
 label=h.scheming_language_text(field.label),
 placeholder=h.scheming_language_text(field.form_placeholder),
-selected=option_selected,
+value=data[field.field_name],
 error=errors[field.field_name],
 classes=field.classes if 'classes' in field else ['control-medium'],
 attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
@@ -22,7 +22,7 @@ is_required=h.scheming_field_required(field)
     data-metrics_data="{{ value }}" style="width:calc(100% - 130px); display: inline;">
     <option value="">&lt;choose process&gt;</option> />
 </select>
-
+<p>{% data[field.field_name] %}</p>
 <button id="{{ id }}-btn" class="btn btn-default btn-sm">Add New Process</button>
 <div id="{{ id }}-div"></div>
 
