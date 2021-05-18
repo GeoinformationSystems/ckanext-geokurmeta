@@ -62,13 +62,14 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         tk.add_public_directory(config, 'public')
         tk.add_resource('public', 'ckanext-geokurmeta')
 
-    def before_map(self, route_map):
-        return route_map
-
-    def after_map(self, map):
+    def before_map(self, map):
         map.connect('test', '/test',
                     controller='ckanext.geokurmeta.controller:GeokurmetaController',
                     action='index')
+        return map
+
+    def after_map(self, map):
+
         return map
 
 
