@@ -64,7 +64,7 @@ this.ckan.module('select-process', function (jQuery, _) {
             var btn = $("#" + this.options.field + "-btn")[0];
 
             $(this.el[0]).on("change", function () {
-                console.log($(this).children("option:selected").val())
+                $(input).val(($(this).children("option:selected").val()))
             })
 
 
