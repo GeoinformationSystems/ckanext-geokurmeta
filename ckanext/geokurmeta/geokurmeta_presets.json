@@ -228,6 +228,20 @@
 			}
 		},
 		{
+			"preset_name": "select_process",
+			"values": {
+				"validators": "ignore_missing unicode",
+				"display_snippet": "metric_blocks.html",
+				"form_snippet": "select_from_json.html",
+				"form_attrs": {
+					"data-module": "select-from-json",
+					"data-module-mode": "sparql",
+					"data-module-source": "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql",
+					"data-module-query": "PREFIX prov: <http://www.w3.org/ns/prov#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?id ?label WHERE { ?subject a prov:Activity . ?label rdfs:label ?label. }"
+				}
+			}
+		},
+		{
 			"preset_name": "select_json",
 			"values": {
 				"form_snippet": "select_from_json.html",
