@@ -14,7 +14,7 @@
 
 
 this.ckan.module('select-from-json', function (jQuery, _) {
-	console.log("sel metric");
+
 	return {
 		options: {
 			mode: null,
