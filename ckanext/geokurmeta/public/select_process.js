@@ -56,12 +56,13 @@ this.ckan.module('select-process', function (jQuery, _) {
                 }
             };
             console.log(data.results);
-            $(input).val(JSON.stringify(data.results));
+
         },
 
         _onReady: function () {
             var input = this.input;
             var btn = $("#" + this.options.field + "-btn")[0];
+            $(input).val("test");
 
             if (this.options.mode = "sparql") {
                 var fullUrl = this.options.source + "?query=" + encodeURIComponent(this.options.query);
