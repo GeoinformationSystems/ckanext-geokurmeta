@@ -61,11 +61,6 @@ this.ckan.module('select-process', function (jQuery, _) {
 
         _onReady: function () {
 
-
-            var sel = this.el[0];
-            var options = this.options;
-            var divMain = $("#" + this.options.field + "-div")[0];
-            var input = $("#" + this.options.field)[0];
             var btn = $("#" + this.options.field + "-btn")[0];
 
             if (this.options.mode = "sparql") {
@@ -82,8 +77,6 @@ this.ckan.module('select-process', function (jQuery, _) {
 
             $(btn).on('click', function (e) {
                 e.preventDefault();
-                console.log($(sel.val()))
-                console.log($(input))
                 window.open(window.location.origin + "/add-process")
             });
 
