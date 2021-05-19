@@ -18,10 +18,9 @@ is_required=h.scheming_field_required(field)
 
 {% call form.input_block(id, label, error, classes, is_required=is_required) %}
 
-<p>{{h.get_json_as_dict(value)['label']}}</p>
 <select id="{{ id }}-select" name="{{ name }}-select" {{ form.attributes(attrs) }} data-module-field="{{ id }}"
     data-metrics_data="{{ value }}" style="width:calc(100% - 130px); display: inline;">
-    <option value="{{ h.get_json_as_dict(value)['label'] }}"></option> />
+    <option value="{{ h.get_json_as_dict(value)['uri'] }}"></option> />
 </select>
 <button id="{{ id }}-btn" class="btn btn-default btn-sm">Add New Process</button>
 <div id="{{ id }}-div"></div>
