@@ -42,8 +42,8 @@ this.ckan.module('select-process', function (jQuery, _) {
         handleDataSparql: function (data = null) {
             for (var i = 0; i < data.results.bindings.length; i++) {
                 console.log(data.results.bindings[i].subject.value)
-                console.log(this("option:selected").val())
-                console.log($(this))
+                
+                console.log($(this).children("option:selected").val())
                 if (data.results.bindings[i].subject.value == this.options.selected) {
                     $(this.el[0]).append($('<option>', {
                         id: data.results.bindings[i].subject.value,
