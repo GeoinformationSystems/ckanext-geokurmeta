@@ -20,6 +20,7 @@ is_required=h.scheming_field_required(field)
 
 <select id="{{ id }}-select" name="{{ name }}-select" {{ form.attributes(attrs) }} data-module-field="{{ id }}"
     data-metrics_data="{{ value }}" style="width:calc(100% - 130px); display: inline;">
+    <option value="">&lt;choose process&gt;</option> />
 </select>
 <button id="{{ id }}-btn" class="btn btn-default btn-sm">Add New Process</button>
 <div id="{{ id }}-div"></div>
@@ -29,10 +30,6 @@ is_required=h.scheming_field_required(field)
 
 {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 {% asset 'ckanext-geokurmeta/select_process' %}
-
-<script>
-    $("{{id}}-select").val($("{{ h.get_json_as_dict(value)['uri'] }}")).change();
-</script>
 
 {% endcall %}
 
