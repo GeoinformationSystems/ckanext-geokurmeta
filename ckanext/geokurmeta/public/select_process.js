@@ -43,7 +43,7 @@ this.ckan.module('select-process', function (jQuery, _) {
             for (var i = 0; i < data.results.bindings.length; i++) {
                 console.log(data.results.bindings[i].subject.value)
                 
-                console.log($(this).children("option:selected").val())
+                console.log($(input).val())
                 if (data.results.bindings[i].subject.value == this.options.selected) {
                     $(this.el[0]).append($('<option>', {
                         id: data.results.bindings[i].subject.value,
