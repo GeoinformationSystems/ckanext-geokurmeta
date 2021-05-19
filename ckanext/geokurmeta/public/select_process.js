@@ -43,6 +43,7 @@ this.ckan.module('select-process', function (jQuery, _) {
             for (var i = 0; i < data.results.bindings.length; i++) {
                 if (data.results.bindings[i].subject.value == this.options.selected) {
                     $(this.el[0]).append($('<option>', {
+                        id: data.results.bindings[i].subject.value,
                         value: data.results.bindings[i].subject.value,
                         text: data.results.bindings[i].label.value,
                         selected: 'selected'
@@ -50,6 +51,7 @@ this.ckan.module('select-process', function (jQuery, _) {
                 }
                 else {
                     $(this.el[0]).append($('<option>', {
+                        id: data.results.bindings[i].subject.value,
                         value: data.results.bindings[i].subject.value,
                         text: data.results.bindings[i].label.value
                     }));
