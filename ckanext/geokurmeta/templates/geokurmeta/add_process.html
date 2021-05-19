@@ -1,8 +1,11 @@
   
-{% ckan_extends %}
+{% extends "page.html" %}
 
+
+{% block primary %}
 
 <div id="process-input-form"></div>
+
 
 
 <!-- dependencies (jquery, handlebars and bootstrap) -->
@@ -169,3 +172,5 @@
         });
     });
 </script>
+
+{% endblock %}
