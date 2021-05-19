@@ -60,6 +60,8 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         tk.add_template_directory(config, 'templates')
         tk.add_public_directory(config, 'public')
         tk.add_resource('public', 'ckanext-geokurmeta')
+        tk.add_resource('assets', 'alpaca.min.js')
+        tk.add_resource('assets', 'alpaca.min.css')
 
     def before_map(self, map):
 
