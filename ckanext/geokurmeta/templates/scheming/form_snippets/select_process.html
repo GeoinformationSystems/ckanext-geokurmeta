@@ -18,7 +18,7 @@ is_required=h.scheming_field_required(field)
 
 {% call form.input_block(id, label, error, classes, is_required=is_required) %}
 
-<p>{{value["uri"]}}</p>
+<p>{{value.uri}}</p>
 <select id="{{ id }}-select" name="{{ name }}-select" {{ form.attributes(attrs) }} data-module-field="{{ id }}"
     data-metrics_data="{{ value }}" style="width:calc(100% - 130px); display: inline;">
     <option value="{{ value.label }}"></option> />
