@@ -31,7 +31,7 @@ is_required=h.scheming_field_required(field)
 {% asset 'ckanext-geokurmeta/select_process' %}
 
 <script>
-    $("{{id}}-select").val($("{{ h.get_json_as_dict(value)['uri'] }}"))
+    $("{{id}}-select").val($("{{ h.get_json_as_dict(value)['uri'] }}")).change();
 </script>
 
 {% endcall %}
