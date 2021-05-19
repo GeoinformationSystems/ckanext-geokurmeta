@@ -64,7 +64,11 @@ this.ckan.module('select-process', function (jQuery, _) {
             var btn = $("#" + this.options.field + "-btn")[0];
 
             $(this.el[0]).on("change", function () {
-                $(input).val(($(this).children("option:selected").val()))
+                selected_as_json = {
+                    "uri": $(this).children("option:selected").val(),
+                    "label": $(this).children("option:selected").text()
+                }
+                $(input).val(JSON.stringify(selected_as_json))
             })
 
 
