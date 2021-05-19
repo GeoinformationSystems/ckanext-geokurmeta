@@ -3,6 +3,19 @@
 
 {% block head_extras %}
 
+
+
+{% endblock %}
+{% block primary %}
+
+<div id="process-input-form"></div>
+
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+
+{% block scripts %}
+
 <!-- dependencies (jquery, handlebars and bootstrap) -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -18,16 +31,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
-{% endblock %}
-{% block primary %}
-
-<div id="process-input-form"></div>
-
-{% endblock %}
-
-{% block secondary %}{% endblock %}
-
-{% block scripts %}
 
 <script>
     var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
