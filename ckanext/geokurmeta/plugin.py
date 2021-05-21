@@ -78,4 +78,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         map.connect('add_process', '/add-process',
                     controller='ckanext.geokurmeta.controller:GeokurmetaController',
                     action='add_process')
+        map.connect('edit_process', '/edit-process',
+                    controller='ckanext.geokurmeta.controller:GeokurmetaController',
+                    action='edit_process')
         return map

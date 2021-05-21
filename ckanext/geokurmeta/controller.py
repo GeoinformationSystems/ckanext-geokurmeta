@@ -1,5 +1,3 @@
-
-
 import ckan.plugins as p
 import ckan.lib.helpers as h
 
@@ -10,3 +8,6 @@ class GeokurmetaController(base.BaseController):
 
     def add_process(self):
         return base.render('geokurmeta/add_process.html')
+    def add_process(self):
+        return base.render('geokurmeta/edit_process.html')
+

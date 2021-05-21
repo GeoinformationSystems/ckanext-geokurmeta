@@ -1,0 +1,243 @@
+<head>
+    <!-- dependencies (jquery, handlebars and bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <link type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- alpaca -->
+    <link type="text/css" href="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.css"
+        rel="stylesheet" />
+    <script type="text/javascript"
+        src="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.js"></script>
+</head>
+
+<body>
+
+    <div id="process-update-form"></div>
+    <script>
+        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
+        var sparqlQuery = [
+            "PREFIX prov: <http://www.w3.org/ns/prov#>",
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+            "SELECT ?id ?label WHERE {",
+            "?id a prov:Activity .",
+            "?id rdfs:label ?label.",
+            "}"
+        ].join(" ");
+        var settings = {
+            headers: { Accept: 'application/sparql-results+json' },
+            data: { query: sparqlQuery }
+        };
+        $.ajax(endpointUrl, settings).then(function (data) {
+            var results = data["results"]["bindings"];
+            var process_ids = [];
+            var process_labels = [];
+            for (let i = 0; i < results.length; i++) {
+                process_ids.push(results[i]["id"]["value"]);
+                process_labels.push(results[i]["label"]["value"])
+            }
+            $("#process-update-form").alpaca({
+                "data": {
+                    "id": "https://geokur-dmp.geo.tu-dresden.de/pages/processes#"
+                },
+                "schema": {
+                    "title": "Update a process' metadata",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "enum": [],
+                        },
+                        "id": {
+                            "type": "string",
+                            "title": "Identifier",
+                            "format": "url"
+                        },
+                        "description": {
+                            "type": "string",
+                            "title": "Short Description/ Abstract",
+                        },
+                        "link": {
+                            "type": "string",
+                            "title": "Link to full documentation/ Paper",
+                            "format": "url"
+                        },
+                        "is-version-of": {
+                            "enum": []
+                        },
+                        "is-part-of": {
+                            "enum": []
+                        }
+                    }
+                },
+                "options": {
+                    "fields": {
+                        "name": {
+                            "id": "name",
+                            "type": "select"
+                        },
+                        "id": {
+                            "id": "id",
+                            "disabled": true,
+                        },
+                        "description": {
+                            "id": "description",
+                            "type": "textarea",
+                            "rows": 10,
+                        },
+                        "link": {
+                            "id": "link"
+                        },
+                        "is-version-of": {
+                            "type": "select",
+                            "label": "Is new version of",
+                            "id": "is-version-of"
+                        },
+                        "is-part-of": {
+                            "type": "select",
+                            "label": "Is part of superordinate process",
+                            "id": "is-part-of"
+                        }
+                    },
+                    "form": {
+                        "buttons": {
+                            "delete-selected-process": {
+                                "label": "Delete Process",
+                                "click": function () {
+                                    if (this.isFormValid()) {
+                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/update";
+                                        var deleteQuery = [
+                                            "PREFIX prov: <http://www.w3.org/ns/prov#>",
+                                            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+                                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
+                                            "PREFIX dct: <http://purl.org/dc/terms/>",
+                                            "DELETE WHERE {<" + $("#id").val() + "> ?any ?thing .}"],
+                                            deleteQuery = deleteQuery.join(" ");
+                                        var settings = {
+                                            type: "POST",
+                                            headers: { Accept: 'application/sparql-results+json' },
+                                            data: { update: deleteQuery },
+                                        };
+                                        console.log(deleteQuery)
+                                        $.ajax(endpointUrl, settings);
+                                        window.alert("Process deleted")
+                                        window.location.reload()
+                                    }
+                                    else {
+                                        alert("Form contains invalid entries!")
+                                    }
+                                }
+                            },
+
+                            "update-process": {
+                                "label": "Update Process",
+                                "click": function () {
+                                    if (this.isFormValid()) {
+                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/update";
+                                        var updateQuery = [
+                                            "PREFIX prov: <http://www.w3.org/ns/prov#>",
+                                            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+                                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
+                                            "PREFIX dct: <http://purl.org/dc/terms/>",
+                                            "DELETE WHERE {<" + $("#id").val() + "> rdfs:comment ?comment .};",
+                                            "DELETE WHERE {<" + $("#id").val() + "> rdfs:page ?page .};",
+                                            "DELETE WHERE {<" + $("#id").val() + "> rdfs:isVersionOf ?versionOf .};",
+                                            "DELETE WHERE {<" + $("#id").val() + "> rdfs:isPartOf ?partOf };",
+                                            "INSERT DATA {<" + $("#id").val() + ">"]
+                                        if ($("#description").val()) {
+                                            updateQuery = updateQuery.concat(" rdfs:comment \"" + $("#description").val().replaceAll("\n", "\\n") + "\";")
+                                        }
+                                        if ($("#link").val()) {
+                                            updateQuery = updateQuery.concat(" foaf:page \"" + $("#link").val() + "\";")
+                                        }
+                                        if ($("#is-version-of").val()) {
+                                            updateQuery = updateQuery.concat(" dct:isVersionOf \"" + $("#is-version-of").val() + "\";")
+                                        }
+                                        if ($("#is-part-of").val()) {
+                                            updateQuery = updateQuery.concat(" dct:isPartOf \"" + $("#is-part-of").val() + "\";")
+                                        }
+                                        updateQuery = updateQuery.concat("}");
+                                        updateQuery = updateQuery.join(" ");
+                                        var settings = {
+                                            type: "POST",
+                                            headers: { Accept: 'application/sparql-results+json' },
+                                            data: { update: updateQuery },
+                                        };
+                                        console.log(updateQuery)
+                                        $.ajax(endpointUrl, settings);
+                                        window.alert("Process updated")
+                                        window.location.reload()
+                                    }
+                                    else {
+                                        alert("Form contains invalid entries!")
+                                    }
+                                }
+                            }
+                        }
+                    },
+                },
+                "postRender": function (control) {
+                    control.childrenByPropertyId["name"].schema.enum = process_ids;
+                    control.childrenByPropertyId["name"].options.optionLabels = process_labels;
+                    control.childrenByPropertyId["name"].refresh();
+                    control.childrenByPropertyId["is-version-of"].schema.enum = process_ids;
+                    control.childrenByPropertyId["is-version-of"].options.optionLabels = process_labels;
+                    control.childrenByPropertyId["is-version-of"].refresh();
+                    control.childrenByPropertyId["is-part-of"].schema.enum = process_ids;
+                    control.childrenByPropertyId["is-part-of"].options.optionLabels = process_labels;
+                    control.childrenByPropertyId["is-part-of"].refresh();
+                    control.childrenByPropertyId["name"].on("change", function () {
+
+                        var uri = this.getValue()
+                        control.childrenByPropertyId["id"].setValue(uri);
+                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/query";
+                        var getMetadataQuery = [
+                            "PREFIX prov: <http://www.w3.org/ns/prov#>",
+                            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
+                            "PREFIX dct: <http://purl.org/dc/terms/>",
+                            "SELECT ?label ?description ?link ?versionOf ?partOf WHERE {",
+                            "OPTIONAL {<" + uri + "> rdfs:label ?label }",
+                            "OPTIONAL {<" + uri + "> rdfs:comment ?description }",
+                            "OPTIONAL {<" + uri + "> foaf:page ?link}",
+                            "OPTIONAL {<" + uri + "> dct:isVersionOf ?versionOf}",
+                            "OPTIONAL {<" + uri + "> dct:isPartOf ?partOf}",
+                            "}"
+                        ].join(" ");
+                        //console.log(getMetadataQuery)
+                        var settings = {
+                            headers: { Accept: 'application/sparql-results+json' },
+                            data: { query: getMetadataQuery }
+                        };
+                        $.ajax(endpointUrl, settings).then(function (data) {
+                            var results = data["results"]["bindings"][0];
+                            if (results["description"]) {
+                                control.childrenByPropertyId["description"].setValue(results["description"]["value"]);
+                            } else {
+                                control.childrenByPropertyId["description"].setValue("");
+                            }
+                            if (results["link"]) {
+                                control.childrenByPropertyId["link"].setValue(results["link"]["value"]);
+                            } else {
+                                control.childrenByPropertyId["link"].setValue("");
+                            }
+                            if (results["versionOf"]) {
+                                control.childrenByPropertyId["is-version-of"].setValue(results["versionOf"]["value"]);
+                            } else {
+                                control.childrenByPropertyId["is-version-of"].setValue("");
+                            }
+                            if (results["partOf"]) {
+                                control.childrenByPropertyId["is-part-of"].setValue(results["partOf"]["value"]);
+                            } else {
+                                control.childrenByPropertyId["is-part-of"].setValue("");
+                            }
+
+
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
