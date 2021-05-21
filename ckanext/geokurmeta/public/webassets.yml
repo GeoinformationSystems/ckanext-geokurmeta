@@ -57,7 +57,6 @@ add_process_form:
   output: ckanext-geokurmeta/%(version)s_add_process_form.js  
   extra:
     preload:
-      - base/main
       - ckanext-geokurmeta/add_process_form_css
   contents:
     - vendor/bootstrap.min.js
