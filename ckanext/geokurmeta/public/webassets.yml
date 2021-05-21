@@ -42,3 +42,33 @@ select_from_json_css:
   filters: cssrewrite
   contents:
     - css/select_from_json.css
+
+alpaca_js:
+  output: ckanext-geokurmeta/%(version)s_alpaca.js  
+  contents:
+    - vendor/alpaca.min.js
+
+alpaca_css:
+  output: ckanext-geokurmeta/%(version)s_alpaca.css  
+  contents:
+    -  vendor/alpaca.min.css
+
+bootstrap_js: 
+  output: ckanext-geokurmeta/%(version)s_bootstrap.js  
+  contents:
+    -  vendor/bootstrap.min.js
+
+bootstrap_css: 
+  output: ckanext-geokurmeta/%(version)s_bootstrap.css
+  contents:
+    -  vendor/bootstrap.min.css
+
+handlebars_js: 
+  output: ckanext-geokurmeta/%(version)s_handlebars.js  
+  contents:
+    -  vendor/handlebars.min.js
+
+jquery_js: 
+  output: ckanext-geokurmeta/%(version)s_jquery.js  
+  contents:
+    -  vendor/jquery-1.11.1.min.js
