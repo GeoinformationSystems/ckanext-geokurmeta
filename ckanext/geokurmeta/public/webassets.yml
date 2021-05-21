@@ -45,30 +45,44 @@ select_from_json_css:
 
 alpaca_js:
   output: ckanext-geokurmeta/%(version)s_alpaca.js  
+  extra:
+    preload:
+      - base/main
   contents:
     - vendor/alpaca.min.js
 
 alpaca_css:
   output: ckanext-geokurmeta/%(version)s_alpaca.css  
+  filters: cssrewrite
   contents:
     -  vendor/alpaca.min.css
 
 bootstrap_js: 
   output: ckanext-geokurmeta/%(version)s_bootstrap.js  
+  extra:
+    preload:
+      - base/main
   contents:
     -  vendor/bootstrap.min.js
 
 bootstrap_css: 
   output: ckanext-geokurmeta/%(version)s_bootstrap.css
+  filters: cssrewrite
   contents:
     -  vendor/bootstrap.min.css
 
 handlebars_js: 
   output: ckanext-geokurmeta/%(version)s_handlebars.js  
+  extra:
+    preload:
+      - base/main
   contents:
     -  vendor/handlebars.min.js
 
 jquery_js: 
   output: ckanext-geokurmeta/%(version)s_jquery.js  
+  extra:
+    preload:
+      - base/main
   contents:
     -  vendor/jquery-1.11.1.min.js
