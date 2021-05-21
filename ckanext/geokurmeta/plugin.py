@@ -60,12 +60,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         tk.add_template_directory(config, 'templates')
         tk.add_public_directory(config, 'public')
         tk.add_resource('public', 'ckanext-geokurmeta')
-        tk.add_resource('assets', 'alpaca.min.js')
-        tk.add_resource('assets', 'alpaca.min.css')
-        tk.add_resource('assets', 'bootstrap.min.js')
-        tk.add_resource('assets', 'bootstrap.min.css')
-        tk.add_resource('assets', 'handlebars.min.js')
-        tk.add_resource('assets', 'jquery-1.11.1.min.js')
+
 
 
 
