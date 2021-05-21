@@ -1,6 +1,7 @@
 {% extends "page.html" %}
 
 {% block styles %}
+{{ super() }}
 
 {% asset 'ckanext-geokurmeta/alpaca_css' %}
 {% asset 'ckanext-geokurmeta/bootstrap_css' %}
@@ -8,6 +9,7 @@
 {% endblock %}
 
 {% block scripts %}
+{{ super() }}
 {% asset 'ckanext-geokurmeta/alpaca_js' %}
 {% asset 'ckanext-geokurmeta/bootstrap_js' %}
 {% asset 'ckanext-geokurmeta/handlebars_js' %}
