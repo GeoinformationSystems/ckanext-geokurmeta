@@ -1,0 +1,29 @@
+alpaca_js:
+  output: ckanext-geokurmeta/%(version)s_alpaca.js  
+  contents:
+    - alpaca.min.js
+
+alpaca_css:
+  output: ckanext-geokurmeta/%(version)s_alpaca.css  
+  contents:
+    - alpaca.min.css
+
+bootstrap_js: 
+  output: ckanext-geokurmeta/%(version)s_bootstrap.js  
+  contents:
+    - bootstrap.min.js
+
+bootstrap_css: 
+  output: ckanext-geokurmeta/%(version)s_bootstrap.css
+  contents:
+    - bootstrap.min.css
+
+handlebars_js: 
+  output: ckanext-geokurmeta/%(version)s_handlebars.js  
+  contents:
+    - handlebars.min.js
+
+jquery_js: 
+  output: ckanext-geokurmeta/%(version)s_jquery.js  
+  contents:
+    - jquery-1.11.1.min.js
