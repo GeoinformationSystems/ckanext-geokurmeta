@@ -88,3 +88,16 @@ jquery_js:
       - base/main
   contents:
     -  vendor/jquery-1.11.1.min.js
+
+  
+add_process_form:
+  output: ckanext-geokurmeta/%(version)s_add_process_form.js  
+  extra:
+    preload:
+      - base/main
+  contents:
+    - vendor/alpaca_js
+    - vendor/bootstrap_js
+    - vendor/handlebars_js
+    - vendor/jquery_js
+    - add_process_form.js
