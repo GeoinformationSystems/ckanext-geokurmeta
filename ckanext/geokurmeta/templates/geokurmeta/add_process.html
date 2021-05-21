@@ -1,9 +1,6 @@
 {% extends "page.html" %}
 
-
-
-
-{% block primary_content %}
+{% block styles %}
 
 {% asset 'ckanext-geokurstyle/geokurstyle_css' %}
 {% asset 'ckanext-geokurmeta/alpaca_css' %}
@@ -14,8 +11,14 @@
 {% asset 'ckanext-geokurmeta/bootstrap_js' %}
 {% asset 'ckanext-geokurmeta/handlebars_js' %}
 {% asset 'ckanext-geokurmeta/jquery_js' %}
-<div id="process-input-form"></div>
+{% endblock %}
 
+{% block primary_content %}
+
+<div id="process-input-form"></div>
+{% endblock %}
+
+{% block scripts %}
 
 
 <script>
@@ -166,5 +169,7 @@
         });
     });
 </script>
+
+
 
 {% endblock %}
