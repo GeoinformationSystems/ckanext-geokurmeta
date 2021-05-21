@@ -51,6 +51,7 @@ var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_s
                     },
                 }
             },
+            "view": "web-edit",
             "options": {
                 "fields": {
                     "name": {
