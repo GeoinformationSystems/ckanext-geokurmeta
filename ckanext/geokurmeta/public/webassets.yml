@@ -89,15 +89,25 @@ jquery_js:
   contents:
     -  vendor/jquery-1.11.1.min.js
 
+
+    
+add_process_form_css:
+  output: ckanext-geokurmeta/%(version)s_add_process_form.css
+  filters: cssrewrite
+  contents:
+    - vendor/alpaca.min.css
+    - vendor/bootstrap.min.css
+    
   
 add_process_form:
   output: ckanext-geokurmeta/%(version)s_add_process_form.js  
   extra:
     preload:
       - base/main
+      - ckanext-geokurmeta/add_process_form_css
   contents:
-    - vendor/alpaca_js
-    - vendor/bootstrap_js
-    - vendor/handlebars_js
-    - vendor/jquery_js
+    - vendor/alpaca.min.js
+    - vendor/bootstrap.min.js
+    - vendor/handlebars.min.js
+    - vendor/jquery-1.11.1.js
     - add_process_form.js
