@@ -8,6 +8,6 @@ class GeokurmetaController(base.BaseController):
 
     def add_process(self):
         return base.render('geokurmeta/add_process.html')
-    def add_process(self):
+    def edit_process(self):
         return base.render('geokurmeta/edit_process.html')
 
