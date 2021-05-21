@@ -49,8 +49,8 @@ add_process_form_css:
   output: ckanext-geokurmeta/%(version)s_add_process_form.css
   filters: cssrewrite
   contents:
+    - vendor/bootstrap.min.css    
     - vendor/alpaca.min.css
-    - vendor/bootstrap.min.css
     
   
 add_process_form:
@@ -60,8 +60,8 @@ add_process_form:
       - base/main
       - ckanext-geokurmeta/add_process_form_css
   contents:
-    - vendor/alpaca.min.js
     - vendor/bootstrap.min.js
     - vendor/handlebars.min.js
     - vendor/jquery-1.11.1.min.js
+    - vendor/alpaca.min.js   
     - add_process_form.js
