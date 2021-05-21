@@ -109,5 +109,5 @@ add_process_form:
     - vendor/alpaca.min.js
     - vendor/bootstrap.min.js
     - vendor/handlebars.min.js
-    - vendor/jquery-1.11.1.js
+    - vendor/jquery-1.11.1.min.js
     - add_process_form.js
