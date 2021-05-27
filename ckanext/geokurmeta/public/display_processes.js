@@ -155,7 +155,7 @@ $.ajax(endpointUrl, settings).then(function (data) {
         var editDiv = document.createElement("div");
         editDiv.setAttribute('style', 'margin-bottom: 70px;')
         var edit = document.createElement("button")
-        edit.innerHTML = "Edit"
+        edit.innerHTML = "Edit/ Delete"
         edit.setAttribute('class', 'btn btn-default')
         edit.setAttribute('style', 'float: right')
         edit.onclick = function () {
