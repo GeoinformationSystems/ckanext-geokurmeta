@@ -10,4 +10,6 @@ class GeokurmetaController(base.BaseController):
         return base.render('geokurmeta/add_process.html')
     def edit_process(self):
         return base.render('geokurmeta/edit_process.html')
+    def processes(self):
+        return base.render('geokurmeta/processes.html')
 

@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<div id="processes" class=container style="margin-bottom: 150px;">
+    <h1>GeoKur Process Store</h1>
+    <p>
+        This page displays all processes that are exposed as Linked Open Data at <a href = //geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql>//geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql</a>. There are also capabilities to add, update or delete processes from the triplestore.
+    </p>
+    <div class="page_primary_action" style="margin-bottom: 50px;">         
+    <a class="btn btn-primary" style="float: right;" href="/add-process"><i class="fa fa-plus-square"></i> Add Process</a>
+    </div>
+</div>
+{% asset 'ckanext-geokurmeta/display_processes' %}
+
+{% endblock %}
+

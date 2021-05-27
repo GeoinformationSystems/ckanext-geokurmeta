@@ -43,24 +43,11 @@ select_from_json_css:
   contents:
     - css/select_from_json.css
 
-
-    
-add_process_form_css:
-  output: ckanext-geokurmeta/%(version)s_add_process_form.css
-  filters: cssrewrite
-  contents:
-    - vendor/bootstrap.min.css    
-    - vendor/alpaca.min.css
-    
-  
-add_process_form:
-  output: ckanext-geokurmeta/%(version)s_add_process_form.js  
+display_processes:
+  output: ckanext-geokurmeta/%(version)s_select_process.js
   extra:
     preload:
-      - ckanext-geokurmeta/add_process_form_css
+      - base/main
   contents:
-    - vendor/bootstrap.min.js
-    - vendor/handlebars.min.js
     - vendor/jquery-1.11.1.min.js
-    - vendor/alpaca.min.js   
-    - add_process_form.js
+    - display_processes.js
