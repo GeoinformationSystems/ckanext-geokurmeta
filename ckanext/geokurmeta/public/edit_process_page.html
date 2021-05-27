@@ -18,38 +18,34 @@
 
     <div id="process-update-form"></div>
     <script>
-        function processURLparams() {
-            var parameters = (function (queryString = document.location.search) {
-                var dictionary = {};
-                // remove the '?' from the beginning of the
-                // if it exists
-                if (queryString.indexOf('?') === 0) {
-                    queryString = queryString.substr(1);
-                }
+        function getUrlParams(url = document.location.href) {
 
-                // Step 1: separate out each key/value pair
-                var parts = queryString.split('&');
+            var dictionary = {};
 
-                for (var i = 0; i < parts.length; i++) {
-                    var p = parts[i];
-                    // Step 2: Split Key/Value pair
-                    var keyValuePair = p.split('=');
+            // split url at '?'
+            var paramString = url.split('?')[1]
+            // Step 1: separate out each key/value pair
+            var parts = paramString.split('&');
 
-                    // Step 3: Add Key/Value pair to Dictionary object
-                    var key = keyValuePair[0];
-                    var value = keyValuePair[1];
+            for (var i = 0; i < parts.length; i++) {
+                var p = parts[i];
+                // Step 2: Split Key/Value pair
+                var keyValuePair = p.split('=');
 
-                    // decode URI encoded string
-                    value = decodeURIComponent(value);
-                    value = value.replace(/\+/g, ' ');
+                // Step 3: Add Key/Value pair to Dictionary object
+                var key = keyValuePair[0];
+                var value = keyValuePair[1];
 
-                    dictionary[key] = value;
-                }
+                // decode URI encoded string
+                value = decodeURIComponent(value);
+                value = value.replace(/\+/g, ' ');
 
-                // Step 4: Return Dictionary Object
-                return dictionary;
-            })();
-        };
+                dictionary[key] = value;
+            }
+
+            // Step 4: Return Dictionary Object
+            return dictionary;
+        }
 
         var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
         var sparqlQuery = [
@@ -81,7 +77,9 @@
                     "type": "object",
                     "properties": {
                         "name": {
-                            "enum": [],
+                            "type": "string",
+                            "title": "Name",
+                            "required": true
                         },
                         "id": {
                             "type": "string",
@@ -109,7 +107,6 @@
                     "fields": {
                         "name": {
                             "id": "name",
-                            "type": "select"
                         },
                         "id": {
                             "id": "id",
@@ -136,6 +133,12 @@
                     },
                     "form": {
                         "buttons": {
+                            "cancel": {
+                                "label": "Cancel",
+                                "click": function () {
+                                    window.parent.location = "/processes"
+                                }
+                            },
                             "delete-selected-process": {
                                 "label": "Delete Process",
                                 "click": function () {
@@ -155,8 +158,7 @@
                                         };
                                         console.log(deleteQuery)
                                         $.ajax(endpointUrl, settings);
-                                        window.alert("Process deleted")
-                                        window.location.reload()
+                                        window.parent.location = "/processes"
                                     }
                                     else {
                                         alert("Form contains invalid entries!")
@@ -200,8 +202,7 @@
                                         };
                                         console.log(updateQuery)
                                         $.ajax(endpointUrl, settings);
-                                        window.alert("Process updated")
-                                        window.location.reload()
+                                        window.parent.location = "/processes"
                                     }
                                     else {
                                         alert("Form contains invalid entries!")
@@ -212,101 +213,61 @@
                     },
                 },
                 "postRender": function (control) {
-                    control.childrenByPropertyId["name"].schema.enum = process_ids;
-                    control.childrenByPropertyId["name"].options.optionLabels = process_labels;
-                    control.childrenByPropertyId["name"].refresh();
                     control.childrenByPropertyId["is-version-of"].schema.enum = process_ids;
                     control.childrenByPropertyId["is-version-of"].options.optionLabels = process_labels;
                     control.childrenByPropertyId["is-version-of"].refresh();
                     control.childrenByPropertyId["is-part-of"].schema.enum = process_ids;
                     control.childrenByPropertyId["is-part-of"].options.optionLabels = process_labels;
                     control.childrenByPropertyId["is-part-of"].refresh();
-                    control.childrenByPropertyId["name"].on("change", function () {
 
-                        var uri = this.getValue()
-                        control.childrenByPropertyId["id"].setValue(uri);
-                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/query";
-                        var getMetadataQuery = [
-                            "PREFIX prov: <http://www.w3.org/ns/prov#>",
-                            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
-                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
-                            "PREFIX dct: <http://purl.org/dc/terms/>",
-                            "SELECT ?label ?description ?link ?versionOf ?partOf WHERE {",
-                            "OPTIONAL {<" + uri + "> rdfs:label ?label }",
-                            "OPTIONAL {<" + uri + "> rdfs:comment ?description }",
-                            "OPTIONAL {<" + uri + "> foaf:page ?link}",
-                            "OPTIONAL {<" + uri + "> dct:isVersionOf ?versionOf}",
-                            "OPTIONAL {<" + uri + "> dct:isPartOf ?partOf}",
-                            "}"
-                        ].join(" ");
-                        //console.log(getMetadataQuery)
-                        var settings = {
-                            headers: { Accept: 'application/sparql-results+json' },
-                            data: { query: getMetadataQuery }
-                        };
-                        $.ajax(endpointUrl, settings).then(function (data) {
-                            var results = data["results"]["bindings"][0];
-                            if (results["description"]) {
-                                control.childrenByPropertyId["description"].setValue(results["description"]["value"]);
-                            } else {
-                                control.childrenByPropertyId["description"].setValue("");
-                            }
-                            if (results["link"]) {
-                                control.childrenByPropertyId["link"].setValue(results["link"]["value"]);
-                            } else {
-                                control.childrenByPropertyId["link"].setValue("");
-                            }
-                            if (results["versionOf"]) {
-                                control.childrenByPropertyId["is-version-of"].setValue(results["versionOf"]["value"]);
-                            } else {
-                                control.childrenByPropertyId["is-version-of"].setValue(undefined);
-                                control.childrenByPropertyId["is-version-of"].refresh();
-                            }
-                            if (results["partOf"]) {
-                                control.childrenByPropertyId["is-part-of"].setValue(results["partOf"]["value"]);
-                            } else {
-                                control.childrenByPropertyId["is-part-of"].setValue(undefined);
-                                control.childrenByPropertyId["is-part-of"].refresh();
-                            }
+                    var uri = getUrlParams().uri
+                    control.childrenByPropertyId["id"].setValue(uri)
 
-
-                        });
+                    var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/query";
+                    var getMetadataQuery = [
+                        "PREFIX prov: <http://www.w3.org/ns/prov#>",
+                        "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+                        "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
+                        "PREFIX dct: <http://purl.org/dc/terms/>",
+                        "SELECT ?label ?description ?link ?versionOf ?partOf WHERE {",
+                        "<" + uri + "> rdfs:label ?label",
+                        "OPTIONAL {<" + uri + "> rdfs:comment ?description }",
+                        "OPTIONAL {<" + uri + "> foaf:page ?link}",
+                        "OPTIONAL {<" + uri + "> dct:isVersionOf ?versionOf}",
+                        "OPTIONAL {<" + uri + "> dct:isPartOf ?partOf}",
+                        "}"
+                    ].join(" ");
+                    //console.log(getMetadataQuery)
+                    var settings = {
+                        headers: { Accept: 'application/sparql-results+json' },
+                        data: { query: getMetadataQuery }
+                    };
+                    $.ajax(endpointUrl, settings).then(function (data) {
+                        var results = data["results"]["bindings"][0];
+                        control.childrenByPropertyId["name"].setValue(results["label"]["value"]);
+                        if (results["description"]) {
+                            control.childrenByPropertyId["description"].setValue(results["description"]["value"]);
+                        } else {
+                            control.childrenByPropertyId["description"].setValue("");
+                        }
+                        if (results["link"]) {
+                            control.childrenByPropertyId["link"].setValue(results["link"]["value"]);
+                        } else {
+                            control.childrenByPropertyId["link"].setValue("");
+                        }
+                        if (results["versionOf"]) {
+                            control.childrenByPropertyId["is-version-of"].setValue(results["versionOf"]["value"]);
+                        } else {
+                            control.childrenByPropertyId["is-version-of"].setValue(undefined);
+                            control.childrenByPropertyId["is-version-of"].refresh();
+                        }
+                        if (results["partOf"]) {
+                            control.childrenByPropertyId["is-part-of"].setValue(results["partOf"]["value"]);
+                        } else {
+                            control.childrenByPropertyId["is-part-of"].setValue(undefined);
+                            control.childrenByPropertyId["is-part-of"].refresh();
+                        }
                     });
-                    
-                    var parameters = (function (queryString = document.location.search) {
-                        var dictionary = {};
-                        // remove the '?' from the beginning of the
-                        // if it exists
-                        if (queryString.indexOf('?') === 0) {
-                            queryString = queryString.substr(1);
-                        }
-
-                        // Step 1: separate out each key/value pair
-                        var parts = queryString.split('&');
-
-                        for (var i = 0; i < parts.length; i++) {
-                            var p = parts[i];
-                            // Step 2: Split Key/Value pair
-                            var keyValuePair = p.split('=');
-
-                            // Step 3: Add Key/Value pair to Dictionary object
-                            var key = keyValuePair[0];
-                            var value = keyValuePair[1];
-
-                            // decode URI encoded string
-                            value = decodeURIComponent(value);
-                            value = value.replace(/\+/g, ' ');
-
-                            dictionary[key] = value;
-                            console.log(dictionary);
-                        }
-
-                        // Step 4: Return Dictionary Object
-                        console.log(dictionary);
-                    })();
-                    // console.log(selectedProcess)
-                    // control.childrenByPropertyId["name"].setValue(selectedProcess)
-                    // control.childrenByPropertyId["name"].refresh();
                 }
             });
         });

@@ -11,7 +11,7 @@
         rel="stylesheet" />
     <script type="text/javascript"
         src="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.js"></script>
-    
+
     <link rel="stylesheet" href="geokurstyle.css">
 </head>
 
@@ -118,6 +118,12 @@
                     },
                     "form": {
                         "buttons": {
+                            "cancel": {
+                                "label": "Cancel",
+                                "click": function () {
+                                    window.parent.location = "/processes"
+                                }
+                            },
                             "add-process": {
                                 "label": "Create Process",
 
@@ -152,8 +158,7 @@
                                             data: { update: insertQuery },
                                         };
                                         $.ajax(endpointUrl, settings);
-                                        window.alert("Process added store")
-                                        window.location.reload()
+                                        window.parent.location = "/processes"
                                     }
                                     else {
                                         alert("Form contains invalid entries!")
