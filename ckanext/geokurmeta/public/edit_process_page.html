@@ -178,11 +178,13 @@
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
                                             "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
                                             "PREFIX dct: <http://purl.org/dc/terms/>",
+                                            "DELETE WHERE {<" + $("#id").val() + "> rdfs:label ?label .};",
                                             "DELETE WHERE {<" + $("#id").val() + "> rdfs:comment ?comment .};",
                                             "DELETE WHERE {<" + $("#id").val() + "> foaf:page ?page .};",
                                             "DELETE WHERE {<" + $("#id").val() + "> dct:isVersionOf ?versionOf .};",
                                             "DELETE WHERE {<" + $("#id").val() + "> dct:isPartOf ?partOf };",
                                             "INSERT DATA {<" + $("#id").val() + ">"]
+                                        updateQuery = updateQuery.concat(" rdfs:label \"" + $("#name").val().replaceAll("\n", "\\n") + "\";")
                                         if ($("#description").val()) {
                                             updateQuery = updateQuery.concat(" rdfs:comment \"" + $("#description").val().replaceAll("\n", "\\n") + "\";")
                                         }
