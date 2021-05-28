@@ -40,6 +40,7 @@ this.ckan.module('select-process', function (jQuery, _) {
         },
 
         handleDataSparql: function (data = null) {
+            console.log($("#" + this.options.field)[0].value)
             stored_option = JSON.parse($("#" + this.options.field)[0].value).uri
             for (var i = 0; i < data.results.bindings.length; i++) {
                 if (data.results.bindings[i].subject.value == stored_option) {
