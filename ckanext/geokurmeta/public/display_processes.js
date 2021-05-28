@@ -1,6 +1,6 @@
 var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
 var sparqlQuery = [
-"PREFIX prov: <http://www.w3.org/ns/prov#>",
+    "PREFIX prov: <http://www.w3.org/ns/prov#>",
     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
     "PREFIX dct: <http://purl.org/dc/terms/>",
@@ -23,7 +23,7 @@ $.ajax(endpointUrl, settings).then(function (data) {
         var process = document.createElement("div");
         process.setAttribute("id", results[i]["id"]["value"]);
         var processTitle = document.createElement("h2");
-        var processTitleText = document.createElement("a");        
+        var processTitleText = document.createElement("a");
         processTitleText.setAttribute("href", results[i]["id"]["value"]);
         processTitleText.innerHTML = results[i]["label"]["value"];
         processTitle.appendChild(processTitleText)
@@ -34,7 +34,7 @@ $.ajax(endpointUrl, settings).then(function (data) {
             var descriptionText = document.createTextNode(results[i]["description"]["value"])
             description.appendChild(descriptionText)
         }
-        else{
+        else {
             var descriptionText = document.createTextNode("Description: ")
             description.appendChild(descriptionText)
         }
@@ -48,7 +48,7 @@ $.ajax(endpointUrl, settings).then(function (data) {
         tbl.setAttribute("class", "table table-striped table-bordered table-condensed");
 
         var tblHead = document.createElement("thead")
-        var headRow = document.createElement("tr")        
+        var headRow = document.createElement("tr")
         var field = document.createElement("th")
         field.setAttribute('scope', 'col')
         field.innerHTML = "Field"
@@ -60,8 +60,30 @@ $.ajax(endpointUrl, settings).then(function (data) {
         tblHead.appendChild(headRow)
         tbl.appendChild(tblHead)
 
-
         var tblBody = document.createElement("tbody");
+
+        var row = document.createElement("tr");
+        var cellName = document.createElement("td")
+        cellName.setAttribute('scope', "row");
+        cellName.setAttribute('class', 'dataset-label');
+        var cellNameText = document.createTextNode("Identifier")
+        cellName.appendChild(cellNameText)
+        var cellValue = document.createElement("td")
+        cellValue.setAttribute('class', 'dataset-details')
+        if (results[i]["id"]) {
+            var cellValueText = document.createElement("a");
+            cellValueText.setAttribute("href", results[i]["id"]["value"])
+            cellValueText.innerHTML = (results[i]["id"]["value"])
+            cellValue.appendChild(cellValueText)
+        }
+        else {
+            var cellValueText = document.createTextNode("")
+            cellValue.appendChild(cellValueText)
+        }
+        row.appendChild(cellName)
+        row.appendChild(cellValue)
+        tblBody.appendChild(row)
+
         var row = document.createElement("tr");
         var cellName = document.createElement("td")
         cellName.setAttribute('scope', "row");
@@ -70,57 +92,57 @@ $.ajax(endpointUrl, settings).then(function (data) {
         cellName.appendChild(cellNameText)
         var cellValue = document.createElement("td")
         cellValue.setAttribute('class', 'dataset-details')
-        if (results[i]["link"]){
+        if (results[i]["link"]) {
             var cellValueText = document.createElement("a");
             cellValueText.setAttribute("href", results[i]["link"]["value"])
             cellValueText.innerHTML = (results[i]["link"]["value"])
             cellValue.appendChild(cellValueText)
         }
-        else{
+        else {
             var cellValueText = document.createTextNode("")
             cellValue.appendChild(cellValueText)
         }
         row.appendChild(cellName)
         row.appendChild(cellValue)
-        tblBody.appendChild(row)                
+        tblBody.appendChild(row)
 
-        var row = document.createElement("tr"); 
+        var row = document.createElement("tr");
         var cellName = document.createElement("td")
         cellName.setAttribute('scope', "row");
         cellName.setAttribute('class', 'dataset-label');
-        var cellNameText = document.createTextNode("Is Version Of")                
+        var cellNameText = document.createTextNode("Is Version Of")
         cellName.appendChild(cellNameText)
         var cellValue = document.createElement("td")
         cellValue.setAttribute('class', 'dataset-details')
-        if (results[i]["versionOf"]){
+        if (results[i]["versionOf"]) {
             var cellValueText = document.createElement("a");
             cellValueText.setAttribute("href", results[i]["versionOf"]["value"])
             cellValueText.innerHTML = (results[i]["versionOfLabel"]["value"])
             cellValue.appendChild(cellValueText)
         }
-        else{
+        else {
             var cellValueText = document.createTextNode("")
             cellValue.appendChild(cellValueText)
         }
         row.appendChild(cellName)
         row.appendChild(cellValue)
-        tblBody.appendChild(row)                
+        tblBody.appendChild(row)
 
-        var row = document.createElement("tr"); 
-        var cellName = document.createElement("td")        
+        var row = document.createElement("tr");
+        var cellName = document.createElement("td")
         cellName.setAttribute('scope', "row");
         cellName.setAttribute('class', 'dataset-label');
         var cellNameText = document.createTextNode("Is Part Of")
         cellName.appendChild(cellNameText)
         var cellValue = document.createElement("td")
         cellValue.setAttribute('class', 'dataset-details')
-        if (results[i]["partOf"]){
+        if (results[i]["partOf"]) {
             var cellValueText = document.createElement("a");
             cellValueText.setAttribute("href", results[i]["partOf"]["value"])
             cellValueText.innerHTML = (results[i]["partOfLabel"]["value"])
             cellValue.appendChild(cellValueText)
         }
-        else{
+        else {
             var cellValueText = document.createTextNode("")
             cellValue.appendChild(cellValueText)
         }
@@ -133,18 +155,18 @@ $.ajax(endpointUrl, settings).then(function (data) {
         var editDiv = document.createElement("div");
         editDiv.setAttribute('style', 'margin-bottom: 70px;')
         var edit = document.createElement("button")
-        edit.innerHTML = "Edit"
+        edit.innerHTML = "Edit/ Delete"
         edit.setAttribute('class', 'btn btn-default')
         edit.setAttribute('style', 'float: right')
-        edit.onclick = function(){
-            window.open("/edit-process?uri=" + results[i]["id"]["value"])
+        edit.onclick = function () {
+            window.location = "/edit-process?uri=" + results[i]["id"]["value"]
         };
         editDiv.appendChild(edit)
         process.appendChild(editDiv)
 
         document.getElementById("processes").append(process)
-        
+
         // console.log(sparqlQuery)
     }
-    
+
 });
