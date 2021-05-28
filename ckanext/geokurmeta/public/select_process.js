@@ -35,31 +35,35 @@ this.ckan.module('select-process', function (jQuery, _) {
                     'Accept': 'application/sparql-results+json'
                 }
             });
-            console.log(url);
+            // console.log(url);
             return response.json(); // parses JSON response into native JavaScript objects
         },
 
         handleDataSparql: function (data = null) {
-            console.log($("#" + this.options.field)[0].value)
-            stored_option = JSON.parse($("#" + this.options.field)[0].value).uri
-            for (var i = 0; i < data.results.bindings.length; i++) {
-                if (data.results.bindings[i].subject.value == stored_option) {
-                    $(this.el[0]).append($('<option>', {
-                        id: data.results.bindings[i].subject.value,
-                        value: data.results.bindings[i].subject.value,
-                        text: data.results.bindings[i].label.value,
-                        selected: 'selected'
-                    }));
-                }
-                else {
-                    $(this.el[0]).append($('<option>', {
-                        id: data.results.bindings[i].subject.value,
-                        value: data.results.bindings[i].subject.value,
-                        text: data.results.bindings[i].label.value
-                    }));
-                }
-            };
-            console.log(data.results);
+            stored_option = null
+            try{
+                stored_option = JSON.parse($("#" + this.options.field)[0].value).uri
+            }
+            finally{
+                for (var i = 0; i < data.results.bindings.length; i++) {
+                    if (data.results.bindings[i].subject.value == stored_option) {
+                        $(this.el[0]).append($('<option>', {
+                            id: data.results.bindings[i].subject.value,
+                            value: data.results.bindings[i].subject.value,
+                            text: data.results.bindings[i].label.value,
+                            selected: 'selected'
+                        }));
+                    }
+                    else {
+                        $(this.el[0]).append($('<option>', {
+                            id: data.results.bindings[i].subject.value,
+                            value: data.results.bindings[i].subject.value,
+                            text: data.results.bindings[i].label.value
+                        }));
+                    }
+                };
+            }
+            // console.log(data.results);
 
         },
 
