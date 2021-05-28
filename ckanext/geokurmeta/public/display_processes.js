@@ -35,7 +35,8 @@ $.ajax(endpointUrl, settings).then(function (data) {
             description.appendChild(descriptionText)
         }
         else {
-            var descriptionText = document.createTextNode("Description: ")
+            var descriptionText = document.createElement("em")
+            descriptionText.innerHTML = "No description available."            
             description.appendChild(descriptionText)
         }
         process.appendChild(description)
