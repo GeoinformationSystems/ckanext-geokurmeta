@@ -1,13 +1,18 @@
 {% ckan_extends %}
 
-{% block primary_content_inner %}
-<button class="btn btn-primary" id="provenance-btn" value="{{pkg_dict.get('id')}}"" onclick=" getProvenance()">Dataset
+{% block package_resources %}
+<button class="btn btn-primary" id="provenance-btn" value="{{pkg_dict.get('id')}}"" onclick="getProvenance()">Dataset
     Provenance</button>
+<button class="btn btn-default" id="json-btn" value="{{pkg_dict.get('id')}}"" onclick="getDsAsJson()">Dataset as JSON</button>
+
 <script>
     function getProvenance() {
         let location = "https://geokur-dmp2.geo.tu-dresden.de/provViewer/?endpoint=https://geokur-dmp2.geo.tu-dresden.de/fuseki/ckan_mirror&dataset=https://geokur-dmp.geo.tu-dresden.de/dataset/" + document.getElementById("provenance-btn").value;
-        //console.log(location)
-        window.open = location;
+        window.open(location);
+    };
+    function getDsAsJson() {
+        let location = "/api/action/package_show?id=" + document.getElementById("json-btn").value;
+        window.open(location);
     };
 </script>
 <!-- {{pkg_dict.get('id')}} -->
