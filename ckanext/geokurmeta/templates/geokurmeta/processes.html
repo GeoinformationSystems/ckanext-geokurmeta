@@ -7,16 +7,23 @@
 
 {% block primary %}
 <div id="processes" class=container style="margin-bottom: 150px;">
-    <h1>GeoKur Process Store</h1>
+    <h1>GeoKur Process Register</h1>
+
     <p>
         This page displays all processes that are exposed as Linked Open Data at <a
             href=//geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql>//geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql</a>.
         There are also capabilities to add, update or delete processes from the triplestore.
     </p>
+    <!-- check if the current user is in a group, where they are allowed to create datasets. If so, the button for addign a process is shown.
+    This is only useful if users that are not member of a group are not permitted to create datasets.
+    (ckan.ini: ckan.auth.create_unowned_dataset = False) -->
+    {% if h.organizations_available(permission='create_dataset') %}
     <div class="page_primary_action" style="margin-bottom: 50px;">
-        <a class="btn btn-primary" style="float: right;" href="/add-process"><i class="fa fa-plus-square"></i> Add
+        <a class="btn btn-primary" id="add_button" style="float: right;" href="/add-process"><i
+                class="fa fa-plus-square"></i> Add
             Process</a>
     </div>
+    {% endif %}
 </div>
 {% asset 'ckanext-geokurmeta/display_processes' %}
 {% block secondary %}{% endblock %}

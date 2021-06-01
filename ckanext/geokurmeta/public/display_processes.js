@@ -36,7 +36,7 @@ $.ajax(endpointUrl, settings).then(function (data) {
         }
         else {
             var descriptionText = document.createElement("em")
-            descriptionText.innerHTML = "No description available."            
+            descriptionText.innerHTML = "No description available."
             description.appendChild(descriptionText)
         }
         process.appendChild(description)
@@ -153,17 +153,20 @@ $.ajax(endpointUrl, settings).then(function (data) {
         tbl.appendChild(tblBody)
         process.appendChild(tbl)
 
-        var editDiv = document.createElement("div");
-        editDiv.setAttribute('style', 'margin-bottom: 70px;')
-        var edit = document.createElement("button")
-        edit.innerHTML = "Edit/ Delete"
-        edit.setAttribute('class', 'btn btn-default')
-        edit.setAttribute('style', 'float: right')
-        edit.onclick = function () {
-            window.location = "/edit-process?uri=" + results[i]["id"]["value"]
-        };
-        editDiv.appendChild(edit)
-        process.appendChild(editDiv)
+        if (document.getElementById("add_button")) {
+            var editDiv = document.createElement("div");
+            editDiv.setAttribute('style', 'margin-bottom: 70px;')
+            var edit = document.createElement("button")
+            edit.innerHTML = "Edit/ Delete"
+            edit.setAttribute('class', 'btn btn-default')
+            edit.setAttribute('style', 'float: right')
+            edit.onclick = function () {
+                window.location = "/edit-process?uri=" + results[i]["id"]["value"]
+            };
+            editDiv.appendChild(edit)
+            process.appendChild(editDiv)
+        }
+
 
         document.getElementById("processes").append(process)
 
