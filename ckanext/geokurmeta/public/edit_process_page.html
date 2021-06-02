@@ -47,7 +47,7 @@
             return dictionary;
         }
 
-        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
+        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_register/sparql";
         var sparqlQuery = [
             "PREFIX prov: <http://www.w3.org/ns/prov#>",
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
@@ -145,7 +145,7 @@
                                 "label": "Delete Process",
                                 "click": function () {
                                     if (this.isFormValid()) {
-                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/update";
+                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_register/update";
                                         var deleteQuery = [
                                             "PREFIX prov: <http://www.w3.org/ns/prov#>",
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
@@ -172,7 +172,7 @@
                                 "label": "Update Process",
                                 "click": function () {
                                     if (this.isFormValid()) {
-                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/update";
+                                        var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_register/update";
                                         var updateQuery = [
                                             "PREFIX prov: <http://www.w3.org/ns/prov#>",
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
@@ -227,7 +227,7 @@
                     var uri = getUrlParams().uri
                     control.childrenByPropertyId["id"].setValue(uri)
 
-                    var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/query";
+                    var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_register/query";
                     var getMetadataQuery = [
                         "PREFIX prov: <http://www.w3.org/ns/prov#>",
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",

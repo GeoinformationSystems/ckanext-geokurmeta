@@ -1,4 +1,4 @@
-var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_store/sparql";
+var endpointUrl = "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_process_register/sparql";
 var sparqlQuery = [
     "PREFIX prov: <http://www.w3.org/ns/prov#>",
     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
