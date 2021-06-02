@@ -222,7 +222,7 @@
 					"data-module": "select-from-json",
 					"data-module-mode": "sparql",
 					"data-module-sublabels": "value of quality metric|confidence term|confidence value|thematic representativity|spatial representativity|temporal representativity|name of quality source|type of quality source|link to quality source",
-					"data-module-source": "https://geokur-dmp2.geo.tu-dresden.de/fuseki/data_quality_elements/query",
+					"data-module-source": "https://geokur-dmp2.geo.tu-dresden.de/fuseki/geokur_quality_register/query",
 					"data-module-query": "PREFIX dqv: <http://www.w3.org/ns/dqv#> PREFIX skos: <http://www.w3.org/2004/02/skos/core#>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>PREFIX gkq: <https://geokur-dmp.geo.tu-dresden.de/pages/quality-elements#>SELECT ?subject ?label ?datatype WHERE {   ?subject a dqv:Metric .  ?subject skos:prefLabel ?label .  ?subject dqv:expectedDataType ?datatype . }"
 				}
 			}
