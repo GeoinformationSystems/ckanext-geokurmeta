@@ -86,9 +86,6 @@
 		{
 			"preset_name": "contact_name",
 			"values": {
-				"classes": [
-					"col-md-8 view-list"
-				],
 				"validators": "not_empty unicode geokurmeta_check_required_field"
 			}
 		},

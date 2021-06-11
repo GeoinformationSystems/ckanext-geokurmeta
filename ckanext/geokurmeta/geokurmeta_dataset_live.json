@@ -36,12 +36,6 @@
             "form_placeholder": "Person or Organization"
         },
         {
-            "field_name": "contact_class",
-            "label": "Contact Class",
-            "required_if_value_in": "contact_name",
-            "preset": "contact_class"
-        },
-        {
             "field_name": "contact_uri",
             "label": "Contact Point - ORCID",
             "preset": "single_link",
