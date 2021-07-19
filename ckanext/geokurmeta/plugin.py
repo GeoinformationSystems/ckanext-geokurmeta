@@ -1,24 +1,6 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
-
-from ckanext.geokurmeta.validation import (
-    geokurmeta_scheming_choices,
-    geokurmeta_check_required_field,
-    if_not_missing_package_id_or_name_exists,
-    if_not_missing_package_id_or_name_exists_list,
-    link_list_string_convert,
-    single_link_validator,
-    decimal_validator,
-    spatial_resolution_validator,
-)
-
-from ckanext.geokurmeta.helpers import (
-    get_link_list,
-    get_json_as_dict,
-)
-
-
 class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.IDatasetForm)
     p.implements(p.IConfigurer)
@@ -28,20 +10,10 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_validators(self):
         return {
-            'geokurmeta_scheming_choices': geokurmeta_scheming_choices,
-            'geokurmeta_check_required_field': geokurmeta_check_required_field,
-            'if_not_missing_package_id_or_name_exists': if_not_missing_package_id_or_name_exists,
-            'if_not_missing_package_id_or_name_exists_list': if_not_missing_package_id_or_name_exists_list,
-            'link_list_string_convert': link_list_string_convert,
-            'single_link_validator': single_link_validator,
-            'decimal_validator': decimal_validator,
-            'spatial_resolution_validator': spatial_resolution_validator,
         }
 
     def get_helpers(self):
         return {
-            'get_link_list': get_link_list,
-            'get_json_as_dict': get_json_as_dict,
         }
 
     def is_fallback(self):
@@ -59,10 +31,7 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         # that CKAN will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')
         tk.add_public_directory(config, 'public')
-        tk.add_resource('public', 'ckanext-geokurmeta')
-
-
-
+        tk.add_resource('assets', 'ckanext-geokurmeta')
 
 
     def before_map(self, map):
