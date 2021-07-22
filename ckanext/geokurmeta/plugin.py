@@ -39,9 +39,9 @@ class GeokurmetaPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
         return map
 
     def after_map(self, map):
-        map.connect('add_process', '/add-process',
+        map.connect('add_metric', '/add-metric',
                     controller='ckanext.geokurmeta.controller:GeokurmetaController',
-                    action='add_process')
+                    action='add_metric')
         map.connect('edit_process', '/edit-process',
                     controller='ckanext.geokurmeta.controller:GeokurmetaController',
                     action='edit_process')

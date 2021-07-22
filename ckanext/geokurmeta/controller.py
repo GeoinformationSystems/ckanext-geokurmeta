@@ -6,8 +6,8 @@ import ckan.lib.base as base
 
 class GeokurmetaController(base.BaseController):
 
-    def add_process(self):
-        return base.render('geokurmeta/add_process.html')
+    def add_metric(self):
+        return base.render('geokurmeta/add_metric.html')
     def edit_process(self):
         return base.render('geokurmeta/edit_process.html')
     def processes(self):
